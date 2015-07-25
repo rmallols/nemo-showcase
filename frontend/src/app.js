@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'templates-main']);
+var app = angular.module('app', ['nemo', 'ui.router', 'templates-main']);
 
 app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
     function ($locationProvider, $stateProvider, $urlRouterProvider) {
