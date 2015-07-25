@@ -1,0 +1,17 @@
+{
+  "name": "ricardomallols.com",
+  "version": "0.0.0",
+  "homepage": "https://github.com/rmallols/ricardomallols.com",
+  "authors": [
+    "rmallols <ricardo.mallols@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4",
+    "angular-ui-router": "~0.2.15",
+    "less": "~2.5.1"
+  }
+}
