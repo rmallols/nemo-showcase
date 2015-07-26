@@ -1,7 +1,7 @@
 var app = angular.module('app', ['nemo', 'ui.router', 'templates-main']);
 
-app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
-    function ($locationProvider, $stateProvider, $urlRouterProvider) {
+app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoInputDirectiveCreatorProvider',
+    function ($locationProvider, $stateProvider, $urlRouterProvider, inputProvider) {
 
         $locationProvider.html5Mode({
             enabled: true,
@@ -18,6 +18,20 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
             });
 
         $urlRouterProvider.otherwise("/");
+
+        inputProvider
+
+            .input('captchamario', {
+                template: '<div>' +
+                            '<iframe src="vendor/fullScreenMario/source/index.html" style="border: 1px solid blue; height: 460px;"/>' +
+                        '</div>',
+                linkFn: function (scope, element, attrs, controllers) {
+                    function handlingMsg(e) {
+                        console.log("***works from the parent", e.data);
+                    }
+                    addEventListener("message",handlingMsg, true);
+                }
+            })
     }]);
 
 app.run(['$rootScope', 'browser', function ($rootScope, browser) {

@@ -536,6 +536,20 @@ app.controller('HomeCtrl', ['$scope', function ($scope) {
             }
         },
         {
+            "name": "captcha",
+            "type": "captchamario",
+            properties: {
+                "help": {
+                    "code": "captcha.help",
+                    "message": "Please complete the level"
+                },
+                "label": {
+                    "code": "captcha.label",
+                    "message": "Super mario captcha"
+                }
+            }
+        },
+        {
             "name": "terms",
             "type": "checkbox",
             "value": true,

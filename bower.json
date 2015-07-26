@@ -1,9 +1,9 @@
 {
   "name": "ricardomallols.com",
-  "version": "0.0.0",
-  "homepage": "https://github.com/rmallols/ricardomallols.com",
+  "version": "1.0.0",
+  "homepage": "https://github.com/rmallols/nemo-showcase",
   "authors": [
-    "rmallols <ricardo.mallols@gmail.com>"
+    "rmallols <hi@ricardomallols.com>"
   ],
   "moduleType": [
     "node"
@@ -12,6 +12,7 @@
   "dependencies": {
     "angular": "~1.4",
     "angular-ui-router": "~0.2.15",
-    "less": "~2.5.1"
+    "less": "~2.5.1",
+    "fullScreenMario": "git@github.com:rmallols/FullScreenMario.git#master"
   }
 }

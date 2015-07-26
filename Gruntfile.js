@@ -48,12 +48,22 @@ module.exports = function (grunt) {
                 }
             }
         },
+        //copy: {
+        //    sound: {
+        //        files: [
+        //            {expand: true, src: ['<%= vendorFolder %>/fullScreenMario/Source/Sounds/**'], dest: '<%= srcFolder %>'}
+        //        ]
+        //    }
+        //},
         concat: {
             dist: {
                 files: {
                     '<%= distFolder %>js.min.js': [
                         '<%= vendorFolder %>/angular/angular.js',
-                        '<%= vendorFolder %>/**/*.js',
+                        //'<%= vendorFolder %>/**/*.js',
+                        '<%= vendorFolder %>/angular-ui-router/angular-ui-router.js',
+                        '<%= vendorFolder %>/less/less.js',
+                        '<%= vendorFolder %>/fullScreenMario/Dist/FullScreenMario.min.js',
                         '<%= srcFolder %>/app.js',
                         '<%= srcFolder %>/**/*.js'
                     ]
@@ -102,6 +112,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-html2js');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
