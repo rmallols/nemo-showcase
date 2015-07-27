@@ -1,5 +1,5 @@
 <form nemo-form-handler class="container" ng-submit="fakeSubmit()" fake-form-handler
-      novalidate>
+      ng-show="fields" novalidate>
     <div class="clearfix" ng-repeat="field in fields"
          data-ng-class="getFieldStyleClasses(field.name)">
         <div class="column column_label">

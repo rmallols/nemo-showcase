@@ -45,7 +45,4 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
 
 app.run(['$rootScope', 'browser', function ($rootScope, browser) {
     $rootScope.userAgent = browser.getUA();
-    $rootScope.$on('$stateChangeSuccess', function (event, toState) {
-        $rootScope.pageTitle = toState.pageTitle + ' | menzit';
-    });
 }]);

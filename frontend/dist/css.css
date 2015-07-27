@@ -32,6 +32,12 @@ select.ng-invalid.ng-touched {
   padding: 10px;
   box-sizing: border-box;
 }
+@media only screen and (max-width: 960px) {
+  .container {
+    width: 90%;
+    min-width: 550px;
+  }
+}
 .column {
   float: left;
   box-sizing: border-box;
@@ -41,8 +47,24 @@ select.ng-invalid.ng-touched {
   width: 40%;
   text-align: right;
 }
+@media only screen and (max-width: 960px) {
+  .column.column_label {
+    text-align: left;
+    width: 100%;
+  }
+}
 .column.column_field {
   width: 60%;
+}
+@media only screen and (max-width: 960px) {
+  .column.column_field {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 960px) {
+  .column {
+    padding: 10px 10px 0px 10px;
+  }
 }
 .input-wrapper {
   text-align: left;

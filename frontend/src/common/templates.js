@@ -3,7 +3,7 @@ angular.module('templates-main', ['home.html', 'index.html']);
 angular.module("home.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home.html",
     "<form nemo-form-handler class=\"container\" ng-submit=\"fakeSubmit()\" fake-form-handler\n" +
-    "      novalidate>\n" +
+    "      ng-show=\"fields\" novalidate>\n" +
     "    <div class=\"clearfix\" ng-repeat=\"field in fields\"\n" +
     "         data-ng-class=\"getFieldStyleClasses(field.name)\">\n" +
     "        <div class=\"column column_label\">\n" +
@@ -35,7 +35,7 @@ angular.module("index.html", []).run(["$templateCache", function($templateCache)
   $templateCache.put("index.html",
     "<html ng-app=\"app\" class=\"ua-{{userAgent}}\">\n" +
     "    <head>\n" +
-    "        <title ng-bind=\"pageTitle\"></title>\n" +
+    "        <title>Nemo showcase</title>\n" +
     "        <meta name=\"viewport\" content=\"width=device-width\"/>\n" +
     "        <link rel=\"icon\" type=\"image/png\" href=\"src/favicon.png\">\n" +
     "        <link rel=\"stylesheet\" type=\"text/css\" href=\"dist/css.css\">\n" +
