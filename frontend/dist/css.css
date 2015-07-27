@@ -1,9 +1,29 @@
 body {
   background-color: #eee;
 }
+.field {
+  border: 1px solid #ccc;
+  outline: none;
+}
+.field.ng-valid.ng-touched {
+  border-color: green;
+}
+.field.ng-invalid.ng-touched {
+  border-color: red;
+}
 input,
 select {
+  border: 1px solid #ccc;
+  outline: none;
   padding: 10px;
+}
+input.ng-valid.ng-touched,
+select.ng-valid.ng-touched {
+  border-color: green;
+}
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: red;
 }
 .container {
   width: 80%;
@@ -109,4 +129,15 @@ select {
   text-align: center;
   line-height: 1.7;
   cursor: pointer;
+}
+[input-captchamario] {
+  border: 1px solid #ccc;
+  outline: none;
+  height: 460px;
+}
+[input-captchamario].ng-valid.ng-touched {
+  border-color: green;
+}
+[input-captchamario].ng-invalid.ng-touched {
+  border-color: red;
 }

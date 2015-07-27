@@ -461,8 +461,8 @@ angular.module('nemo')
                         return ngModelCtrl;
                     },
                     setFilthy: function () {
-                        ngModelCtrl.$setDirty();
                         ngModelCtrl.$setTouched();
+                        ngModelCtrl.$setDirty();
                     },
                     setupBusinessRules: function () {
                         if (scope.model.properties && scope.model.properties.businessrules) {

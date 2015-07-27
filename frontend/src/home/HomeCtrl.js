@@ -546,7 +546,18 @@ app.controller('HomeCtrl', ['$scope', function ($scope) {
                 "label": {
                     "code": "captcha.label",
                     "message": "Super mario captcha"
-                }
+                },
+                "validation": [
+                    {
+                        "type": "levelcomplete",
+                        "rules": [
+                            {
+                                "id": "captcha.levelComplete",
+                                "value": true
+                            }
+                        ]
+                    }
+                ]
             }
         },
         {

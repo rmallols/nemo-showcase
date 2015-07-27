@@ -1,7 +1,7 @@
 var app = angular.module('app', ['nemo', 'ui.router', 'templates-main']);
 
-app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoInputDirectiveCreatorProvider',
-    function ($locationProvider, $stateProvider, $urlRouterProvider, inputProvider) {
+app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoInputDirectiveCreatorProvider', 'nemoValidationDirectiveCreatorProvider',
+    function ($locationProvider, $stateProvider, $urlRouterProvider, inputProvider, validationProvider) {
 
         $locationProvider.html5Mode({
             enabled: true,
@@ -22,16 +22,25 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
         inputProvider
 
             .input('captchamario', {
-                template: '<div>' +
-                            '<iframe src="vendor/fullScreenMario/source/index.html" style="border: 1px solid blue; height: 460px;"/>' +
-                        '</div>',
+                template: '<iframe src="vendor/fullScreenMario/source/index.html"/>',
                 linkFn: function (scope, element, attrs, controllers) {
-                    function handlingMsg(e) {
-                        console.log("***works from the parent", e.data);
-                    }
-                    addEventListener("message",handlingMsg, true);
+                    var formHandlerCtrl = controllers[1];
+                    addEventListener("message", function (e) {
+                        console.log('hello message received...', e.data);
+                        formHandlerCtrl.setFieldValue('captcha', { levelComplete: e.data.event === 'levelComplete' });
+                        formHandlerCtrl.setFieldDirtyTouched('captcha');
+                        scope.$apply();
+                    }, true);
                 }
-            })
+            });
+
+        validationProvider
+
+            .validation('levelcomplete', {
+                validateFn: function (value, validationRule) {
+                   return value && value.levelComplete === validationRule.value;
+               }
+            });
     }]);
 
 app.run(['$rootScope', 'browser', function ($rootScope, browser) {

@@ -2,7 +2,21 @@ body {
   background-color: #eee;
 }
 
+.field {
+  border: 1px solid #ccc;
+  outline: none;
+
+  &.ng-valid.ng-touched {
+    border-color: green;
+  }
+
+  &.ng-invalid.ng-touched {
+    border-color: red;
+  }
+}
+
 input, select {
+  .field;
   padding: 10px;
 }
 
@@ -132,6 +146,7 @@ input, select {
   cursor: pointer;
 }
 
-//[input-captchamario] {
-//  overflow: hidden;
-//}
+[input-captchamario] {
+  .field;
+  height: 460px;
+}

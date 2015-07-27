@@ -117,6 +117,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
 
-    grunt.registerTask('generateJs', ['concat', 'uglify']);
+    //grunt.registerTask('generateJs', ['concat', 'uglify']);
+    grunt.registerTask('generateJs', ['concat']);
     grunt.registerTask('setupDevEnv', ['bower', 'generateJs', 'concurrent']);
 };
