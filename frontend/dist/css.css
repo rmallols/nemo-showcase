@@ -130,14 +130,14 @@ select.ng-invalid.ng-touched {
   line-height: 1.7;
   cursor: pointer;
 }
-[input-captchamario] {
+[input-captcha-mario] {
   border: 1px solid #ccc;
   outline: none;
   height: 460px;
 }
-[input-captchamario].ng-valid.ng-touched {
+[input-captcha-mario].ng-valid.ng-touched {
   border-color: green;
 }
-[input-captchamario].ng-invalid.ng-touched {
+[input-captcha-mario].ng-invalid.ng-touched {
   border-color: red;
 }

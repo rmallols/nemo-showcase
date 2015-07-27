@@ -21,7 +21,7 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
 
         inputProvider
 
-            .input('captchamario', {
+            .input('captchaMario', {
                 template: '<iframe src="vendor/fullScreenMario/source/index.html"/>',
                 linkFn: function (scope, element, attrs, controllers) {
                     var formHandlerCtrl = controllers[1];
@@ -36,7 +36,7 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
 
         validationProvider
 
-            .validation('levelcomplete', {
+            .validation('levelComplete', {
                 validateFn: function (value, validationRule) {
                    return value && value.levelComplete === validationRule.value;
                }

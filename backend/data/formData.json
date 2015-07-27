@@ -535,7 +535,7 @@
   },
   {
     "name": "captcha",
-    "type": "captchamario",
+    "type": "captchaMario",
     "properties": {
       "help": {
         "code": "captcha.help",
@@ -547,7 +547,7 @@
       },
       "validation": [
         {
-          "type": "levelcomplete",
+          "type": "levelComplete",
           "rules": [
             {
               "id": "captcha.levelComplete",
