@@ -94,7 +94,7 @@ module.exports = function (grunt) {
             }
         },
         shell: {
-            startNode: { command: 'node backend/server.js', options: { stdout: true } }
+            startNode: { command: 'supervisor backend/server.js', options: { stdout: true } }
         },
         concurrent: {
             options: {
