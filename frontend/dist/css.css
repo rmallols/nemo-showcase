@@ -39,10 +39,10 @@ select.ng-invalid.ng-touched {
 }
 .column.column_label {
   width: 40%;
+  text-align: right;
 }
 .column.column_field {
   width: 60%;
-  text-align: right;
 }
 .input-wrapper {
   text-align: left;

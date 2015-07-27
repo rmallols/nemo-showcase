@@ -553,7 +553,8 @@ app.controller('HomeCtrl', ['$scope', function ($scope) {
                         "rules": [
                             {
                                 "id": "captcha.levelComplete",
-                                "value": true
+                                "value": true,
+                                "message": "You're NOT a human, STOP cheating please!"
                             }
                         ]
                     }
