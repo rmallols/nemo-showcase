@@ -5,6 +5,9 @@
   "author": "hi@ricardomallols.com",
   "license": "MIT",
   "devDependencies": {
+    "cylon": "^1.1.0",
+    "cylon-mip": "^0.4.0",
+    "cylon-ble": "hybridgroup/cylon-ble#8b15bc4e85be3bd9e21ea1ceeb1c0bb72b763ea6",
     "express": "^4.13.0",
     "grunt": "^0.4.5",
     "grunt-bower-task": "^0.4.0",

@@ -22,7 +22,7 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
         inputProvider
 
             .input('captchaMario', {
-                template: '<iframe src="vendor/fullScreenMario/source/index.html"/>',
+                template: '<iframe src="vendor/fullScreenMario/Source/index.html"/>',
                 linkFn: function (scope, element, attrs, controllers) {
                     var formHandlerCtrl = controllers[1];
                     addEventListener("message", function (e) {
