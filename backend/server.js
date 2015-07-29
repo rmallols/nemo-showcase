@@ -81,14 +81,29 @@ Cylon.robot({
         //4: baila a muerte
         //my.mip.setGameMode(1);
 
-        after((2).seconds(), function() {
-            my.mip.driveForward(50, 0);
-            //my.mip.driveDistance(0, 100, 0, 0);
-        });
+        var timeStart = 1.2;
+        timeStart = step1(my.mip, timeStart, 160, 0.3, 1.2);
+
+
+        timeStart += 1.4;
+
+        timeStart = step1(my.mip, timeStart, 165, 0.22);
+
+        timeStart += 1.0;
+
+        step2(my.mip, timeStart);
+
+
+
+        //after((4).seconds(), function() {
+        //    my.mip.turnLeft(30, 100);
+        //});
         //
-        after((6).seconds(), function() {
-            my.mip.turnLeft(40, 100);
-        });
+        //
+        //
+        //after((3).seconds(), function() {
+        //    my.mip.turnRight(30, 100);
+        //});
         //
         //after((8).seconds(), function() {
         //    //my.mip.driveForward(50, 0);
@@ -145,3 +160,109 @@ Cylon.robot({
         //});
     }
 }).start();
+
+function step1(mip, timeStart, turnAngle, gap, specialFirstGap) {
+console.log('running timestamp with step at', timeStart, gap);
+
+
+    after((timeStart).seconds(), function() {
+        mip.turnLeft(20, 100, function () {
+            console.log('STARTT!');
+        });
+    });
+
+    timeStart += specialFirstGap || gap;
+    after((timeStart).seconds(), function() {
+        mip.turnRight(20, 100);
+    });
+
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnLeft(20, 100);
+    });
+
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnRight(20, 100);
+    });
+
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnLeft(20, 100);
+    });
+
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnRight(20, 100);
+    });
+
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnLeft(20, 100);
+    });
+
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnRight(20, 100);
+    });
+
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnLeft(20, 100);
+    });
+
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnRight(turnAngle, 200);
+    });
+
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnLeft(turnAngle, 200);
+    });
+
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.setGameMode(1);
+    });
+
+    return timeStart;
+
+}
+
+function step2(mip, timeStart) {
+    //after((timeStart).seconds(), function() {
+    //    mip.driveForward(30, 0);
+    //    //mip.driveDistance(0, 100, 0, 0);
+    //});
+    //
+    //timeStart += 2.8;
+    //after((timeStart).seconds(), function() {
+    //    mip.driveBackward(30, 0);
+    //});
+    //
+    //timeStart += 1.8;
+    //after((timeStart).seconds(), function () {
+    //    mip.stop();
+    //});
+console.log('moving...', timeStart);
+    after((timeStart).seconds(), function() {
+        mip.driveDistance(1, 30, 1, 100);
+    });
+
+    timeStart += 2.0;
+    after((timeStart).seconds(), function() {
+        //mip.stop();
+        mip.driveDistance(0, 30, 0, 100);
+    });
+
+    timeStart += 3.0;
+    after((timeStart).seconds(), function() {
+        mip.turnLeft(180, 200);
+    });
+
+    timeStart += 2;
+    after((timeStart).seconds(), function() {
+        mip.turnRight(180, 200);
+    });
+}
