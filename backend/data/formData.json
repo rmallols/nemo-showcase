@@ -534,32 +534,6 @@
     }
   },
   {
-    "name": "captcha",
-    "type": "captchaMario",
-    "properties": {
-      "help": {
-        "code": "captcha.help",
-        "message": "Please complete the level"
-      },
-      "label": {
-        "code": "captcha.label",
-        "message": "Super mario captcha"
-      },
-      "validation": [
-        {
-          "type": "levelComplete",
-          "rules": [
-            {
-              "id": "captcha.levelComplete",
-              "value": true,
-              "message": "You're NOT a human, STOP cheating please!"
-            }
-          ]
-        }
-      ]
-    }
-  },
-  {
     "name": "terms",
     "type": "checkbox",
     "value": true,

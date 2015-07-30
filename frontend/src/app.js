@@ -1,4 +1,4 @@
-var app = angular.module('app', ['nemo', 'ui.router', 'templates-main']);
+var app = angular.module('app', ['nemo', 'ui.router', 'templates-main', 'n3-line-chart']);
 
 app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoInputDirectiveCreatorProvider', 'nemoValidationDirectiveCreatorProvider',
     function ($locationProvider, $stateProvider, $urlRouterProvider, inputProvider, validationProvider) {
@@ -14,7 +14,14 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
                 url: '/',
                 templateUrl: "home.html",
                 controller: 'HomeCtrl',
-                pageTitle: 'Welcome to Ricardomallols.com homepage!'
+                pageTitle: 'H!'
+            })
+
+            .state('stats', {
+                url: '/stats',
+                templateUrl: "stats.html",
+                controller: 'StatsCtrl',
+                pageTitle: 'S!'
             });
 
         $urlRouterProvider.otherwise("/");

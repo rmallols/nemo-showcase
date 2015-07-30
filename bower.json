@@ -13,6 +13,7 @@
     "angular": "~1.4",
     "angular-ui-router": "~0.2.15",
     "less": "~2.5.1",
-    "fullScreenMario": "git@github.com:rmallols/FullScreenMario.git#master"
+    "fullScreenMario": "git@github.com:rmallols/FullScreenMario.git#master",
+    "n3-line-chart": "~1.1.10"
   }
 }

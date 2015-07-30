@@ -64,6 +64,8 @@ module.exports = function (grunt) {
                         '<%= vendorFolder %>/angular-ui-router/angular-ui-router.js',
                         '<%= vendorFolder %>/less/less.js',
                         '<%= vendorFolder %>/fullScreenMario/Dist/FullScreenMario.min.js',
+                        '<%= vendorFolder %>d3/d3.js',
+                        '<%= vendorFolder %>/n3-line-chart/line-chart.min.js',
                         '<%= srcFolder %>/app.js',
                         '<%= srcFolder %>/**/*.js'
                     ]
@@ -94,7 +96,7 @@ module.exports = function (grunt) {
             }
         },
         shell: {
-            startNode: { command: './node_modules/.bin/supervisor backend/server.js', options: { stdout: true } }
+            startNode: { command: '"node_modules//.bin//supervisor" backend//server.js', options: { stdout: true } }
         },
         concurrent: {
             options: {

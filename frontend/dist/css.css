@@ -1,5 +1,7 @@
 body {
   background-color: #eee;
+  font-family: Calibri, Helvetica;
+  color: #666;
 }
 .field {
   border: 1px solid #ccc;
