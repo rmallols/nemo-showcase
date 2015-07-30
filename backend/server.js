@@ -84,15 +84,20 @@ Cylon.robot({
         var timeStart = 1.2;
         timeStart = step1(my.mip, timeStart, 160, 0.3, 1.2);
 
+        timeStart += 1.4;
+        timeStart = step1(my.mip, timeStart, 165, 0.22);
+        //
+        //timeStart += 1.0;
+        //
+        //step2(my.mip, timeStart);
+        timeStart += 0;
+        step3(my.mip, timeStart);
+
+        timeStart = 4.2;
+        timeStart = step1(my.mip, timeStart, 160, 0.3, 1.2);
 
         timeStart += 1.4;
-
         timeStart = step1(my.mip, timeStart, 165, 0.22);
-
-        timeStart += 1.0;
-
-        step2(my.mip, timeStart);
-
 
 
         //after((4).seconds(), function() {
@@ -265,4 +270,41 @@ console.log('moving...', timeStart);
     after((timeStart).seconds(), function() {
         mip.turnRight(180, 200);
     });
+}
+
+function step3(mip, timeStart) {
+    after((timeStart).seconds(), function() {
+        mip.driveForward(35, 100);
+    });
+    timeStart += 0.6;
+    after((timeStart).seconds(), function() {
+        mip.driveBackward(35, 100);
+    });
+    timeStart += 0.5;
+    after((timeStart).seconds(), function() {
+        mip.driveForward(35, 100);
+    });
+    timeStart += 0.6;
+    after((timeStart).seconds(), function() {
+        mip.driveBackward(35, 100);
+    });
+    timeStart += 0.5;
+    after((timeStart).seconds(), function() {
+        mip.driveForward(35, 100);
+    });
+    timeStart += 0.6;
+    after((timeStart).seconds(), function() {
+        mip.driveBackward(35, 100);
+    });
+    timeStart += 0.5;
+    after((timeStart).seconds(), function() {
+        mip.driveForward(35, 100);
+    });
+    timeStart += 1.2;
+    after((timeStart).seconds(), function() {
+        mip.stop();
+    });
+
+    
+
 }
