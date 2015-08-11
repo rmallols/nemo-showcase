@@ -54,14 +54,14 @@
           "rules": [
             {
               "value": [
-                "MrValue",
-                "MrsValue",
-                "MsValue",
-                "MissValue",
-                "DrValue",
-                "RevValue",
-                "ProfValue",
-                "OtherValue"
+                "Mr value",
+                "Mrs value",
+                "Ms value",
+                "Miss value",
+                "Dr value",
+                "Rev value",
+                "Prof value",
+                "Other value"
               ],
               "id": "title.invalid",
               "message": "Title was not a valid choice"

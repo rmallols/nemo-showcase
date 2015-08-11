@@ -1,10 +1,11 @@
-app.controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
+app
+    .controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
 
-    $http.get('/rest/getFormData').then(function (response) {
-        $scope.fields = response.data;
-    });
+        $http.get('/rest/getFormData').then(function (response) {
+            $scope.fields = response.data;
+        });
 }])
-    .directive('fakeFormHandler', [function () {
+    .directive('fakeFormHandler', ['Stats', function (Stats) {
         return {
             require: 'nemoFormHandler',
             link: function (scope, element, attrs, formHandlerCtrl) {
@@ -12,6 +13,7 @@ app.controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
                 var iconVisibilityStates = {};
 
                 scope.fakeSubmit = function () {
+                    Stats.submitvalidationTracking(formHandlerCtrl.getValidationTracking());
                     formHandlerCtrl.validateFormAndSetDirtyTouched();
                     if (scope.isFormValid()) {
                         formHandlerCtrl.forceInvalid('captcha.invalid');
@@ -22,7 +24,6 @@ app.controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
                 };
 
                 scope.isFormValid = formHandlerCtrl.isFormValid;
-
 
                 scope.getFieldStyleClasses = function (fieldName) {
                     return {

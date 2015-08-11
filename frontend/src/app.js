@@ -33,7 +33,6 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
                 linkFn: function (scope, element, attrs, controllers) {
                     var formHandlerCtrl = controllers[1];
                     addEventListener("message", function (e) {
-                        console.log('hello message received...', e.data);
                         formHandlerCtrl.setFieldValue('captcha', { levelComplete: e.data.event === 'levelComplete' });
                         formHandlerCtrl.setFieldDirtyTouched('captcha');
                         scope.$apply();

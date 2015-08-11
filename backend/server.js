@@ -2,9 +2,14 @@ var express = require('express'),
     fs = require('fs'),
     http = require('http'),
     app = express(),
-    port = process.env.PORT || 3000;
+    bodyParser = require('body-parser'),
+    port = process.env.PORT || 3001;
 
-app.use(express.static(__dirname + '/../frontend'));
+app
+    .use(express.static(__dirname + '/../frontend'))
+    .use(bodyParser.json());
+
+var validationTracking = {};
 
 http.createServer(app).listen(port, function () {
     console.log("listening on HTTP on port " + port);
@@ -28,9 +33,19 @@ app.get('/rest/getFormData', function (req, res) {
     });
 });
 
+app.get('/rest/validation/track', function (req, res) {
+    res.send(validationTracking);
+});
+
+app.post('/rest/validation/track', function (req, res) {
+    validationTracking = req.body;
+    res.send({});
+});
+
 //var Cylon = require('cylon');
 //
 //Cylon.robot({
+
 //    connections: {bluetooth: {adaptor: 'central', uuid: 'f60f821e12134e7c8bf0f54c7f271d38', module: 'cylon-ble'}},
 //    devices: {mip: {driver: 'mip'}},
 //

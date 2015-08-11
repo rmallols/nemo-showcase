@@ -39,6 +39,13 @@ module.exports = function (grunt) {
                 options: {
                     spawn: false
                 }
+            },
+            symlink: {
+                files: ['../nowtv-web-nemo/dist/nemo.js'],
+                tasks: ['symlink'],
+                options: {
+                    spawn: false
+                }
             }
         },
         less: {
@@ -48,13 +55,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        //copy: {
-        //    sound: {
-        //        files: [
-        //            {expand: true, src: ['<%= vendorFolder %>/fullScreenMario/Source/Sounds/**'], dest: '<%= srcFolder %>'}
-        //        ]
-        //    }
-        //},
         concat: {
             dist: {
                 files: {
@@ -63,6 +63,7 @@ module.exports = function (grunt) {
                         //'<%= vendorFolder %>/**/*.js',
                         '<%= vendorFolder %>/angular-ui-router/angular-ui-router.js',
                         '<%= vendorFolder %>/less/less.js',
+                        '<%= vendorFolder %>/nemo/nemo.js',
                         '<%= vendorFolder %>/fullScreenMario/Dist/FullScreenMario.min.js',
                         '<%= vendorFolder %>d3/d3.js',
                         '<%= vendorFolder %>/n3-line-chart/line-chart.min.js',
@@ -103,7 +104,19 @@ module.exports = function (grunt) {
                 logConcurrentOutput: true
             },
             setupDevEnv: {
-                tasks: ['watch', 'shell:startNode']
+                tasks: ['watch:templates', 'watch:less', 'watch:js', 'shell:startNode']
+            },
+            setupDevEnvNemoSymlink: {
+                tasks: ['watch:templates', 'watch:less', 'watch:js', 'watch:symlink', 'shell:startNode']
+            }
+        },
+        symlink: {
+            options: {
+                overwrite: true
+            },
+            explicit: {
+                src: '../nowtv-web-nemo/dist/nemo.js',
+                dest: '<%= vendorFolder %>/nemo/nemo.js'
             }
         }
     });
@@ -118,8 +131,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-symlink');
 
-    //grunt.registerTask('generateJs', ['concat', 'uglify']);
     grunt.registerTask('generateJs', ['concat']);
-    grunt.registerTask('setupDevEnv', ['bower', 'generateJs', 'concurrent']);
+    grunt.registerTask('setupDependencies', ['bower']);
+    grunt.registerTask('setupDevEnv', ['generateJs', 'concurrent:setupDevEnv']);
+    grunt.registerTask('setupDevEnvNemoSymlink', ['generateJs', 'concurrent: setupDevEnvNemoSymlink']);
 };
