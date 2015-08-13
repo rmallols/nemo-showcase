@@ -1,4 +1,4 @@
-var app = angular.module('app', ['nemo', 'ui.router', 'templates-main', 'n3-line-chart']);
+var app = angular.module('app', ['nemo', 'ui.router', 'templates-main', 'n3-line-chart', 'captcha-mario']);
 
 app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoInputDirectiveCreatorProvider', 'nemoValidationDirectiveCreatorProvider',
     function ($locationProvider, $stateProvider, $urlRouterProvider, inputProvider, validationProvider) {
@@ -29,14 +29,28 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
         inputProvider
 
             .input('captchaMario', {
-                template: '<iframe src="vendor/fullScreenMario/Dist/index.html"/>',
+                template:   '<div>' +
+                                '<captcha-mario on-dead="onDead()" on-level-complete="onLevelComplete()"></captcha-mario>' +
+                            '</div>',
                 linkFn: function (scope, element, attrs, controllers) {
+
                     var formHandlerCtrl = controllers[1];
-                    addEventListener("message", function (e) {
-                        formHandlerCtrl.setFieldValue('captcha', { levelComplete: e.data.event === 'levelComplete' });
+
+                    function onEventReceived(eventKey) {
+                        formHandlerCtrl.setFieldValue('captcha', {
+                            levelComplete: eventKey === 'levelComplete'
+                        });
                         formHandlerCtrl.setFieldDirtyTouched('captcha');
                         scope.$apply();
-                    }, true);
+                    }
+
+                    scope.onDead = function () {
+                        onEventReceived('dead');
+                    };
+
+                    scope.onLevelComplete = function () {
+                        onEventReceived('levelComplete');
+                    };
                 }
             });
 
