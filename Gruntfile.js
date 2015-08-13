@@ -60,11 +60,10 @@ module.exports = function (grunt) {
                 files: {
                     '<%= distFolder %>js.min.js': [
                         '<%= vendorFolder %>/angular/angular.js',
-                        //'<%= vendorFolder %>/**/*.js',
                         '<%= vendorFolder %>/angular-ui-router/angular-ui-router.js',
                         '<%= vendorFolder %>/less/less.js',
                         '<%= vendorFolder %>/nemo/nemo.js',
-                        '<%= vendorFolder %>/fullScreenMario/Dist/FullScreenMario.min.js',
+                        '<%= vendorFolder %>/fullScreenMario/FullScreenMario.min.js',
                         '<%= vendorFolder %>d3/d3.js',
                         '<%= vendorFolder %>/n3-line-chart/line-chart.min.js',
                         '<%= srcFolder %>/app.js',
