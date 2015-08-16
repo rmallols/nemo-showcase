@@ -32,10 +32,10 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
                 template:   '<div>' +
                                 '<captcha-mario on-dead="onDead()" on-level-complete="onLevelComplete()"></captcha-mario>' +
                             '</div>',
-                linkFn: function (scope, element, attrs, formHandlerCtrl) {
+                linkFn: function (scope, element, attrs, formHandlerCtrl, interfaceFns) {
 
                     function onEventReceived(eventKey) {
-                        formHandlerCtrl.setFieldValue('captcha', {
+                        interfaceFns.setValue({
                             levelComplete: eventKey === 'levelComplete'
                         });
                         formHandlerCtrl.setFieldDirtyTouched('captcha');
