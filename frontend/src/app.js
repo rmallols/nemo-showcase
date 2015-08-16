@@ -32,9 +32,7 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
                 template:   '<div>' +
                                 '<captcha-mario on-dead="onDead()" on-level-complete="onLevelComplete()"></captcha-mario>' +
                             '</div>',
-                linkFn: function (scope, element, attrs, controllers) {
-
-                    var formHandlerCtrl = controllers[1];
+                linkFn: function (scope, element, attrs, formHandlerCtrl) {
 
                     function onEventReceived(eventKey) {
                         formHandlerCtrl.setFieldValue('captcha', {
