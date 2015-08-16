@@ -8,16 +8,24 @@
         </div>
         <div class="column column_field">
             <div class="input-wrapper">
-                <nemo-input model="field" has-focus="$index === 0"></nemo-input>
-                <div class="field-error-icon"
-                     data-ng-mouseenter="onErrorIconHover(field.name)"
-                     data-ng-mouseleave="onErrorIconBlur(field.name)"
-                     data-ng-show="isErrorIconVisible(field.name)">!
-                </div>
-                <data-nemo-validation-messages model="getFieldNgModelCtrl(field.name)"
-                                               class="field-error-wrapper" data-t-error
-                                               data-ng-show="isErrorMessageVisible(field.name)"
-                                               data-ng-class="{'is-hovered-not-active' : isHoveredAndNotActive(field.name)}"></data-nemo-validation-messages>
+
+                <data-nemo-input model="field" has-focus="$index === 0"></data-nemo-input>
+                <data-nemo-icon type="{{getMessageType(field.name)}}" field-name="{{field.name}}" on-hover="onIconHover(fieldName)" on-blur="onIconBlur(fieldName)"></data-nemo-icon>
+                <data-nemo-validation-messages model="getFieldNgModelCtrl(field.name)" class="field-error-wrapper"
+                                               data-t-error data-ng-if="isErrorMessageVisible(field.name)"></data-nemo-validation-messages>
+                <data-nemo-help-messages field-name="{{field.name}}" model="field.properties.help" class="field-help-wrapper"
+                                         data-t-help data-ng-if="isHelpMessageVisible(field.name)"></data-nemo-help-messages>
+
+                <!--<data-nemo-input model="field" has-focus="$index === 0"></data-nemo-input>-->
+                <!--<div class="field-error-icon"-->
+                     <!--data-ng-mouseenter="onErrorIconHover(field.name)"-->
+                     <!--data-ng-mouseleave="onErrorIconBlur(field.name)"-->
+                     <!--data-ng-show="isErrorIconVisible(field.name)">!-->
+                <!--</div>-->
+                <!--<data-nemo-validation-messages model="getFieldNgModelCtrl(field.name)"-->
+                                               <!--class="field-error-wrapper" data-t-error-->
+                                               <!--data-ng-if="isErrorMessageVisible(field.name)"-->
+                                               <!--data-ng-class="{'is-hovered-not-active' : isHoveredAndNotActive(field.name)}"></data-nemo-validation-messages>-->
             </div>
 
         </div>

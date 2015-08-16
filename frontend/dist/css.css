@@ -4,7 +4,7 @@ body {
   color: #666;
 }
 .field {
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   outline: none;
 }
 .field.ng-valid.ng-touched {
@@ -15,7 +15,7 @@ body {
 }
 input,
 select {
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   outline: none;
   padding: 10px;
 }
@@ -98,13 +98,49 @@ select.ng-invalid.ng-touched {
   border-width: 15px;
   margin-left: -15px;
 }
-.field-error-icon {
+.field-help-wrapper {
+  background-color: #cccccc;
+  color: white;
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 15px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.field-help-wrapper:after {
+  top: 100%;
+  right: 5px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: transparent;
+  border-top-color: #cccccc;
+  border-width: 15px;
+  margin-left: -15px;
+}
+.field-icon_error {
+  background-color: #dd0000;
   position: absolute;
   top: 7px;
   right: 7px;
   width: 24px;
   height: 24px;
-  background-color: #dd0000;
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.50;
+}
+.field-icon_help {
+  background-color: #cccccc;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 24px;
+  height: 24px;
   color: white;
   border-radius: 12px;
   text-align: center;
@@ -155,7 +191,7 @@ select.ng-invalid.ng-touched {
   cursor: pointer;
 }
 [input-captcha-mario] {
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   outline: none;
   height: 460px;
 }

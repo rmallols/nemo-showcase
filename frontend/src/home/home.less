@@ -1,5 +1,5 @@
 .field {
-  border: 1px solid #ccc;
+  border: 1px solid @info-color;
   outline: none;
 
   &.ng-valid.ng-touched {
@@ -68,8 +68,8 @@ input, select {
 }
 
 ////
-.field-error-wrapper {
-  background-color: #dd0000;
+.field-message-wrapper(@background-color) {
+  background-color: @background-color;
   color: white;
   position: absolute;
   bottom: 100%;
@@ -87,25 +87,41 @@ input, select {
     position: absolute;
     pointer-events: none;
     border-color: transparent;
-    border-top-color: #dd0000;
+    border-top-color: @background-color;
     border-width: 15px;
     margin-left: -15px;
   }
 }
 
+.field-error-wrapper {
+  .field-message-wrapper(@error-color);
+}
+
+.field-help-wrapper {
+  .field-message-wrapper (@info-color);
+}
+
 ///
-.field-error-icon {
+.field-icon(@background-color) {
+  background-color: @background-color;
   position: absolute;
   top: 7px;
   right: 7px;
   width: 24px;
   height: 24px;
-  background-color: #dd0000;
   color: white;
   border-radius: 12px;
   text-align: center;
   font-weight: bold;
   line-height: 1.50;
+}
+
+.field-icon_error {
+  .field-icon(@error-color);
+}
+
+.field-icon_help {
+  .field-icon(@info-color);
 }
 
 ////
