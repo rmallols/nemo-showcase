@@ -61,6 +61,6 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
             });
     }]);
 
-app.run(['$rootScope', 'browser', function ($rootScope, browser) {
-    $rootScope.userAgent = browser.getUA();
+app.run(['$rootScope', 'Browser', function ($rootScope, Browser) {
+    $rootScope.userAgent = Browser.getUA();
 }]);

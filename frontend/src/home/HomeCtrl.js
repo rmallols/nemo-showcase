@@ -5,7 +5,7 @@ app
             $scope.fields = response.data;
         });
 }])
-    .directive('fakeFormHandler', ['Stats', function (Stats) {
+    .directive('fakeFormHandler', ['Stats', 'Audio', function (Stats, Audio) {
         return {
             require: 'nemoFormHandler',
             link: function (scope, element, attrs, formHandlerCtrl) {
@@ -52,6 +52,18 @@ app
 
                 scope.isHoveredAndNotActive = function (fieldName) {
                     return iconVisibilityStates[fieldName] && !formHandlerCtrl.isFieldActive(fieldName);
+                };
+
+                scope.fakeSubmit = function () {
+                    Audio.playSuccessSong();
+                    Stats.submitvalidationTracking(formHandlerCtrl.getValidationTracking());
+                    formHandlerCtrl.validateFormAndSetDirtyTouched();
+                    if (scope.isFormValid()) {
+                        formHandlerCtrl.forceInvalid('captcha.invalid');
+                        formHandlerCtrl.giveFirstInvalidFieldFocus();
+                    } else {
+                        formHandlerCtrl.giveFirstInvalidFieldFocus();
+                    }
                 };
 
                 scope.getFieldNgModelCtrl = formHandlerCtrl.getFieldNgModelCtrl;

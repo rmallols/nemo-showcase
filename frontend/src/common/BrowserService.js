@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('browser', ['$window', function ($window) {
+app.factory('Browser', ['$window', function ($window) {
 
     var ua,
         browsers = {
