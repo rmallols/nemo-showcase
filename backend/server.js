@@ -11,7 +11,7 @@ app
 
 var validationTracking = {};
 
-http.createServer(app).listen(port, function () {
+var server = http.createServer(app).listen(port, function () {
     console.log("listening on HTTP on port " + port);
 });
 
@@ -42,284 +42,39 @@ app.post('/rest/validation/track', function (req, res) {
     res.send({});
 });
 
-//var Cylon = require('cylon');
-//
-//Cylon.robot({
+var Cylon = require('cylon'),
+    dance = require('./dance');
 
-//    connections: {bluetooth: {adaptor: 'central', uuid: 'f60f821e12134e7c8bf0f54c7f271d38', module: 'cylon-ble'}},
-//    devices: {mip: {driver: 'mip'}},
-//
-//    work: function (my) {
-//        console.log('heyy.!!')
-//        //DRIVE:
-//        //speed: 20 is all right. Too much and the robot will fall down
-//        //duration (ms)
-//        //my.mip.driveForward(100, 100);
-//
-//        //1: fijo. 2: parpadeo lento. , 3: parpadea mas rapido. Cada numero es una de las cuatro luces
-//        //por este orden: 4er, 3o, 2o, 1o
-//        //my.mip.setHeadLED(2, 2, 2, 4);
-//
-//        //rgb: 255 0 0 (rojo), 0 0 0 (negro), 255 255 255 (blanco), 255 0 255 (rosa), 0 0 255 (azul oscuro), 0 255 255 (azul claro), 255 255 0 (amarillo)
-//        //my.mip.setChestLED(255, 255, 0);
-//
-//        //cuarto param: time on. Es una unidad rara, algo asi como 50 = 1 segundo
-//        //el quinto es cuanto tiempo esta apagada justo despues
-//        //con algo tipo 2 2 se consigue un flash muy chulo
-//        //my.mip.flashChestLED(255, 0, 255, 1, 1);
-//
-//        //Esto es para que se este quieto, pero no hace nada (tal vez sea para eso, pero entonces no veo diferencia con stop
-//        //my.mip.getUp(5000);
-//
-//        //primer arg: direccion (0 alante, 1 atras).
-//        //segundo: distancia. Vienen a ser centimetros
-//        //tercero: turn direction (0 izquierda, 1 derecha (ver siguiente))
-//        //cuatro: turn angle: GIRA EN GRADOS HACIA DONDE DIGAMOS EN EL PARAM ANTERIOR ANTES de empezar a andar
-//        //my.mip.driveDistance(0, 10, 1, 90);
-//
-//        //primer: speed. 20 va mas o menos bien. 100 se case
-//        //segundo: duracion. Es algo asi como ms, pero no parece que vaya bien ya que nunca esta mas de 1 segundo
-//        //my.mip.driveForward(20, 1);
-//        //my.mip.driveBackward(20, 1000);
-//
-//        //primer, radio de giro. OJO QUE NO SON GRADOS! hay que multiplicar por 4. es decir, 90 grados = vuelta entera (mas o menos
-//        //segundo: velocidad. 100 va rapido, y aunque pongas mas, no va mas
-//        //OJO porque si viene una nueva orden, cancela la anterior. Mira aqui, no llega a realizar el 100% del giro a izquierdas porque lo cancela a derechas
-//        //my.mip.turnLeft(90, 100);
-//        //after((2).seconds(), function () {
-//        //    my.mip.turnRight(90, 100);
-//        //});
-//
-//        //1: dice algo
-//        //2: avanza y vacila
-//        //3: nada
-//        //4: baila a muerte
-//        //my.mip.setGameMode(1);
-//
-//        var timeStart = 1.2;
-//        timeStart = step1(my.mip, timeStart, 160, 0.3, 1.2);
-//
-//        timeStart += 1.4;
-//        timeStart = step1(my.mip, timeStart, 165, 0.22);
-//        //
-//        //timeStart += 1.0;
-//        //
-//        //step2(my.mip, timeStart);
-//        timeStart += 0;
-//        step3(my.mip, timeStart);
-//
-//        timeStart = 4.2;
-//        timeStart = step1(my.mip, timeStart, 160, 0.3, 1.2);
-//
-//        timeStart += 1.4;
-//        timeStart = step1(my.mip, timeStart, 165, 0.22);
-//
-//
-//        //after((4).seconds(), function() {
-//        //    my.mip.turnLeft(30, 100);
-//        //});
-//        //
-//        //
-//        //
-//        //after((3).seconds(), function() {
-//        //    my.mip.turnRight(30, 100);
-//        //});
-//        //
-//        //after((8).seconds(), function() {
-//        //    //my.mip.driveForward(50, 0);
-//        //    my.mip.driveDistance(0, 100, 0, 0);
-//        //});
-//        //
-//        //after((5).seconds(), function() {
-//        //    my.mip.turnRight(40, 100);
-//        //});
-//
-//        //
-//        //after((7).seconds(), function() {
-//        //    my.mip.turnLeft(40, 100);
-//        //});
-//        //
-//        //after((7.5).seconds(), function() {
-//        //    my.mip.driveForward(50, 4000);
-//        //});
-//        //
-//        //after((10).seconds(), function() {
-//        //    my.mip.turnRight(40, 100);
-//        //});
-//        //
-//        //after((10.5).seconds(), function() {
-//        //    my.mip.turnLeft(1000, 50);
-//        //});
-//        //
-//        //after((12).seconds(), function() {
-//        //    my.mip.turnRight(2000, 50);
-//        //});
-//
-//
-//        //my.mip.setChestLED(1,0,0);
-//        //after((1).seconds(), function() {
-//        //    //my.mip.driveDistance(0, 10, 0, 0);
-//        //    //my.mip.setHeadLED(2, 2, 2, 2);
-//        //    my.mip.flashChestLED(255, 0, 0);
-//        //});
-//        //after((3).seconds(), function() {
-//        //    my.mip.setHeadLED(1, 1, 1, 1);
-//        //    my.mip.flashChestLED(255, 255, 0);
-//        //});
-//        //
-//        //after((4).seconds(), function () {
-//        //    my.mip.turnRight(90, 2)
-//        //});
-//
-//        //after((5).seconds(), function () {
-//        //    my.mip.turnLeft(90, 2)
-//        //});
-//        //
-//        //after((6).seconds(), function () {
-//        //    my.mip.stop()
-//        //});
-//    }
-//}).start();
-//
-//function step1(mip, timeStart, turnAngle, gap, specialFirstGap) {
-//console.log('running timestamp with step at', timeStart, gap);
-//
-//
-//    after((timeStart).seconds(), function() {
-//        mip.turnLeft(20, 100, function () {
-//            console.log('STARTT!');
-//        });
-//    });
-//
-//    timeStart += specialFirstGap || gap;
-//    after((timeStart).seconds(), function() {
-//        mip.turnRight(20, 100);
-//    });
-//
-//    timeStart += gap;
-//    after((timeStart).seconds(), function() {
-//        mip.turnLeft(20, 100);
-//    });
-//
-//    timeStart += gap;
-//    after((timeStart).seconds(), function() {
-//        mip.turnRight(20, 100);
-//    });
-//
-//    timeStart += gap;
-//    after((timeStart).seconds(), function() {
-//        mip.turnLeft(20, 100);
-//    });
-//
-//    timeStart += gap;
-//    after((timeStart).seconds(), function() {
-//        mip.turnRight(20, 100);
-//    });
-//
-//    timeStart += gap;
-//    after((timeStart).seconds(), function() {
-//        mip.turnLeft(20, 100);
-//    });
-//
-//    timeStart += gap;
-//    after((timeStart).seconds(), function() {
-//        mip.turnRight(20, 100);
-//    });
-//
-//    timeStart += gap;
-//    after((timeStart).seconds(), function() {
-//        mip.turnLeft(20, 100);
-//    });
-//
-//    timeStart += gap;
-//    after((timeStart).seconds(), function() {
-//        mip.turnRight(turnAngle, 200);
-//    });
-//
-//    timeStart += gap;
-//    after((timeStart).seconds(), function() {
-//        mip.turnLeft(turnAngle, 200);
-//    });
-//
-//    timeStart += gap;
-//    after((timeStart).seconds(), function() {
-//        mip.setGameMode(1);
-//    });
-//
-//    return timeStart;
-//
-//}
-//
-//function step2(mip, timeStart) {
-//    //after((timeStart).seconds(), function() {
-//    //    mip.driveForward(30, 0);
-//    //    //mip.driveDistance(0, 100, 0, 0);
-//    //});
-//    //
-//    //timeStart += 2.8;
-//    //after((timeStart).seconds(), function() {
-//    //    mip.driveBackward(30, 0);
-//    //});
-//    //
-//    //timeStart += 1.8;
-//    //after((timeStart).seconds(), function () {
-//    //    mip.stop();
-//    //});
-//console.log('moving...', timeStart);
-//    after((timeStart).seconds(), function() {
-//        mip.driveDistance(1, 30, 1, 100);
-//    });
-//
-//    timeStart += 2.0;
-//    after((timeStart).seconds(), function() {
-//        //mip.stop();
-//        mip.driveDistance(0, 30, 0, 100);
-//    });
-//
-//    timeStart += 3.0;
-//    after((timeStart).seconds(), function() {
-//        mip.turnLeft(180, 200);
-//    });
-//
-//    timeStart += 2;
-//    after((timeStart).seconds(), function() {
-//        mip.turnRight(180, 200);
-//    });
-//}
-//
-//function step3(mip, timeStart) {
-//    after((timeStart).seconds(), function() {
-//        mip.driveForward(35, 100);
-//    });
-//    timeStart += 0.6;
-//    after((timeStart).seconds(), function() {
-//        mip.driveBackward(35, 100);
-//    });
-//    timeStart += 0.5;
-//    after((timeStart).seconds(), function() {
-//        mip.driveForward(35, 100);
-//    });
-//    timeStart += 0.6;
-//    after((timeStart).seconds(), function() {
-//        mip.driveBackward(35, 100);
-//    });
-//    timeStart += 0.5;
-//    after((timeStart).seconds(), function() {
-//        mip.driveForward(35, 100);
-//    });
-//    timeStart += 0.6;
-//    after((timeStart).seconds(), function() {
-//        mip.driveBackward(35, 100);
-//    });
-//    timeStart += 0.5;
-//    after((timeStart).seconds(), function() {
-//        mip.driveForward(35, 100);
-//    });
-//    timeStart += 1.2;
-//    after((timeStart).seconds(), function() {
-//        mip.stop();
-//    });
-//
-//
-//
-//}
+Cylon.robot({
+
+    connections: {bluetooth: {adaptor: 'central', uuid: 'f33df04bcb49425d83eeef3b9c07563d', module: 'cylon-ble'}},
+    devices: {mip: {driver: 'mip'}},
+
+    work: function (my) {
+        dance.setup(my);
+    }
+}).start();
+
+setTimeout(function () {
+    dance.dance();
+}, 4000);
+
+
+// Maintain a hash of all connected sockets
+var sockets = {}, nextSocketId = 0;
+server.on('connection', function (socket) {
+    // Add a newly connected socket
+    var socketId = nextSocketId++;
+    sockets[socketId] = socket;
+    console.log('socket', socketId, 'opened');
+
+    // Remove the socket when it closes
+    socket.on('close', function () {
+        console.log('socket', socketId, 'closed');
+        delete sockets[socketId];
+    });
+
+    // Extend socket lifetime for demo purposes
+    socket.setTimeout(4000);
+});
+
