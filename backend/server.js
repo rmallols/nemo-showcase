@@ -11,6 +11,9 @@ app
 
 var validationTracking = {};
 
+var Cylon = require('cylon'),
+    dance = require('./dance');
+
 var server = http.createServer(app).listen(port, function () {
     console.log("listening on HTTP on port " + port);
 });
@@ -42,8 +45,13 @@ app.post('/rest/validation/track', function (req, res) {
     res.send({});
 });
 
-var Cylon = require('cylon'),
-    dance = require('./dance');
+app.post('/rest/submitForm', function (req, res) {
+    dance.dance(function ready() {
+        console.log('retrning v2')
+
+        res.send({});
+    });
+});
 
 Cylon.robot({
 
@@ -55,26 +63,22 @@ Cylon.robot({
     }
 }).start();
 
-setTimeout(function () {
-    dance.dance();
-}, 4000);
-
-
-// Maintain a hash of all connected sockets
-var sockets = {}, nextSocketId = 0;
-server.on('connection', function (socket) {
-    // Add a newly connected socket
-    var socketId = nextSocketId++;
-    sockets[socketId] = socket;
-    console.log('socket', socketId, 'opened');
-
-    // Remove the socket when it closes
-    socket.on('close', function () {
-        console.log('socket', socketId, 'closed');
-        delete sockets[socketId];
-    });
-
-    // Extend socket lifetime for demo purposes
-    socket.setTimeout(4000);
-});
-
+//
+//// Maintain a hash of all connected sockets
+//var sockets = {}, nextSocketId = 0;
+//server.on('connection', function (socket) {
+//    // Add a newly connected socket
+//    var socketId = nextSocketId++;
+//    sockets[socketId] = socket;
+//    console.log('socket', socketId, 'opened');
+//
+//    // Remove the socket when it closes
+//    socket.on('close', function () {
+//        console.log('socket', socketId, 'closed');
+//        delete sockets[socketId];
+//    });
+//
+//    // Extend socket lifetime for demo purposes
+//    socket.setTimeout(4000);
+//});
+//

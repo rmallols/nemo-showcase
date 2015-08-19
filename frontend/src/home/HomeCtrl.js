@@ -5,7 +5,7 @@ app
             $scope.fields = response.data;
         });
 }])
-    .directive('fakeFormHandler', ['Stats', 'Audio', function (Stats, Audio) {
+    .directive('fakeFormHandler', ['$http', 'Stats', 'Audio', function ($http, Stats, Audio) {
         return {
             require: 'nemoFormHandler',
             link: function (scope, element, attrs, formHandlerCtrl) {
@@ -55,7 +55,10 @@ app
                 };
 
                 scope.fakeSubmit = function () {
-                    Audio.playSuccessSong();
+                    //Send the data here
+                    $http.post('/rest/submitForm').then(function (response) {
+                        Audio.playSuccessSong();
+                    });
                     Stats.submitvalidationTracking(formHandlerCtrl.getValidationTracking());
                     formHandlerCtrl.validateFormAndSetDirtyTouched();
                     if (scope.isFormValid()) {

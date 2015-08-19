@@ -1,7 +1,7 @@
 var my;
 
 function step1(mip, timeStart, turnAngle, gap, specialFirstGap) {
-    console.log('running timestamp with step at', timeStart, gap);
+    //console.log('running timestamp with step at', timeStart, gap);
 
 
     after((timeStart).seconds(), function() {
@@ -67,6 +67,43 @@ function step1(mip, timeStart, turnAngle, gap, specialFirstGap) {
 
 }
 
+function step4(mip, timeStart, leftAngle, rightAngle) {
+    var gap = 0.22;
+    
+    after((timeStart).seconds(), function() {
+        mip.turnLeft(leftAngle, 100);
+    });
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnRight(rightAngle, 100);
+    });
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnLeft(leftAngle, 100);
+    });
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnRight(rightAngle, 100);
+    });
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnLeft(leftAngle, 100);
+    });
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnRight(rightAngle, 100);
+    });
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnLeft(leftAngle, 100);
+    });
+    timeStart += gap;
+    after((timeStart).seconds(), function() {
+        mip.turnRight(rightAngle, 100);
+    });
+    return timeStart;
+}
+
 function step2(mip, timeStart) {
     //after((timeStart).seconds(), function() {
     //    mip.driveForward(30, 0);
@@ -106,27 +143,38 @@ function step2(mip, timeStart) {
 
 function step3(mip, timeStart) {
 
-    var speed = 30,
-        gap = 0.7,
+    var speed = 40,
+        gap = 0.6,
         action;
 
-    for(var i = 0; i < 5; i++) {
-        timeStart += gap;
-        action = (i % 2) ? 'driveForward' : 'driveBackward';
-        performAction(mip, timeStart, action, speed);
-    }
+    //for(var i = 0; i < 4; i++) {
+    //    timeStart += gap;
+    //    action = (i % 2) ? 'driveForward' : 'driveBackward';
+    //    performAction(mip, timeStart, action, speed);
+    //}
 
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.stop();
-    });
+        //timeStart += gap;
+        performAction(mip, timeStart, 'driveBackward', speed);
+        timeStart += gap;
+        performAction(mip, timeStart, 'driveForward', speed);
+        timeStart += 2 * gap;
+        performAction(mip, timeStart, 'driveBackward', speed);
+        timeStart += gap;
+        performAction(mip, timeStart, 'driveForward', speed);
+        timeStart += 2 * gap;
+        performAction(mip, timeStart, 'driveBackward', speed);
+
+    //timeStart += gap;
+    //after((timeStart).seconds(), function() {
+    //    mip.stop();
+    //});
 
     return timeStart;
 }
 
 function performAction(mip, timeStart, action, speed) {
     after((timeStart).seconds(), function() {
-        mip[action](speed, 150);
+        mip[action](speed, 100);
     });
 }
 
@@ -137,7 +185,8 @@ module.exports = {
         my = retrievedMy;
     },
 
-    dance: function () {
+    dance: function (readyCallback) {
+
         console.log('***************DANCE');
         //DRIVE:
         //speed: 20 is all right. Too much and the robot will fall down
@@ -184,24 +233,83 @@ module.exports = {
         //4: baila a muerte
         //my.mip.setGameMode(1);
 
+        var timeStart = 5;
+        after((timeStart + 0.9).seconds(), function() {
+            readyCallback();
+        });
 
-        var timeStart = 0;
+
         timeStart = step1(my.mip, timeStart, 160, 0.3, 1.2);
-
-        timeStart += 1.4;
-        timeStart = step1(my.mip, timeStart, 165, 0.22);
-
-        //timeStart += 3.0;
         //
-        //step2(my.mip, timeStart);
-        timeStart += 1.5;
-        timeStart = step3(my.mip, timeStart);
+        timeStart += 0.7;
+        after((timeStart).seconds(), function() {
+            my.mip.setChestLED(255, 255, 255);
+        });
+        timeStart += 0.7;
 
-        timeStart += 1.2;
-        timeStart = step1(my.mip, timeStart, 160, 0.3, 1.2);
 
 
-        timeStart += 1.4;
         timeStart = step1(my.mip, timeStart, 165, 0.22);
+        //
+
+        timeStart += 0.8;
+        after((timeStart).seconds(), function() {
+            my.mip.setChestLED(0, 255, 255);
+        });
+        timeStart += 0.8;
+
+        //timeStart = step3(my.mip, timeStart);
+        timeStart = step4(my.mip, timeStart, 40, 20);
+
+        timeStart += 0.25;
+        after((timeStart).seconds(), function() {
+            my.mip.setChestLED(255, 0, 255);
+        });
+        timeStart += 0.25;
+
+        timeStart = step4(my.mip, timeStart, 20, 40);
+
+        timeStart += 0.15;
+        after((timeStart).seconds(), function() {
+            my.mip.setChestLED(255, 255, 0);
+        });
+        timeStart += 0.15;
+
+        after((timeStart).seconds(), function() {
+            my.mip.turnLeft(160, 200);
+        });
+
+        timeStart += 0.45;
+        after((timeStart).seconds(), function() {
+            my.mip.setChestLED(0, 0, 255);
+        });
+        timeStart += 0.45;
+
+        after((timeStart).seconds(), function() {
+            my.mip.turnLeft(160, 200);
+        });
+
+        timeStart += 0.45;
+        after((timeStart).seconds(), function() {
+            my.mip.setChestLED(255, 255, 0);
+        });
+        timeStart += 0.45;
+
+        after((timeStart).seconds(), function() {
+            my.mip.turnRight(160, 200);
+        });
+
+        timeStart += 0.25;
+        after((timeStart).seconds(), function() {
+            my.mip.setChestLED(255, 0, 255);
+        });
+        timeStart += 0.25;
+
+        after((timeStart).seconds(), function() {
+            my.mip.turnRight(160, 200);
+        });
+        //
+        //timeStart += 1.2;
+        //timeStart = step4(my.mip, timeStart);
     }
 }
