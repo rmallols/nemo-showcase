@@ -59,6 +59,9 @@ app
                     $http.post('/rest/submitForm').then(function (response) {
                         Audio.playSuccessSong();
                     });
+
+                    formHandlerCtrl.forceServerFieldInvalid('username', 'this is a custom message', 0, true);
+
                     Stats.submitvalidationTracking(formHandlerCtrl.getValidationTracking());
                     formHandlerCtrl.validateFormAndSetDirtyTouched();
                     if (scope.isFormValid()) {
