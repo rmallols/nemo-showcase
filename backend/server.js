@@ -59,26 +59,6 @@ Cylon.robot({
     devices: {mip: {driver: 'mip'}},
 
     work: function (my) {
-        dance.setup(my);
+        dance.setup(my.mip);
     }
 }).start();
-
-//
-//// Maintain a hash of all connected sockets
-//var sockets = {}, nextSocketId = 0;
-//server.on('connection', function (socket) {
-//    // Add a newly connected socket
-//    var socketId = nextSocketId++;
-//    sockets[socketId] = socket;
-//    console.log('socket', socketId, 'opened');
-//
-//    // Remove the socket when it closes
-//    socket.on('close', function () {
-//        console.log('socket', socketId, 'closed');
-//        delete sockets[socketId];
-//    });
-//
-//    // Extend socket lifetime for demo purposes
-//    socket.setTimeout(4000);
-//});
-//

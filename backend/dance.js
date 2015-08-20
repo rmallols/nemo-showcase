@@ -1,315 +1,134 @@
-var my;
-
-function step1(mip, timeStart, turnAngle, gap, specialFirstGap) {
-    //console.log('running timestamp with step at', timeStart, gap);
-
-
-    after((timeStart).seconds(), function() {
-        mip.turnLeft(20, 100);
-    });
-
-    timeStart += specialFirstGap || gap;
-    after((timeStart).seconds(), function() {
-        mip.turnRight(20, 100);
-    });
-
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnLeft(20, 100);
-    });
-
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnRight(20, 100);
-    });
-
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnLeft(20, 100);
-    });
-
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnRight(20, 100);
-    });
-
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnLeft(20, 100);
-    });
-
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnRight(20, 100);
-    });
-
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnLeft(20, 100);
-    });
-
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnRight(turnAngle, 200);
-    });
-
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnLeft(turnAngle, 200);
-    });
-
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.setGameMode(1);
-    });
-
-    return timeStart;
-
-}
-
-function step4(mip, timeStart, leftAngle, rightAngle) {
-    var gap = 0.22;
-    
-    after((timeStart).seconds(), function() {
-        mip.turnLeft(leftAngle, 100);
-    });
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnRight(rightAngle, 100);
-    });
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnLeft(leftAngle, 100);
-    });
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnRight(rightAngle, 100);
-    });
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnLeft(leftAngle, 100);
-    });
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnRight(rightAngle, 100);
-    });
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnLeft(leftAngle, 100);
-    });
-    timeStart += gap;
-    after((timeStart).seconds(), function() {
-        mip.turnRight(rightAngle, 100);
-    });
-    return timeStart;
-}
-
-function step2(mip, timeStart) {
-    //after((timeStart).seconds(), function() {
-    //    mip.driveForward(30, 0);
-    //    //mip.driveDistance(0, 100, 0, 0);
-    //});
-    //
-    //timeStart += 2.8;
-    //after((timeStart).seconds(), function() {
-    //    mip.driveBackward(30, 0);
-    //});
-    //
-    //timeStart += 1.8;
-    //after((timeStart).seconds(), function () {
-    //    mip.stop();
-    //});
-    console.log('moving...', timeStart);
-    after((timeStart).seconds(), function() {
-        mip.driveDistance(1, 30, 1, 100);
-    });
-
-    timeStart += 2.0;
-    after((timeStart).seconds(), function() {
-        //mip.stop();
-        mip.driveDistance(0, 30, 0, 100);
-    });
-
-    timeStart += 3.0;
-    after((timeStart).seconds(), function() {
-        mip.turnLeft(180, 200);
-    });
-
-    timeStart += 2;
-    after((timeStart).seconds(), function() {
-        mip.turnRight(180, 200);
-    });
-}
-
-function step3(mip, timeStart) {
-
-    var speed = 40,
-        gap = 0.6,
-        action;
-
-    //for(var i = 0; i < 4; i++) {
-    //    timeStart += gap;
-    //    action = (i % 2) ? 'driveForward' : 'driveBackward';
-    //    performAction(mip, timeStart, action, speed);
-    //}
-
-        //timeStart += gap;
-        performAction(mip, timeStart, 'driveBackward', speed);
-        timeStart += gap;
-        performAction(mip, timeStart, 'driveForward', speed);
-        timeStart += 2 * gap;
-        performAction(mip, timeStart, 'driveBackward', speed);
-        timeStart += gap;
-        performAction(mip, timeStart, 'driveForward', speed);
-        timeStart += 2 * gap;
-        performAction(mip, timeStart, 'driveBackward', speed);
-
-    //timeStart += gap;
-    //after((timeStart).seconds(), function() {
-    //    mip.stop();
-    //});
-
-    return timeStart;
-}
-
-function performAction(mip, timeStart, action, speed) {
-    after((timeStart).seconds(), function() {
-        mip[action](speed, 100);
-    });
-}
-
 module.exports = {
 
-    setup: function(retrievedMy) {
-        console.log('***************SETUP');
-        my = retrievedMy;
+    _mip: null,
+
+    setup: function (mip) {
+        console.log('***SETUP')
+        this.setMip(mip);
+    },
+
+    setMip: function (mip) {
+        this._mip = mip;
+    },
+
+    getMip: function () {
+        return this._mip;
+    },
+
+    startTimeAndCallbackWhenReady: function (readyCallback) {
+        var timeStart = 5;
+        after((timeStart + 0.9).seconds(), function () {
+            readyCallback();
+        });
+        return timeStart;
+    },
+
+    setChestLed: function (color, timeStart) {
+        var mip = this.getMip();
+        after((timeStart).seconds(), function () {
+            mip.setChestLED(color.r, color.g, color.b);
+        });
+    },
+
+    setLapsedChestLed: function (color, timeStart, timeLapse) {
+        var periodTimeLapse = timeLapse / 2;
+        timeStart += periodTimeLapse;
+        this.setChestLed({r: 255, g: 255, b: 255}, timeStart);
+        return timeStart + periodTimeLapse;
+    },
+
+    setLapsedGameMode: function (gameMode, timeStart, gap) {
+        var mip = this.getMip();
+        timeStart += gap;
+        after((timeStart).seconds(), function () {
+            mip.setGameMode(gameMode);
+        });
+        return timeStart;
+    },
+
+    turnLeft: function (angle, speed, timeStart) {
+        var mip = this.getMip();
+        after((timeStart).seconds(), function () {
+            mip.turnLeft(angle, speed);
+        });
+        return timeStart;
+    },
+
+    turnLapsedLeft: function (angle, speed, timeStart, timeLapse) {
+        timeStart += timeLapse;
+        this.turnLeft(angle, speed, timeStart);
+        return timeStart;
+    },
+
+    turnRight: function (angle, speed, timeStart) {
+        var mip = this.getMip();
+        after((timeStart).seconds(), function () {
+            mip.turnRight(angle, speed);
+        });
+        return timeStart;
+    },
+
+    turnLapsedRight: function (angle, speed, timeStart, timeLapse) {
+        timeStart += timeLapse;
+        this.turnRight(angle, speed, timeStart);
+        return timeStart;
+    },
+
+    danceBlock1: function (timeStart, turnAngle, gap, specialFirstGap) {
+        var defaultAngle = 20,
+            defaultSpeed = 100;
+        timeStart = this.turnLeft(defaultAngle, defaultSpeed, timeStart);
+        timeStart = this.turnLapsedRight(defaultAngle, defaultSpeed, timeStart, specialFirstGap || gap);
+        timeStart = this.turnLapsedLeft(defaultAngle, defaultSpeed, timeStart, gap);
+        timeStart = this.turnLapsedRight(defaultAngle, defaultSpeed, timeStart, gap);
+        timeStart = this.turnLapsedLeft(defaultAngle, defaultSpeed, timeStart, gap);
+        timeStart = this.turnLapsedRight(defaultAngle, defaultSpeed, timeStart, gap);
+        timeStart = this.turnLapsedLeft(defaultAngle, defaultSpeed, timeStart, gap);
+        timeStart = this.turnLapsedRight(defaultAngle, defaultSpeed, timeStart, gap);
+        timeStart = this.turnLapsedLeft(defaultAngle, defaultSpeed, timeStart, gap);
+        timeStart = this.turnLapsedRight(turnAngle, 200, timeStart, gap);
+        timeStart = this.turnLapsedLeft(turnAngle, 200, timeStart, gap);
+        timeStart = this.setLapsedGameMode(1, timeStart, gap);
+        timeStart = this.setLapsedChestLed({r: 255, g: 255, b: 255}, timeStart, 1.4);
+        return timeStart;
+    },
+
+    danceBlock2: function (timeStart, leftAngle, rightAngle) {
+        var gap = 0.22;
+        timeStart = this.turnLapsedLeft(leftAngle, 100, timeStart, 0);
+        timeStart = this.turnLapsedRight(rightAngle, 100, timeStart, gap);
+        timeStart = this.turnLapsedLeft(leftAngle, 100, timeStart, gap);
+        timeStart = this.turnLapsedRight(rightAngle, 100, timeStart, gap);
+        timeStart = this.turnLapsedLeft(leftAngle, 100, timeStart, gap);
+        timeStart = this.turnLapsedRight(rightAngle, 100, timeStart, gap);
+        timeStart = this.turnLapsedLeft(leftAngle, 100, timeStart, gap);
+        timeStart = this.turnLapsedRight(rightAngle, 100, timeStart, gap);
+        timeStart = this.setLapsedChestLed({r: 255, g: 0, b: 255}, timeStart, 0.5);
+        return timeStart;
+    },
+
+    danceBlock3: function (timeStart, angle, speed) {
+        this.turnLeft(angle, speed, timeStart);
+        timeStart = this.setLapsedChestLed({r: 0, g: 0, b: 255}, timeStart, 0.9);
+        this.turnLeft(angle, speed, timeStart);
+        timeStart = this.setLapsedChestLed({r: 255, g: 255, b: 0}, timeStart, 0.9);
+        this.turnRight(angle, speed, timeStart);
+        timeStart = this.setLapsedChestLed({r: 255, g: 0, b: 255}, timeStart, 0.5);
+        this.turnRight(angle, speed, timeStart);
+        timeStart = this.setLapsedChestLed({r: 255, g: 0, b: 255}, timeStart, 0.3);
+        return timeStart;
     },
 
     dance: function (readyCallback) {
-
-        console.log('***************DANCE');
-        //DRIVE:
-        //speed: 20 is all right. Too much and the robot will fall down
-        //duration (ms)
-        //my.mip.driveForward(100, 100);
-
-        //1: fijo. 2: parpadeo lento. , 3: parpadea mas rapido. Cada numero es una de las cuatro luces
-        //por este orden: 4er, 3o, 2o, 1o
-        //my.mip.setHeadLED(2, 2, 2, 4);
-
-        //rgb: 255 0 0 (rojo), 0 0 0 (negro), 255 255 255 (blanco), 255 0 255 (rosa), 0 0 255 (azul oscuro), 0 255 255 (azul claro), 255 255 0 (amarillo)
-        //my.mip.setChestLED(255, 255, 0);
-
-        //cuarto param: time on. Es una unidad rara, algo asi como 50 = 1 segundo
-        //el quinto es cuanto tiempo esta apagada justo despues
-        //con algo tipo 2 2 se consigue un flash muy chulo
-        //my.mip.flashChestLED(255, 0, 255, 1, 1);
-
-        //Esto es para que se este quieto, pero no hace nada (tal vez sea para eso, pero entonces no veo diferencia con stop
-        //my.mip.getUp(5000);
-
-        //primer arg: direccion (0 alante, 1 atras).
-        //segundo: distancia. Vienen a ser centimetros
-        //tercero: turn direction (0 izquierda, 1 derecha (ver siguiente))
-        //cuatro: turn angle: GIRA EN GRADOS HACIA DONDE DIGAMOS EN EL PARAM ANTERIOR ANTES de empezar a andar
-        //my.mip.driveDistance(0, 10, 1, 90);
-
-        //primer: speed. 20 va mas o menos bien. 100 se case
-        //segundo: duracion. Es algo asi como ms, pero no parece que vaya bien ya que nunca esta mas de 1 segundo
-        //my.mip.driveForward(20, 1);
-        //my.mip.driveBackward(20, 1000);
-
-        //primer, radio de giro. OJO QUE NO SON GRADOS! hay que multiplicar por 4. es decir, 90 grados = vuelta entera (mas o menos
-        //segundo: velocidad. 100 va rapido, y aunque pongas mas, no va mas
-        //OJO porque si viene una nueva orden, cancela la anterior. Mira aqui, no llega a realizar el 100% del giro a izquierdas porque lo cancela a derechas
-        //my.mip.turnLeft(90, 100);
-        //after((2).seconds(), function () {
-        //    my.mip.turnRight(90, 100);
-        //});
-
-        //1: dice algo
-        //2: avanza y vacila
-        //3: nada
-        //4: baila a muerte
-        //my.mip.setGameMode(1);
-
-        var timeStart = 5;
-        after((timeStart + 0.9).seconds(), function() {
-            readyCallback();
-        });
-
-
-        timeStart = step1(my.mip, timeStart, 160, 0.3, 1.2);
-        //
-        timeStart += 0.7;
-        after((timeStart).seconds(), function() {
-            my.mip.setChestLED(255, 255, 255);
-        });
-        timeStart += 0.7;
-
-
-
-        timeStart = step1(my.mip, timeStart, 165, 0.22);
-        //
-
-        timeStart += 0.8;
-        after((timeStart).seconds(), function() {
-            my.mip.setChestLED(0, 255, 255);
-        });
-        timeStart += 0.8;
-
-        //timeStart = step3(my.mip, timeStart);
-        timeStart = step4(my.mip, timeStart, 40, 20);
-
-        timeStart += 0.25;
-        after((timeStart).seconds(), function() {
-            my.mip.setChestLED(255, 0, 255);
-        });
-        timeStart += 0.25;
-
-        timeStart = step4(my.mip, timeStart, 20, 40);
-
-        timeStart += 0.15;
-        after((timeStart).seconds(), function() {
-            my.mip.setChestLED(255, 255, 0);
-        });
-        timeStart += 0.15;
-
-        after((timeStart).seconds(), function() {
-            my.mip.turnLeft(160, 200);
-        });
-
-        timeStart += 0.45;
-        after((timeStart).seconds(), function() {
-            my.mip.setChestLED(0, 0, 255);
-        });
-        timeStart += 0.45;
-
-        after((timeStart).seconds(), function() {
-            my.mip.turnLeft(160, 200);
-        });
-
-        timeStart += 0.45;
-        after((timeStart).seconds(), function() {
-            my.mip.setChestLED(255, 255, 0);
-        });
-        timeStart += 0.45;
-
-        after((timeStart).seconds(), function() {
-            my.mip.turnRight(160, 200);
-        });
-
-        timeStart += 0.25;
-        after((timeStart).seconds(), function() {
-            my.mip.setChestLED(255, 0, 255);
-        });
-        timeStart += 0.25;
-
-        after((timeStart).seconds(), function() {
-            my.mip.turnRight(160, 200);
-        });
-        //
-        //timeStart += 1.2;
-        //timeStart = step4(my.mip, timeStart);
+        console.log('***DANCE')
+        var timeStart;
+        timeStart = this.startTimeAndCallbackWhenReady(readyCallback);
+        timeStart = this.danceBlock1(timeStart, 160, 0.3, 1.2);
+        timeStart = this.danceBlock1(timeStart, 165, 0.22);
+        timeStart = this.danceBlock2(timeStart, 40, 20);
+        timeStart = this.danceBlock2(timeStart, 20, 40);
+        timeStart = this.danceBlock3(timeStart, 160, 200);
+        timeStart = this.setLapsedGameMode(2, timeStart, 4);
+        return timeStart;
     }
-}
+};
