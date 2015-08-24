@@ -11,9 +11,6 @@ app
 
 var validationTracking = {};
 
-var Cylon = require('cylon'),
-    dance = require('./dance');
-
 var server = http.createServer(app).listen(port, function () {
     console.log("listening on HTTP on port " + port);
 });
@@ -46,19 +43,44 @@ app.post('/rest/validation/track', function (req, res) {
 });
 
 app.post('/rest/submitForm', function (req, res) {
-    dance.dance(function ready() {
-        console.log('retrning v2')
 
-        res.send({});
-    });
+    var status, body = {};
+    console.log('CH', req.body);
+
+    if(req.body.username === 'test') {
+        status = 500;
+        body = {
+            field: 'username',
+            code: 'taken',
+            message: 'Ey! that username has been already taken'
+        };
+        res.status(status).send(body);
+    } else if(req.body.email === 'foo@bar.com') {
+        status = 500;
+        body = {
+            field: 'email',
+            code: 'taken',
+            message: 'Ey! that email has been already taken'
+        };
+        res.status(status).send(body);
+    } else {
+        dance.dance(function ready() {
+            console.log('retrning v2')
+            status = 200;
+            res.status(status).send(body);
+        });
+    }
 });
 
-Cylon.robot({
-
-    connections: {bluetooth: {adaptor: 'central', uuid: 'f33df04bcb49425d83eeef3b9c07563d', module: 'cylon-ble'}},
-    devices: {mip: {driver: 'mip'}},
-
-    work: function (my) {
-        dance.setup(my.mip);
-    }
-}).start();
+//var Cylon = require('cylon'),
+//    dance = require('./dance');
+//
+//Cylon.robot({
+//
+//    connections: {bluetooth: {adaptor: 'central', uuid: 'f33df04bcb49425d83eeef3b9c07563d', module: 'cylon-ble'}},
+//    devices: {mip: {driver: 'mip'}},
+//
+//    work: function (my) {
+//        dance.setup(my.mip);
+//    }
+//}).start();

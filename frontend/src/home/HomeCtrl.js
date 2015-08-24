@@ -56,11 +56,15 @@ app
 
                 scope.fakeSubmit = function () {
                     //Send the data here
-                    $http.post('/rest/submitForm').then(function (response) {
+                    $http.post('/rest/submitForm', formHandlerCtrl.getFieldsValues()).then(function (response) {
                         Audio.playSuccessSong();
+                    }).catch(function (error) {
+                        console.log('ERRORS!!!', error.data)
+
+                        formHandlerCtrl.forceServerFieldInvalid(error.data.field, error.data.message, '.' + error.data.code);
                     });
 
-                    formHandlerCtrl.forceServerFieldInvalid('username', 'this is a custom message', 0, true);
+
 
                     Stats.submitvalidationTracking(formHandlerCtrl.getValidationTracking());
                     formHandlerCtrl.validateFormAndSetDirtyTouched();
