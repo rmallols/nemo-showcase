@@ -34,7 +34,7 @@ module.exports = function (grunt) {
                 }
             },
             js: {
-                files: ['<%= srcFolder %>/**/*.js', '<%= vendorFolder %>/**/*.js'],
+                files: ['<%= srcFolder %>/**/*.js', '<%= vendorFolder %>/**/*.js', '!<%= srcFolder %>/**/*Spec.js'],
                 tasks: ['generateJs'],
                 options: {
                     spawn: false
@@ -67,7 +67,8 @@ module.exports = function (grunt) {
                         '<%= vendorFolder %>d3/d3.js',
                         '<%= vendorFolder %>/n3-line-chart/line-chart.min.js',
                         '<%= srcFolder %>/app.js',
-                        '<%= srcFolder %>/**/*.js'
+                        '<%= srcFolder %>/**/*.js',
+                        '!<%= srcFolder %>/**/*Spec.js'
                     ]
                 }
             }
@@ -96,7 +97,10 @@ module.exports = function (grunt) {
             }
         },
         shell: {
-            startNode: { command: '"node_modules//.bin//supervisor" backend//server.js', options: { stdout: true } }
+            startNode: {
+                command: '"node_modules//.bin//supervisor" backend//server.js',
+                options: {stdout: true}
+            }
         },
         concurrent: {
             options: {
@@ -117,6 +121,27 @@ module.exports = function (grunt) {
                 src: '../nowtv-web-nemo/dist/nemo.js',
                 dest: '<%= vendorFolder %>/nemo/nemo.js'
             }
+        },
+        karma: {
+            unit: {
+                options: {
+                    frameworks: ['jasmine'],
+                    singleRun: false,
+                    browsers: ['PhantomJS'],
+                    reporters: 'dots',
+                    files: [
+                        'frontend/vendor/angular/angular.js',
+                        'frontend/vendor/angular-mocks/angular-mocks.js',
+                        'frontend/vendor/angular-ui-router/angular-ui-router.js',
+                        'frontend/vendor/sinon/index.js',
+                        'frontend/vendor/nemo/nemo.js',
+                        'frontend/vendor/n3-line-chart/line-chart.min.js',
+                        'frontend/vendor/fullScreenMario/Source/Wrappers/angularWrapper.js',
+                        'frontend/helpers/**/*.js',
+                        'frontend/src/**/*.js'
+                    ]
+                }
+            }
         }
     });
 
@@ -131,9 +156,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-symlink');
+    grunt.loadNpmTasks('grunt-karma');
 
     grunt.registerTask('generateJs', ['concat']);
     grunt.registerTask('setupDependencies', ['bower']);
     grunt.registerTask('setupDevEnv', ['generateJs', 'concurrent:setupDevEnv']);
     grunt.registerTask('setupDevEnvNemoSymlink', ['generateJs', 'concurrent: setupDevEnvNemoSymlink']);
+    grunt.registerTask('runUnitTests', ['karma']);
 };

@@ -2,7 +2,7 @@ angular.module('templates-main', ['home.html', 'index.html', 'stats.html']);
 
 angular.module("home.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home.html",
-    "<form nemo-form-handler class=\"container\" ng-submit=\"fakeSubmit()\" fake-form-handler\n" +
+    "<form nemo-form-handler home-form-handler class=\"container\" ng-submit=\"fakeSubmit()\"\n" +
     "      ng-show=\"fields\" novalidate>\n" +
     "    <div class=\"clearfix\" ng-repeat=\"field in fields\"\n" +
     "         data-ng-class=\"getFieldStyleClasses(field.name)\">\n" +
