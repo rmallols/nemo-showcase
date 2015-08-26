@@ -26,16 +26,16 @@ app
         };
 
         $scope.getMessageType = function (fieldName) {
-            var iconType,
+            var messageType,
                 isInvalid = !formHandlerCtrl.isFieldValid(fieldName),
                 isTouched = formHandlerCtrl.isFieldTouched(fieldName),
                 hasHelp = formHandlerCtrl.hasHelp(fieldName);
             if(isInvalid && isTouched) {
-                iconType = messageTypes.error;
+                messageType = messageTypes.error;
             } else if(hasHelp) {
-                iconType = messageTypes.help;
+                messageType = messageTypes.help;
             }
-            return iconType;
+            return messageType;
         };
 
         $scope.onIconHover = function (fieldName) {
