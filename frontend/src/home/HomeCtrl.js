@@ -6,7 +6,7 @@ app
         });
     }])
 
-    .controller('HomeFormHandlerCtrl', ['$scope', function ($scope) {
+    .controller('HomeFormHandlerCtrl', ['$scope', 'Loading', function ($scope, Loading) {
 
         var formHandlerCtrl;
 
@@ -59,6 +59,14 @@ app
         };
 
         $scope.fakeSubmit = function () {
+
+            Loading.startLoading();
+
+            setTimeout(function () {
+                Loading.stopLoading();
+                $scope.$apply();
+            }, 5000);
+
             //Send the data here
             $http.post('/rest/submitForm', formHandlerCtrl.getFieldsValues()).then(function (response) {
                 Audio.playSuccessSong();

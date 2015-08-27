@@ -40,6 +40,7 @@ angular.module("index.html", []).run(["$templateCache", function($templateCache)
     "    </head>\n" +
     "    <body>\n" +
     "        <div ui-view></div>\n" +
+    "        <loading></loading>\n" +
     "    </body>\n" +
     "</html>\n" +
     "\n" +

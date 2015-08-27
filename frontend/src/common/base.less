@@ -3,3 +3,61 @@ body {
   font-family: Calibri, Helvetica;
   color: #666;
 }
+
+.overlay {
+  opacity: .8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: @grey-color;
+}
+
+.overlay-content {
+  position: absolute;
+  top: 45%;
+  left:50%;
+  transform:translate3D(-50%, -50%, 0);
+}
+
+.overlay-content-loader {
+  font-size: 90px;
+  text-indent: -9999em;
+  overflow: hidden;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  margin: 72px auto;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load 1.2s infinite ease;
+  animation: load 1.2s infinite ease;
+
+  @keyframes load {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+      box-shadow: 0 -0.83em 0 -0.4em @red-color, 0 -0.83em 0 -0.42em @red-color, 0 -0.83em 0 -0.44em @red-color, 0 -0.83em 0 -0.46em @red-color, 0 -0.83em 0 -0.477em @red-color;
+    }
+    5%, 95% {
+      box-shadow: 0 -0.83em 0 -0.4em @white-color, 0 -0.83em 0 -0.42em @white-color, 0 -0.83em 0 -0.44em @white-color, 0 -0.83em 0 -0.46em @white-color, 0 -0.83em 0 -0.477em @white-color;
+    }
+    10%, 59% {
+      box-shadow: 0 -0.83em 0 -0.4em @blue-color, -0.087em -0.825em 0 -0.42em @blue-color, -0.173em -0.812em 0 -0.44em @blue-color, -0.256em -0.789em 0 -0.46em @blue-color, -0.297em -0.775em 0 -0.477em @blue-color;
+    }
+    20% {
+      box-shadow: 0 -0.83em 0 -0.4em @yellow-color, -0.338em -0.758em 0 -0.42em @yellow-color, -0.555em -0.617em 0 -0.44em @yellow-color, -0.671em -0.488em 0 -0.46em @yellow-color, -0.749em -0.34em 0 -0.477em @yellow-color;
+    }
+    38% {
+      box-shadow: 0 -0.83em 0 -0.4em @pink-color, -0.377em -0.74em 0 -0.42em @pink-color, -0.645em -0.522em 0 -0.44em @pink-color, -0.775em -0.297em 0 -0.46em @pink-color, -0.82em -0.09em 0 -0.477em @pink-color;
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+      box-shadow: 0 -0.83em 0 -0.4em @green-color, 0 -0.83em 0 -0.42em @green-color, 0 -0.83em 0 -0.44em @green-color, 0 -0.83em 0 -0.46em @green-color, 0 -0.83em 0 -0.477em @green-color;
+    }
+  }
+}
