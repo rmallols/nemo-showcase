@@ -6,7 +6,8 @@ app
         });
     }])
 
-    .controller('HomeFormHandlerCtrl', ['$scope', 'Loading', function ($scope, Loading) {
+    .controller('HomeFormHandlerCtrl', ['$scope', '$http', 'Audio', 'Stats', 'Loading',
+    function ($scope, $http, Audio, Stats, Loading) {
 
         var formHandlerCtrl;
 
@@ -62,13 +63,9 @@ app
 
             Loading.startLoading();
 
-            setTimeout(function () {
-                Loading.stopLoading();
-                $scope.$apply();
-            }, 5000);
-
             //Send the data here
             $http.post('/rest/submitForm', formHandlerCtrl.getFieldsValues()).then(function (response) {
+                Loading.stopLoading();
                 Audio.playSuccessSong();
             }).catch(function (error) {
                 console.log('ERRORS!!!', error.data)
@@ -97,7 +94,7 @@ app
         }
     }])
 
-    .directive('homeFormHandler', ['$http', 'Stats', 'Audio', function ($http, Stats, Audio) {
+    .directive('homeFormHandler', [function () {
         return {
             require: 'nemoFormHandler',
             controller: 'HomeFormHandlerCtrl',

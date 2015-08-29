@@ -15,6 +15,11 @@ module.exports = {
         return this._mip;
     },
 
+    stop: function() {
+        var mip = this.getMip();
+        mip.stop();
+    },
+
     startTimeAndCallbackWhenReady: function (readyCallback) {
         var timeStart = 5;
         after((timeStart + 0.9).seconds(), function () {
@@ -116,6 +121,22 @@ module.exports = {
         timeStart = this.danceBlock2(timeStart, 20, 40);
         timeStart = this.danceBlock3(timeStart, 160, 200);
         timeStart = this.setGameMode(2, timeStart, 4);
+        return timeStart;
+    },
+
+    sad: function (readyCallback) {
+        var timeStart,
+            defaultAngle = 20,
+            defaultSpeed = 100,
+            gap = 0.22,
+            specialFirstGap = 1.2;
+        timeStart = this.startTimeAndCallbackWhenReady(readyCallback);
+        timeStart = this.setChestLed({r: 255, g: 0, b: 0}, timeStart, 1);
+        timeStart = this.turnRight(defaultAngle, defaultSpeed, timeStart, specialFirstGap);
+        timeStart = this.turnLeft(defaultAngle, defaultSpeed, timeStart, gap);
+        timeStart = this.turnRight(defaultAngle, defaultSpeed, timeStart, gap);
+        timeStart = this.turnLeft(defaultAngle, defaultSpeed, timeStart, gap);
+        timeStart = this.turnRight(defaultAngle, defaultSpeed, timeStart, gap);
         return timeStart;
     }
 };

@@ -42,6 +42,9 @@ app.post('/rest/validation/track', function (req, res) {
     res.send({});
 });
 
+var Cylon = require('cylon'),
+    dance = require('./dance');
+
 app.post('/rest/submitForm', function (req, res) {
 
     var status, body = {};
@@ -65,22 +68,23 @@ app.post('/rest/submitForm', function (req, res) {
         res.status(status).send(body);
     } else {
         dance.dance(function ready() {
-            console.log('retrning v2')
             status = 200;
             res.status(status).send(body);
         });
     }
 });
 
-//var Cylon = require('cylon'),
-//    dance = require('./dance');
-//
-//Cylon.robot({
-//
-//    connections: {bluetooth: {adaptor: 'central', uuid: 'f33df04bcb49425d83eeef3b9c07563d', module: 'cylon-ble'}},
-//    devices: {mip: {driver: 'mip'}},
-//
-//    work: function (my) {
-//        dance.setup(my.mip);
-//    }
-//}).start();
+
+
+Cylon.robot({
+
+    connections: {bluetooth: {adaptor: 'central', uuid: 'f33df04bcb49425d83eeef3b9c07563d', module: 'cylon-ble'}},
+    devices: {mip: {driver: 'mip'}},
+
+    work: function (my) {
+        dance.setup(my.mip);
+        dance.sad(function () {
+
+        });
+    }
+}).start();
