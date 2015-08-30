@@ -1,7 +1,9 @@
 var app = angular.module('app', ['nemo', 'ui.router', 'templates-main', 'n3-line-chart', 'captcha-mario']);
 
-app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoInputDirectiveCreatorProvider', 'nemoValidationDirectiveCreatorProvider',
-    function ($locationProvider, $stateProvider, $urlRouterProvider, inputProvider, validationProvider) {
+app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoInputDirectiveCreatorProvider',
+    'nemoValidationDirectiveCreatorProvider', 'captchaInputProvider', 'levelCompleteProvider',
+    function ($locationProvider, $stateProvider, $urlRouterProvider, inputProvider, validationProvider,
+              captchaInputProvider, levelCompleteProvider) {
 
         $locationProvider.html5Mode({
             enabled: true,
@@ -27,38 +29,10 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
         $urlRouterProvider.otherwise("/");
 
         inputProvider
-
-            .input('captchaMario', {
-                template:   '<div>' +
-                                '<captcha-mario on-dead="onDead()" on-level-complete="onLevelComplete()"></captcha-mario>' +
-                            '</div>',
-                linkFn: function (scope, element, attrs, formHandlerCtrl, interfaceFns) {
-
-                    function onEventReceived(eventKey) {
-                        interfaceFns.setValue({
-                            levelComplete: eventKey === 'levelComplete'
-                        });
-                        formHandlerCtrl.setFieldDirtyTouched('captcha');
-                        scope.$apply();
-                    }
-
-                    scope.onDead = function () {
-                        onEventReceived('dead');
-                    };
-
-                    scope.onLevelComplete = function () {
-                        onEventReceived('levelComplete');
-                    };
-                }
-            });
+            .input('captchaMario', captchaInputProvider);
 
         validationProvider
-
-            .validation('levelComplete', {
-                validateFn: function (value, validationRule) {
-                   return value && value.levelComplete === validationRule.value;
-               }
-            });
+            .validation('levelComplete', levelCompleteProvider);
     }]);
 
 app.run(['$rootScope', 'Browser', function ($rootScope, Browser) {
