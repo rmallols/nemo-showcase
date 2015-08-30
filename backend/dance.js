@@ -112,7 +112,6 @@ module.exports = {
     },
 
     dance: function (readyCallback) {
-        console.log('***DANCE');
         var timeStart;
         timeStart = this.startTimeAndCallbackWhenReady(readyCallback);
         timeStart = this.danceBlock1(timeStart, 160, 0.3, 1.2);
