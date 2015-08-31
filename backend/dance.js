@@ -15,9 +15,11 @@ module.exports = {
         return this._mip;
     },
 
-    stop: function() {
+    stop: function(timeStart) {
         var mip = this.getMip();
-        mip.stop();
+        after((timeStart || 0).seconds(), function () {
+            mip.stop();
+        });
     },
 
     startTimeAndCallbackWhenReady: function (readyCallback) {
@@ -130,12 +132,15 @@ module.exports = {
             gap = 0.22,
             specialFirstGap = 1.2;
         timeStart = this.startTimeAndCallbackWhenReady(readyCallback);
-        timeStart = this.setChestLed({r: 255, g: 0, b: 0}, timeStart, 1);
+        timeStart = this.setChestLed({r: 255, g: 0, b: 0}, timeStart, 2);
         timeStart = this.turnRight(defaultAngle, defaultSpeed, timeStart, specialFirstGap);
         timeStart = this.turnLeft(defaultAngle, defaultSpeed, timeStart, gap);
         timeStart = this.turnRight(defaultAngle, defaultSpeed, timeStart, gap);
         timeStart = this.turnLeft(defaultAngle, defaultSpeed, timeStart, gap);
         timeStart = this.turnRight(defaultAngle, defaultSpeed, timeStart, gap);
+        timeStart = this.setGameMode(5, timeStart, 1.5);
+        timeStart = this.setChestLed({r: 0, g: 255, b: 0}, timeStart, 3);
+
         return timeStart;
     }
 };
