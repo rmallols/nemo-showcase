@@ -20,6 +20,7 @@ app.provider('captchaInput', [function () {
             scope.onLevelComplete = function () {
                 onEventReceived('levelComplete');
             };
-        }
+        },
+        $get: angular.noop
     };
 }]);
