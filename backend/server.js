@@ -42,49 +42,55 @@ app.post('/rest/validation/track', function (req, res) {
     res.send({});
 });
 
-var Cylon = require('cylon'),
-    dance = require('./dance');
+try {
 
-app.post('/rest/submitForm', function (req, res) {
+    var Cylon = require('cylon'),
+        dance = require('./dance');
 
-    var status, body = {};
-    console.log('CH', req.body);
+    app.post('/rest/submitForm', function (req, res) {
 
-    if(req.body.username === 'test') {
-        status = 500;
-        body = {
-            field: 'username',
-            code: 'taken',
-            message: 'Ey! that username has been already taken'
-        };
-        res.status(status).send(body);
-    } else if(req.body.email === 'foo@bar.com') {
-        status = 500;
-        body = {
-            field: 'email',
-            code: 'taken',
-            message: 'Ey! that email has been already taken'
-        };
-        res.status(status).send(body);
-    } else {
-        dance.dance(function ready() {
-            status = 200;
+        var status, body = {};
+        console.log('CH', req.body);
+
+        if(req.body.username === 'test') {
+            status = 500;
+            body = {
+                field: 'username',
+                code: 'taken',
+                message: 'Ey! that username has been already taken'
+            };
             res.status(status).send(body);
-        });
-    }
-});
+        } else if(req.body.email === 'foo@bar.com') {
+            status = 500;
+            body = {
+                field: 'email',
+                code: 'taken',
+                message: 'Ey! that email has been already taken'
+            };
+            res.status(status).send(body);
+        } else {
+            dance.dance(function ready() {
+                status = 200;
+                res.status(status).send(body);
+            });
+        }
+    });
 
 
 
-Cylon.robot({
+    Cylon.robot({
 
-    connections: {bluetooth: {adaptor: 'central', uuid: 'f33df04bcb49425d83eeef3b9c07563d', module: 'cylon-ble'}},
-    devices: {mip: {driver: 'mip'}},
+        connections: {bluetooth: {adaptor: 'central', uuid: 'f33df04bcb49425d83eeef3b9c07563d', module: 'cylon-ble'}},
+        devices: {mip: {driver: 'mip'}},
 
-    work: function (my) {
-        dance.setup(my.mip);
-        dance.sad(function () {
+        work: function (my) {
+            dance.setup(my.mip);
+            dance.sad(function () {
 
-        });
-    }
-}).start();
+            });
+        }
+    }).start();
+
+} catch(ex) {
+
+}
