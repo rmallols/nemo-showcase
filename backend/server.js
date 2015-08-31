@@ -19,9 +19,9 @@ app.get(['/', '/stats'], function (req, res) {
     res.send(fs.readFileSync(__dirname + '/../frontend/src/index.html').toString());
 });
 
-app.get('/rest/getFormData', function (req, res) {
+app.get('/rest/formSetup', function (req, res) {
     var status, body;
-    fs.readFile(__dirname + '/../backend/data/formData.json', 'utf8', function (err, data) {
+    fs.readFile(__dirname + '/../backend/setup/form.json', 'utf8', function (err, data) {
         if (err) {
             status = 500;
             body = err;
@@ -50,7 +50,7 @@ try {
     app.post('/rest/submitForm', function (req, res) {
 
         var status, body = {};
-        console.log('CH', req.body);
+        console.log('***SUBMIT', req.body);
 
         if(req.body.username === 'test') {
             status = 500;
@@ -59,7 +59,9 @@ try {
                 code: 'taken',
                 message: 'Ey! that username has been already taken'
             };
-            res.status(status).send(body);
+            dance.sad(function () {
+                res.status(status).send(body);
+            });
         } else if(req.body.email === 'foo@bar.com') {
             status = 500;
             body = {
@@ -67,7 +69,9 @@ try {
                 code: 'taken',
                 message: 'Ey! that email has been already taken'
             };
-            res.status(status).send(body);
+            dance.sad(function () {
+                res.status(status).send(body);
+            });
         } else {
             dance.dance(function ready() {
                 status = 200;
@@ -85,9 +89,6 @@ try {
 
         work: function (my) {
             dance.setup(my.mip);
-            dance.sad(function () {
-
-            });
         }
     }).start();
 

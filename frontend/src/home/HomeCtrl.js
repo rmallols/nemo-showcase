@@ -1,7 +1,6 @@
 app
-    .controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
-
-        $http.get('/rest/getFormData').then(function (response) {
+    .controller('HomeCtrl', ['$scope', '$http', 'Home', function ($scope, $http, Home) {
+        Home.getFormSetup().then(function (response) {
             $scope.fields = response.data;
         });
     }])
@@ -59,32 +58,33 @@ app
             return iconVisibilityStates[fieldName] && !formHandlerCtrl.isFieldActive(fieldName);
         };
 
-        $scope.fakeSubmit = function () {
-
-            Loading.startLoading();
-
-            //Send the data here
-            $http.post('/rest/submitForm', formHandlerCtrl.getFieldsValues()).then(function (response) {
-                Loading.stopLoading();
-                Audio.playSuccessSong();
-            }).catch(function (error) {
-                console.log('ERRORS!!!', error.data)
-
-                formHandlerCtrl.forceServerFieldInvalid(error.data.field, error.data.message, '.' + error.data.code);
-                Stats.submitvalidationTracking(formHandlerCtrl.getValidationTracking());
-
-            });
-
-
-
+        $scope.submit = function () {
             formHandlerCtrl.validateFormAndSetDirtyTouched();
             if ($scope.isFormValid()) {
-                formHandlerCtrl.forceInvalid('captcha.invalid');
-                formHandlerCtrl.giveFirstInvalidFieldFocus();
+                submitForm();
             } else {
                 formHandlerCtrl.giveFirstInvalidFieldFocus();
             }
         };
+
+        function submitForm() {
+            Loading.startLoading();
+            Home.submitForm(formHandlerCtrl.getFieldsValues())
+                .then(onSubmitFormSuccess)
+                .catch(onSubmitFormError);
+        }
+
+        function onSubmitFormSuccess() {
+            console.log('SHOULD REDIRECT TO THANKS!');
+            Loading.stopLoading();
+            Audio.playSuccessSong();
+        }
+
+        function onSubmitFormError() {
+            Loading.stopLoading();
+            formHandlerCtrl.forceServerFieldInvalid(error.data.field, error.data.message, '.' + error.data.code);
+            Stats.submitvalidationTracking(formHandlerCtrl.getValidationTracking());
+        }
 
         function isMessageVisible(fieldName, messageType) {
             var currentMessageType = $scope.getMessageType(fieldName),
