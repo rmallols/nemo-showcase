@@ -18,7 +18,7 @@ compileDirective = function(_el_, _config_) {
 
     inject(function($rootScope, $compile) {
 
-        angular.extend($rootScope, config.$rootScope || {});
+        angular.extend($rootScope, config.scope || {});
 
         compiledEl = $compile(angular.element(_el_))($rootScope);
 

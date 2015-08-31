@@ -1,17 +1,22 @@
 describe('HomeFormHandlerCtrlSpec', function () {
 
-    var $scope = {},
+    var $scope = {}, nemoFormHandlerCtrl;
+
+    beforeEach(function () {
+        module('app');
         nemoFormHandlerCtrl = {
             isFormValid: sinon.stub(),
             getFieldNgModelCtrl: sinon.stub(),
             isFieldTouched: sinon.stub(),
             isFieldValid: sinon.stub(),
             isFieldActive: sinon.stub(),
-            hasHelp: sinon.stub()
+            hasHelp: sinon.stub(),
+            validateFormAndSetDirtyTouched: sinon.stub(),
+            giveFirstInvalidFieldFocus: sinon.stub(),
+            getFieldsValues: sinon.stub(),
+            forceServerFieldInvalid: sinon.stub(),
+            getValidationTracking: sinon.stub()
         };
-
-    beforeEach(function () {
-        module('app');
         compileController('HomeFormHandlerCtrl', {$scope: $scope});
         $scope.setup(nemoFormHandlerCtrl);
     });
@@ -193,5 +198,99 @@ describe('HomeFormHandlerCtrlSpec', function () {
                     expect(isHoveredAndNotActive).toBe(scenario.expectedHoveredAndNotActive);
             });
         });
+    });
+
+    describe('submit', function () {
+
+        beforeEach(inject(function (Home, Loading) {
+            sinon.stub(Home, 'submitForm');
+            sinon.stub(Loading, 'startLoading');
+            sinon.stub(Loading, 'stopLoading');
+        }));
+
+        it('must set the focus on the first invalid field if the form' +
+        ' is not valid from the frontend perspective,not submitting the form' +
+        ' neither setting any loading state', inject(function (Home, Loading) {
+
+            given:
+                $scope.isFormValid.returns(false);
+
+            when:
+                $scope.submit();
+
+            then:
+                expect(nemoFormHandlerCtrl.giveFirstInvalidFieldFocus.calledOnce).toBe(true);
+
+            and:
+                expect(Loading.startLoading.called).toBe(false);
+                expect(Home.submitForm.called).toBe(false);
+        }));
+
+        it('must submit the form after validating all the fields, setting the' +
+        ' loading state whenever the form is valid and not setting the focus' +
+        ' at any field', inject(function($q, Home, Loading) {
+
+            given:
+                $scope.isFormValid.returns(true);
+                nemoFormHandlerCtrl.getFieldsValues.returns('foo');
+                Home.submitForm.returns($q.when({}));
+
+            when:
+                $scope.submit();
+
+            then:
+                expect(nemoFormHandlerCtrl.validateFormAndSetDirtyTouched.calledOnce).toBe(true);
+                expect(Loading.startLoading.calledOnce).toBe(true);
+                expect(Home.submitForm.calledOnce).toBe(true);
+                expect(Home.submitForm.calledWith('foo')).toBe(true);
+
+            and:
+                expect(nemoFormHandlerCtrl.giveFirstInvalidFieldFocus.calledOnce).toBe(false);
+        }));
+
+        it('must play the success song and stop the loading state' +
+        ' whenever the form is valid', inject(function ($rootScope, $q, Home, Loading, Audio) {
+
+            given:
+                $scope.isFormValid.returns(true);
+                Home.submitForm.returns($q.when({}));
+                sinon.stub(Audio, 'playSuccessSong');
+
+            when:
+                $scope.submit();
+                $rootScope.$digest();
+
+            then:
+                expect(Loading.stopLoading.calledOnce).toBe(true);
+                expect(Audio.playSuccessSong.calledOnce).toBe(true);
+        }));
+
+        it('must set the focus on the first invalid state, stop the loading state' +
+        ' and submit the validation tracking data whenever the form is not valid' +
+        ' from the backend perspective', inject(function ($rootScope, $q, Home, Loading, Stats) {
+
+            given:
+                $scope.isFormValid.returns(true);
+                nemoFormHandlerCtrl.getValidationTracking.returns('bar');
+                Home.submitForm.returns($q.reject({
+                    data: {
+                        field: 'fooField',
+                        message: 'bla message',
+                        code: 'testCode'
+                    }
+                }));
+                sinon.stub(Stats, 'submitValidationTracking');
+
+            when:
+                $scope.submit();
+                $rootScope.$digest();
+
+            then:
+                expect(Loading.stopLoading.calledOnce).toBe(true);
+                expect(nemoFormHandlerCtrl.forceServerFieldInvalid.calledOnce).toBe(true);
+                expect(nemoFormHandlerCtrl.forceServerFieldInvalid.calledWith('fooField', 'bla message', '.testCode')).toBe(true);
+                expect(Stats.submitValidationTracking.calledOnce).toBe(true);
+                expect(Stats.submitValidationTracking.calledWith('bar')).toBe(true);
+        }));
     });
 });

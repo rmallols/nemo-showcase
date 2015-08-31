@@ -1,8 +1,6 @@
-describe('loadingDirective', function () {
+describe('loading directive', function () {
 
-    beforeEach(function () {
-       module('app');
-    });
+    beforeEach(module('app'));
 
     it('must call the subscribe method of the Loading service when' +
     ' the directive is declared', inject(function (Loading) {

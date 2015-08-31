@@ -2,7 +2,7 @@ app.service('Stats', ['$http', function ($http) {
 
     var self = this;
 
-    this.submitvalidationTracking = function (validationTracking) {
+    this.submitValidationTracking = function (validationTracking) {
         $http.post('/rest/validation/track', validationTracking);
     };
 
