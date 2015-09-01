@@ -15,7 +15,7 @@ describe('HomeCtrl', function () {
             $rootScope.$digest();
 
         then:
-            expect(Home.getFormSetup.calledOnce).toBe(true);
+            expect(Home.getFormSetup).toHaveBeenCalled();
             expect($scope.fields).toBe('foo');
     }));
 });

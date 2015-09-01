@@ -12,6 +12,6 @@ describe('loading directive', function () {
             compileDirective('<loading></loading>');
 
         then:
-            expect(Loading.subscribe.calledOnce).toBe(true);
+            expect(Loading.subscribe).toHaveBeenCalled();
     }));
 });

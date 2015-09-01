@@ -1,6 +1,5 @@
 describe('LoadingService', function () {
 
-
     beforeEach(function () {
         module('app');
         sinon.stub(angular, 'noop');
@@ -29,7 +28,7 @@ describe('LoadingService', function () {
                 Loading.startLoading();
 
             then:
-                expect(component.startLoading.calledOnce).toBe(true);
+                expect(component.startLoading).toHaveBeenCalled();
         }));
 
         it('must call the angular.noop method if no component is registered' +
@@ -39,7 +38,7 @@ describe('LoadingService', function () {
                 Loading.startLoading();
 
             then:
-                expect(angular.noop.calledOnce).toBe(true);
+                expect(angular.noop).toHaveBeenCalled();
         }));
     });
 
@@ -62,7 +61,7 @@ describe('LoadingService', function () {
                 Loading.stopLoading();
 
             then:
-                expect(component.stopLoading.calledOnce).toBe(true);
+                expect(component.stopLoading).toHaveBeenCalled();
         }));
 
         it('must call the angular.noop method if no component is registered' +
@@ -72,7 +71,7 @@ describe('LoadingService', function () {
                 Loading.stopLoading();
 
             then:
-                expect(angular.noop.calledOnce).toBe(true);
+                expect(angular.noop).toHaveBeenCalled();
         }));
     });
 });

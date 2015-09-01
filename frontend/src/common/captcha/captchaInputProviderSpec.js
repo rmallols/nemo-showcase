@@ -37,5 +37,4 @@ describe('captchaInput', function () {
                 expect(scope.$apply).toHaveBeenCalled();
         }));
     });
-
 });

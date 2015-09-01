@@ -222,8 +222,8 @@ describe('HomeFormHandlerCtrl', function () {
                 expect(nemoFormHandlerCtrl.giveFirstInvalidFieldFocus.calledOnce).toBe(true);
 
             and:
-                expect(Loading.startLoading.called).toBe(false);
-                expect(Home.submitForm.called).toBe(false);
+                expect(Loading.startLoading).not.toHaveBeenCalled();
+                expect(Home.submitForm).not.toHaveBeenCalled();
         }));
 
         it('must submit the form after validating all the fields, setting the' +
@@ -261,8 +261,8 @@ describe('HomeFormHandlerCtrl', function () {
                 $rootScope.$digest();
 
             then:
-                expect(Loading.stopLoading.calledOnce).toBe(true);
-                expect(Audio.playSuccessSong.calledOnce).toBe(true);
+                expect(Loading.stopLoading).toHaveBeenCalled();
+                expect(Audio.playSuccessSong).toHaveBeenCalled();
         }));
 
         it('must set the focus on the first invalid state, stop the loading state' +
@@ -286,11 +286,9 @@ describe('HomeFormHandlerCtrl', function () {
                 $rootScope.$digest();
 
             then:
-                expect(Loading.stopLoading.calledOnce).toBe(true);
-                expect(nemoFormHandlerCtrl.forceServerFieldInvalid.calledOnce).toBe(true);
-                expect(nemoFormHandlerCtrl.forceServerFieldInvalid.calledWith('fooField', 'bla message', '.testCode')).toBe(true);
-                expect(Stats.submitValidationTracking.calledOnce).toBe(true);
-                expect(Stats.submitValidationTracking.calledWith('bar')).toBe(true);
+                expect(Loading.stopLoading).toHaveBeenCalled();
+                expect(nemoFormHandlerCtrl.forceServerFieldInvalid).toHaveBeenCalledWith('fooField', 'bla message', '.testCode');
+                expect(Stats.submitValidationTracking).toHaveBeenCalledWith('bar');
         }));
     });
 });
