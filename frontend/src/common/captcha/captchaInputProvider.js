@@ -3,13 +3,13 @@ app.provider('captchaInput', [function () {
         template:   '<div>' +
                         '<captcha-mario on-dead="onDead()" on-level-complete="onLevelComplete()"></captcha-mario>' +
                     '</div>',
-        linkFn: function (scope, element, attrs, formHandlerCtrl, interfaceFns) {
+        linkFn: function (scope, element, attrs, nemoFormHandlerCtrl, fieldInterfaceFns) {
 
             function onEventReceived(eventKey) {
-                interfaceFns.setValue({
+                fieldInterfaceFns.setValue({
                     levelComplete: eventKey === 'levelComplete'
                 });
-                formHandlerCtrl.setFieldDirtyTouched('captcha');
+                fieldInterfaceFns.setFilthy();
                 scope.$apply();
             }
 

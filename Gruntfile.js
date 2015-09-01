@@ -134,6 +134,7 @@ module.exports = function (grunt) {
                         'frontend/vendor/angular-mocks/angular-mocks.js',
                         'frontend/vendor/angular-ui-router/angular-ui-router.js',
                         'frontend/vendor/sinon/index.js',
+                        'frontend/vendor/jasmine-sinon/jasmine-sinon.js',
                         'frontend/vendor/nemo/nemo.js',
                         'frontend/vendor/n3-line-chart/line-chart.min.js',
                         'frontend/vendor/fullScreenMario/Source/Wrappers/angularWrapper.js',

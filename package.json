@@ -5,6 +5,7 @@
   "author": "hi@ricardomallols.com",
   "license": "MIT",
   "devDependencies": {
+    "bower": "^1.5.2",
     "cylon": "^1.1.0",
     "cylon-ble": "hybridgroup/cylon-ble",
     "cylon-mip": "^0.4.0",

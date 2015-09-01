@@ -1,4 +1,4 @@
-describe('HomeFormHandlerCtrlSpec', function () {
+describe('HomeFormHandlerCtrl', function () {
 
     var $scope = {}, nemoFormHandlerCtrl;
 

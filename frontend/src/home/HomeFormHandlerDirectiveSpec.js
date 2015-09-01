@@ -1,4 +1,4 @@
-describe('home form handler directive', function () {
+describe('home-form-handler', function () {
 
     beforeEach(module('app'));
 

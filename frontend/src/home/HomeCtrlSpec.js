@@ -1,10 +1,11 @@
-describe('HomeCtrlSpec', function () {
+describe('HomeCtrl', function () {
 
     var $scope = {};
 
     beforeEach(module('app'));
 
-    it('a', inject(function ($rootScope, $q, Home) {
+    it('must call the getFormSetup method of the Home service, saving the retrieved' +
+    ' fields into the scope afterwards', inject(function ($rootScope, $q, Home) {
 
         given:
             sinon.stub(Home, 'getFormSetup').returns($q.when({ data: 'foo'}));

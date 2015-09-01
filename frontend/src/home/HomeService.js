@@ -1,4 +1,3 @@
-console.log('we have to test the service as well');
 app.service('Home', ['$http', function ($http) {
 
     this.getFormSetup = function () {
