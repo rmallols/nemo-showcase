@@ -1,7 +1,7 @@
 app.provider('levelComplete', [function () {
     return {
         validateFn: function (value, validationRule) {
-            return value && value.levelComplete === validationRule.value;
+            return value === validationRule.value;
         },
         $get: angular.noop
     };

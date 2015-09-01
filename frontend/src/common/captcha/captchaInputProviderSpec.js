@@ -32,7 +32,7 @@ describe('captchaInput', function () {
                 scope[scenario.method]();
 
             then:
-                expect(fieldInterfaceFns.setValue).toHaveBeenCalledWith({ levelComplete: scenario.expectedLevelComplete });
+                expect(fieldInterfaceFns.setValue).toHaveBeenCalledWith(scenario.expectedLevelComplete);
                 expect(fieldInterfaceFns.setFilthy).toHaveBeenCalled();
                 expect(scope.$apply).toHaveBeenCalled();
         }));
