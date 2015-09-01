@@ -1,5 +1,5 @@
-app.controller('HomeFormHandlerCtrl', ['$scope', '$http', 'Home', 'Audio', 'Stats', 'Loading',
-function ($scope, $http, Home, Audio, Stats, Loading) {
+app.controller('HomeFormHandlerCtrl', ['$scope', '$http', '$state', 'Home', 'Audio', 'Stats', 'Loading',
+function ($scope, $http, $state, Home, Audio, Stats, Loading) {
 
     var formHandlerCtrl;
 
@@ -68,9 +68,9 @@ function ($scope, $http, Home, Audio, Stats, Loading) {
     }
 
     function onSubmitFormSuccess() {
-        console.log('SHOULD REDIRECT TO THANKS!');
         Loading.stopLoading();
         Audio.playSuccessSong();
+        $state.go('thanks');
     }
 
     function onSubmitFormError(error) {

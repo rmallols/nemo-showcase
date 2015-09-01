@@ -19,6 +19,13 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
                 pageTitle: 'H!'
             })
 
+            .state('thanks', {
+                url: '/thanks',
+                templateUrl: "thanks.html",
+                controller: 'ThanksCtrl',
+                pageTitle: 'T!'
+            })
+
             .state('stats', {
                 url: '/stats',
                 templateUrl: "stats.html",

@@ -1,4 +1,4 @@
-angular.module('templates-main', ['home.html', 'index.html', 'stats.html']);
+angular.module('templates-main', ['home.html', 'index.html', 'stats.html', 'thanks.html']);
 
 angular.module("home.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home.html",
@@ -55,4 +55,9 @@ angular.module("stats.html", []).run(["$templateCache", function($templateCache)
     "<linechart data=\"data\" options=\"options\" mode=\"\" width=\"900\" height=\"500\"></linechart>\n" +
     "<br/><br/>\n" +
     "<a ui-sref=\"home\">Go back to the form</a>");
+}]);
+
+angular.module("thanks.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("thanks.html",
+    "Hello thanks");
 }]);

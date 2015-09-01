@@ -248,12 +248,13 @@ describe('HomeFormHandlerCtrl', function () {
                 expect(nemoFormHandlerCtrl.giveFirstInvalidFieldFocus.calledOnce).toBe(false);
         }));
 
-        it('must play the success song and stop the loading state' +
-        ' whenever the form is valid', inject(function ($rootScope, $q, Home, Loading, Audio) {
+        it('must play the success song, stop the loading state and redirect to /thanks' +
+        ' whenever the form is valid', inject(function ($rootScope, $state, $q, Home, Loading, Audio) {
 
             given:
                 $scope.isFormValid.returns(true);
                 Home.submitForm.returns($q.when({}));
+                sinon.stub($state, 'go');
                 sinon.stub(Audio, 'playSuccessSong');
 
             when:
@@ -261,6 +262,7 @@ describe('HomeFormHandlerCtrl', function () {
                 $rootScope.$digest();
 
             then:
+                expect($state.go).toHaveBeenCalledWith('thanks');
                 expect(Loading.stopLoading).toHaveBeenCalled();
                 expect(Audio.playSuccessSong).toHaveBeenCalled();
         }));
