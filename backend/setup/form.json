@@ -582,40 +582,5 @@
         "message": "I have read and agree to the Sky terms & conditions and privacy & cookies notice"
       }
     }
-  },
-  {
-    "name": "marketingConsent",
-    "type": "checkbox",
-    "properties": {
-      "validation": [],
-      "help": {},
-      "label": {
-        "code": "marketingConsent.label",
-        "message": "Sky may contact you about products and services you may like unless you click to opt out"
-      }
-    }
-  },
-  {
-    "name": "serviceTerms",
-    "type": "checkbox",
-    "properties": {
-      "validation": [
-        {
-          "type": "mustbeequal",
-          "rules": [
-            {
-              "value": true,
-              "id": "serviceTerms.notequal",
-              "message": "You need to agree to the terms and conditions"
-            }
-          ]
-        }
-      ],
-      "help": {},
-      "label": {
-        "code": "serviceTerms.label",
-        "message": "I have read and agree to the NOW TV terms & conditions"
-      }
-    }
   }
 ]
