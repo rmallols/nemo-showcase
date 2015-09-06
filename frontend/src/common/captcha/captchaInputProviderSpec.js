@@ -34,7 +34,6 @@ describe('captchaInput', function () {
             then:
                 expect(fieldInterfaceFns.setValue).toHaveBeenCalledWith(scenario.expectedLevelComplete);
                 expect(fieldInterfaceFns.setFilthy).toHaveBeenCalled();
-                expect(scope.$apply).toHaveBeenCalled();
         }));
     });
 });
