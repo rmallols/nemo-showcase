@@ -1,24 +1,26 @@
-<form nemo-form-handler home-form-handler class="container" ng-submit="submit()"
-      ng-show="fields" novalidate>
-    <div class="clearfix" ng-repeat="field in fields"
-         data-ng-class="getFieldStyleClasses(field.name)">
-        <div class="column column_label">
-            <span ng-if="field.name == 'captchaId'">Captcha Id</span>
-            {{field.properties.label.message}}: {{field.value}}
-        </div>
-        <div class="column column_field">
-            <div class="input-wrapper">
-                <data-nemo-input model="field" has-focus="$index === 0"></data-nemo-input>
-                <data-nemo-icon type="{{getMessageType(field.name)}}" field-name="{{field.name}}"
-                                on-hover="onIconHover(fieldName)" on-blur="onIconBlur(fieldName)"></data-nemo-icon>
-                <data-nemo-validation-messages model="getFieldNgModelCtrl(field.name)" class="field-error-wrapper"
-                                               data-t-error data-ng-if="isErrorMessageVisible(field.name)"></data-nemo-validation-messages>
-                <data-nemo-help-messages field-name="{{field.name}}" model="field.properties.help" class="field-help-wrapper"
-                                         data-t-help data-ng-if="isHelpMessageVisible(field.name)"></data-nemo-help-messages>
+<div class="home-view">
+    <form nemo-form-handler home-form-handler class="container" ng-submit="submit()"
+          ng-show="fields" novalidate>
+        <div class="clearfix" ng-repeat="field in fields"
+             data-ng-class="getFieldStyleClasses(field.name)">
+            <div class="column column_label">
+                <span ng-if="field.name == 'captchaId'">Captcha Id</span>
+                {{field.properties.label.message}}: {{field.value}}
             </div>
+            <div class="column column_field">
+                <div class="input-wrapper">
+                    <data-nemo-input model="field" has-focus="$index === 0"></data-nemo-input>
+                    <data-nemo-icon type="{{getMessageType(field.name)}}" field-name="{{field.name}}"
+                                    on-hover="onIconHover(fieldName)" on-blur="onIconBlur(fieldName)"></data-nemo-icon>
+                    <data-nemo-validation-messages model="getFieldNgModelCtrl(field.name)" class="field-error-wrapper"
+                                                   data-t-error data-ng-if="isErrorMessageVisible(field.name)"></data-nemo-validation-messages>
+                    <data-nemo-help-messages field-name="{{field.name}}" model="field.properties.help" class="field-help-wrapper"
+                                             data-t-help data-ng-if="isHelpMessageVisible(field.name)"></data-nemo-help-messages>
+                </div>
 
+            </div>
         </div>
-    </div>
-    Is form valid? {{isFormValid()}}
-    <input type="submit" value="Submit!"/>
-</form>
+        Is form valid? {{isFormValid()}}
+        <input type="submit" value="Submit!"/>
+    </form>
+</div>

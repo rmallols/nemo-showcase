@@ -1,182 +1,184 @@
-.field {
-  border: 1px solid @grey-color;
-  outline: none;
+.home-view {
+  .field {
+    border: 1px solid @grey-color;
+    outline: none;
 
-  &.ng-valid.ng-touched {
-    border-color: green;
-  }
+    &.ng-valid.ng-touched {
+      border-color: green;
+    }
 
-  &.ng-invalid.ng-touched {
-    border-color: red;
-  }
-}
-
-input, select {
-  .field;
-  padding: 10px;
-}
-
-.container {
-  width: 80%;
-  min-width: @mobile-breakpoint;
-  margin: 30px auto 0 auto;
-  padding: 10px;
-  box-sizing: border-box;
-
-  @media only screen and (max-width: @mobile-breakpoint) {
-    width: 90%;
-    min-width: 550px;
-  }
-}
-
-.column {
-  float: left;
-  box-sizing: border-box;
-  padding: 10px 20px;
-
-  &.column_label {
-    width: 40%;
-    text-align: right;
-
-    @media only screen and (max-width: @mobile-breakpoint) {
-      text-align: left;
-      width: 100%;
+    &.ng-invalid.ng-touched {
+      border-color: red;
     }
   }
 
-  &.column_field {
-    width: 60%;
+  input, select {
+    .field;
+    padding: 10px;
+  }
+
+  .container {
+    width: 80%;
+    min-width: @mobile-breakpoint;
+    margin: 30px auto 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
 
     @media only screen and (max-width: @mobile-breakpoint) {
-      width: 100%;
+      width: 90%;
+      min-width: 550px;
     }
   }
 
-  @media only screen and (max-width: @mobile-breakpoint) {
-    padding: 10px 10px 0px 10px;
+  .column {
+    float: left;
+    box-sizing: border-box;
+    padding: 10px 20px;
+
+    &.column_label {
+      width: 40%;
+      text-align: right;
+
+      @media only screen and (max-width: @mobile-breakpoint) {
+        text-align: left;
+        width: 100%;
+      }
+    }
+
+    &.column_field {
+      width: 60%;
+
+      @media only screen and (max-width: @mobile-breakpoint) {
+        width: 100%;
+      }
+    }
+
+    @media only screen and (max-width: @mobile-breakpoint) {
+      padding: 10px 10px 0px 10px;
+    }
   }
-}
 
-///
-.input-wrapper {
-  text-align: left;
-  position: relative;
-}
+  ///
+  .input-wrapper {
+    text-align: left;
+    position: relative;
+  }
 
-.input-wrapper * {
-  width: 100%;
-}
+  .input-wrapper * {
+    width: 100%;
+  }
 
-////
-.field-message-wrapper(@background-color) {
-  background-color: @background-color;
-  color: white;
-  position: absolute;
-  bottom: 100%;
-  margin-bottom: 15px;
-  padding: 5px;
-  box-sizing: border-box;
-
-  &:after {
-    top: 100%;
-    right: 5px;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
+  ////
+  .field-message-wrapper(@background-color) {
+    background-color: @background-color;
+    color: white;
     position: absolute;
-    pointer-events: none;
-    border-color: transparent;
-    border-top-color: @background-color;
-    border-width: 15px;
-    margin-left: -15px;
+    bottom: 100%;
+    margin-bottom: 15px;
+    padding: 5px;
+    box-sizing: border-box;
+
+    &:after {
+      top: 100%;
+      right: 5px;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: transparent;
+      border-top-color: @background-color;
+      border-width: 15px;
+      margin-left: -15px;
+    }
   }
-}
 
-.field-error-wrapper {
-  .field-message-wrapper(@red-color);
-}
+  .field-error-wrapper {
+    .field-message-wrapper(@red-color);
+  }
 
-.field-help-wrapper {
-  .field-message-wrapper (@grey-color);
-}
+  .field-help-wrapper {
+    .field-message-wrapper (@grey-color);
+  }
 
-///
-.field-icon(@background-color) {
-  background-color: @background-color;
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  width: 24px;
-  height: 24px;
-  color: white;
-  border-radius: 12px;
-  text-align: center;
-  font-weight: bold;
-  line-height: 1.50;
-}
+  ///
+  .field-icon(@background-color) {
+    background-color: @background-color;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 24px;
+    height: 24px;
+    color: white;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1.50;
+  }
 
-.field-icon_error {
-  .field-icon(@red-color);
-}
+  .field-icon_error {
+    .field-icon(@red-color);
+  }
 
-.field-icon_help {
-  .field-icon(@grey-color);
-}
+  .field-icon_help {
+    .field-icon(@grey-color);
+  }
 
-////
-.clearfix:after {
-    content: " "; /* Older browser do not support empty content */
-    visibility: hidden;
+  ////
+  .clearfix:after {
+      content: " "; /* Older browser do not support empty content */
+      visibility: hidden;
+      display: block;
+      height: 0;
+      clear: both;
+  }
+
+  ////
+  .nemo-captcha-audio {
+    display: none;
+  }
+
+  .nemo-captcha-play {
+    background: transparent url('/app/sample/grey-audio-Icon.png') no-repeat 0 0;
+    width: 21px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .nemo-captcha-refresh {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .nemo-captcha-img {
+    display: inline-block;
+  }
+
+  [input-checkbox] {
+    width: 24px;
+    height: 24px;
+    border: 1px solid grey;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  [input-checkbox].focused {
+    border-color: black;
+  }
+
+  [input-checkbox] label {
     display: block;
-    height: 0;
-    clear: both;
-}
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 1.7;
+    cursor: pointer;
+  }
 
-////
-.nemo-captcha-audio {
-  display: none;
-}
-
-.nemo-captcha-play {
-  background: transparent url('/app/sample/grey-audio-Icon.png') no-repeat 0 0;
-  width: 21px;
-  height: 20px;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.nemo-captcha-refresh {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.nemo-captcha-img {
-  display: inline-block;
-}
-
-[input-checkbox] {
-  width: 24px;
-  height: 24px;
-  border: 1px solid grey;
-  background-color: white;
-  cursor: pointer;
-}
-
-[input-checkbox].focused {
-  border-color: black;
-}
-
-[input-checkbox] label {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  line-height: 1.7;
-  cursor: pointer;
-}
-
-[input-captcha-mario] {
-  .field;
-  height: 460px;
+  [input-captcha-mario] {
+    .field;
+    height: 460px;
+  }
 }
