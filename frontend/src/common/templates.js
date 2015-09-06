@@ -32,7 +32,7 @@ angular.module("index.html", []).run(["$templateCache", function($templateCache)
   $templateCache.put("index.html",
     "<html ng-app=\"app\" class=\"ua-{{userAgent}}\">\n" +
     "    <head>\n" +
-    "        <title>Nemo showcase</title>\n" +
+    "        <title ng-bind=\"pageTitle\"></title>\n" +
     "        <meta name=\"viewport\" content=\"width=device-width\"/>\n" +
     "        <link rel=\"icon\" type=\"image/png\" href=\"src/favicon.png\">\n" +
     "        <link rel=\"stylesheet\" type=\"text/css\" href=\"dist/css.css\">\n" +
