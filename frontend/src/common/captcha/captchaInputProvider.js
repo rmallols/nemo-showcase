@@ -1,4 +1,4 @@
-app.provider('captchaInput', [function () {
+app.provider('captchaMario', [function () {
     return {
         template:   '<div>' +
                         '<captcha-mario on-dead="onDead()" on-level-complete="onLevelComplete()"></captcha-mario>' +

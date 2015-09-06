@@ -1,9 +1,9 @@
-describe('captchaInput', function () {
+describe('captchaMario', function () {
 
-    var captchaInputProvider;
+    var captchaMarioProvider;
 
-    beforeEach(module('app', function (_captchaInputProvider_) {
-        captchaInputProvider = _captchaInputProvider_;
+    beforeEach(module('app', function (_captchaMarioProvider_) {
+        captchaMarioProvider = _captchaMarioProvider_;
     }));
 
     [
@@ -26,7 +26,7 @@ describe('captchaInput', function () {
                 };
 
             when:
-                captchaInputProvider.linkFn(scope, {}, {}, {}, fieldInterfaceFns);
+                captchaMarioProvider.linkFn(scope, {}, {}, {}, fieldInterfaceFns);
 
             and:
                 scope[scenario.method]();

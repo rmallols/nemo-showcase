@@ -1,9 +1,9 @@
 var app = angular.module('app', ['nemo', 'ui.router', 'templates-main', 'n3-line-chart', 'captcha-mario']);
 
 app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoInputDirectiveCreatorProvider',
-    'nemoValidationDirectiveCreatorProvider', 'captchaInputProvider', 'levelCompleteProvider',
+    'nemoValidationDirectiveCreatorProvider', 'captchaMarioProvider', 'levelCompleteProvider',
     function ($locationProvider, $stateProvider, $urlRouterProvider, inputProvider, validationProvider,
-              captchaInputProvider, levelCompleteProvider) {
+              captchaMarioProvider, levelCompleteProvider) {
 
         $locationProvider.html5Mode({
             enabled: true,
@@ -36,7 +36,7 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
         $urlRouterProvider.otherwise("/");
 
         inputProvider
-            .input('captchaMario', captchaInputProvider);
+            .input('captchaMario', captchaMarioProvider);
 
         validationProvider
             .validation('levelComplete', levelCompleteProvider);
