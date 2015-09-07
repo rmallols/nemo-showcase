@@ -41,7 +41,3 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
         validationProvider
             .validation('levelComplete', levelCompleteProvider);
     }]);
-
-app.run(['$rootScope', 'Browser', function ($rootScope, Browser) {
-    $rootScope.userAgent = Browser.getUA();
-}]);
