@@ -50,7 +50,6 @@ try {
     app.post('/rest/submitForm', function (req, res) {
 
         var status, body = {};
-        console.log('***SUBMIT', req.body);
 
         if(req.body.username === 'test') {
             status = 500;
@@ -59,9 +58,13 @@ try {
                 code: 'taken',
                 message: 'Ey! that username has been already taken'
             };
-            dance.sad(function () {
+            if(dance.isRobotReady()) {
+                dance.sad(function () {
+                    res.status(status).send(body);
+                });
+            } else {
                 res.status(status).send(body);
-            });
+            }
         } else if(req.body.email === 'foo@bar.com') {
             status = 500;
             body = {
@@ -69,14 +72,21 @@ try {
                 code: 'taken',
                 message: 'Ey! that email has been already taken'
             };
-            dance.sad(function () {
+            if(dance.isRobotReady()) {
+                dance.sad(function () {
+                    res.status(status).send(body);
+                });
+            } else {
                 res.status(status).send(body);
-            });
+            }
+
         } else {
-            dance.dance(function ready() {
-                status = 200;
-                res.status(status).send(body);
-            });
+            if(dance.isRobotReady()) {
+                dance.dance(function ready() {
+                    status = 200;
+                    res.status(status).send(body);
+                });
+            }
         }
     });
 
