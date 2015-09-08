@@ -267,7 +267,7 @@ describe('HomeFormHandlerCtrl', function () {
                 expect(Audio.playSuccessSong).toHaveBeenCalled();
         }));
 
-        it('must set the focus on the first invalid state, stop the loading state' +
+        it('must set the focus on the first invalid field, stop the loading state' +
         ' and submit the validation tracking data whenever the form is not valid' +
         ' from the backend perspective', inject(function ($rootScope, $q, Home, Loading, Stats) {
 
@@ -290,6 +290,7 @@ describe('HomeFormHandlerCtrl', function () {
             then:
                 expect(Loading.stopLoading).toHaveBeenCalled();
                 expect(nemoFormHandlerCtrl.forceServerFieldInvalid).toHaveBeenCalledWith('fooField', 'bla message', '.testCode');
+                expect(nemoFormHandlerCtrl.giveFirstInvalidFieldFocus).toHaveBeenCalled();
                 expect(Stats.submitValidationTracking).toHaveBeenCalledWith('bar');
         }));
     });

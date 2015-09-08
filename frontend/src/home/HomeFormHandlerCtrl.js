@@ -76,6 +76,7 @@ function ($scope, $http, $state, Home, Audio, Stats, Loading) {
     function onSubmitFormError(error) {
         Loading.stopLoading();
         formHandlerCtrl.forceServerFieldInvalid(error.data.field, error.data.message, '.' + error.data.code);
+        formHandlerCtrl.giveFirstInvalidFieldFocus();
         Stats.submitValidationTracking(formHandlerCtrl.getValidationTracking());
     }
 
