@@ -59,6 +59,7 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     '<%= distFolder %>js.min.js': [
+                        '<%= vendorFolder %>/jquery/jquery.js',
                         '<%= vendorFolder %>/angular/angular.js',
                         '<%= vendorFolder %>/angular-ui-router/angular-ui-router.js',
                         '<%= vendorFolder %>/less/less.js',
