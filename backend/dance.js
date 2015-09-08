@@ -1,6 +1,6 @@
 module.exports = {
 
-    _mip: null,
+    _mip: undefined,
 
     _colors: {
         white: {r: 255, g: 255, b: 255},
@@ -15,6 +15,10 @@ module.exports = {
         surprised: 1,
         yeah: 2,
         sad: 5
+    },
+
+    isRobotReady: function () {
+        return this.getMip() !== undefined;
     },
 
     setup: function (mip) {
