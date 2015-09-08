@@ -12,6 +12,7 @@
   "dependencies": {
     "angular": "~1.4",
     "angular-ui-router": "~0.2.15",
+    "jquery": "~2.1.4",
     "less": "~2.5.1",
     "nemo": "git@github.com:sky-uk/nowtv-web-nemo.git#nemo-showcase",
     "fullScreenMario": "git@github.com:rmallols/FullScreenMario.git#master",
