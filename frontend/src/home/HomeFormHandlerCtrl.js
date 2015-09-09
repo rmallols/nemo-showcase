@@ -53,6 +53,7 @@ function ($scope, $http, $state, Home, Audio, Stats, Loading) {
 
     $scope.submit = function () {
         formHandlerCtrl.validateFormAndSetDirtyTouched();
+        Stats.submitValidationTracking(formHandlerCtrl.getValidationTracking());
         if ($scope.isFormValid()) {
             submitForm();
         } else {

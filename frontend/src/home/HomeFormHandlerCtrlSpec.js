@@ -248,14 +248,16 @@ describe('HomeFormHandlerCtrl', function () {
                 expect(nemoFormHandlerCtrl.giveFirstInvalidFieldFocus.calledOnce).toBe(false);
         }));
 
-        it('must play the success song, stop the loading state and redirect to /thanks' +
-        ' whenever the form is valid', inject(function ($rootScope, $state, $q, Home, Loading, Audio) {
+        it('must play the success song, stop the loading state, track validation and redirect to /thanks' +
+        ' whenever the form is valid', inject(function ($rootScope, $state, $q, Home, Loading, Audio, Stats) {
 
             given:
                 $scope.isFormValid.returns(true);
                 Home.submitForm.returns($q.when({}));
+                nemoFormHandlerCtrl.getValidationTracking.returns('foo');
                 sinon.stub($state, 'go');
                 sinon.stub(Audio, 'playSuccessSong');
+                sinon.stub(Stats, 'submitValidationTracking');
 
             when:
                 $scope.submit();
@@ -265,10 +267,11 @@ describe('HomeFormHandlerCtrl', function () {
                 expect($state.go).toHaveBeenCalledWith('thanks');
                 expect(Loading.stopLoading).toHaveBeenCalled();
                 expect(Audio.playSuccessSong).toHaveBeenCalled();
+                expect(Stats.submitValidationTracking).toHaveBeenCalledWith('foo');
         }));
 
-        it('must set the focus on the first invalid field, stop the loading state' +
-        ' and submit the validation tracking data whenever the form is not valid' +
+        it('must set the focus on the first invalid field, stop the loading state,' +
+        ' and track validation whenever the form is not valid' +
         ' from the backend perspective', inject(function ($rootScope, $q, Home, Loading, Stats) {
 
             given:
