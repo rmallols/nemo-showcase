@@ -163,6 +163,6 @@ module.exports = function (grunt) {
     grunt.registerTask('generateJs', ['concat']);
     grunt.registerTask('setupDependencies', ['bower']);
     grunt.registerTask('setupDevEnv', ['generateJs', 'concurrent:setupDevEnv']);
-    grunt.registerTask('setupDevEnvNemoSymlink', ['generateJs', 'concurrent: setupDevEnvNemoSymlink']);
+    grunt.registerTask('setupDevEnvNemoSymlink', ['generateJs', 'concurrent:setupDevEnvNemoSymlink']);
     grunt.registerTask('runUnitTests', ['karma']);
 };
