@@ -1,11 +1,11 @@
 <div class="home-view">
-    <form nemo-form-handler home-form-handler class="container" ng-submit="submit()"
+    <form nemo-form-handler home-form-handler class="container clearfix" ng-submit="submit()"
           ng-show="fields" novalidate>
         <div class="clearfix" ng-repeat="field in fields"
-             data-ng-class="getFieldStyleClasses(field.name)">
+             data-ng-class="getFieldStyleClasses(field.name, field.type)">
             <div class="column column_label">
                 <span ng-if="field.name == 'captchaId'">Captcha Id</span>
-                {{field.properties.label.message}}: {{field.value}}
+                {{field.properties.label.message}}:
             </div>
             <div class="column column_field">
                 <div class="input-wrapper">
@@ -17,10 +17,8 @@
                     <data-nemo-help-messages field-name="{{field.name}}" model="field.properties.help" class="field-help-wrapper"
                                              data-t-help data-ng-if="isHelpMessageVisible(field.name)"></data-nemo-help-messages>
                 </div>
-
             </div>
         </div>
-        Is form valid? {{isFormValid()}}
-        <input type="submit" value="Submit!"/>
+        <input type="submit" class="button_submit" value="Submit!"/>
     </form>
 </div>

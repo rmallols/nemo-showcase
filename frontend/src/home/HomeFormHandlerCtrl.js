@@ -11,11 +11,14 @@ function ($scope, $http, $state, Home, Audio, Stats, Loading) {
         $scope.getFieldNgModelCtrl = formHandlerCtrl.getFieldNgModelCtrl;
     };
 
-    $scope.getFieldStyleClasses = function (fieldName) {
-        return {
+    $scope.getFieldStyleClasses = function (fieldName, fieldType) {
+        var styleClasses = {
+            'row': true,
             'ng-touched': formHandlerCtrl.isFieldTouched(fieldName),
             'ng-invalid': !formHandlerCtrl.isFieldValid(fieldName)
         };
+        styleClasses['row_' + fieldType] = true;
+        return styleClasses;
     };
 
     $scope.getMessageType = function (fieldName) {

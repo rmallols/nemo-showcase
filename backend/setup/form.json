@@ -69,10 +69,6 @@
           ]
         }
       ],
-      "help": {
-        "code": "title.help",
-        "message": "Please choose your title"
-      },
       "label": {
         "code": "title.label",
         "message": "Title"
@@ -98,9 +94,9 @@
           "type": "maxlength",
           "rules": [
             {
-              "value": 50,
+              "value": 10,
               "id": "firstName.size.toobig",
-              "message": "Your first name needs to be less than 50 characters long"
+              "message": "Your first name needs to up to 10 characters long"
             }
           ]
         },
@@ -141,41 +137,17 @@
   },
   {
     "name": "lastName",
-    "value": "y",
+    "value": "",
     "type": "text",
     "properties": {
       "validation": [
         {
-          "type": "required",
-          "rules": [
-            {
-              "value": true,
-              "id": "lastName.blank",
-              "message": "Please enter your last name"
-            }
-          ]
-        },
-        {
           "type": "maxlength",
           "rules": [
             {
-              "value": 50,
+              "value": 10,
               "id": "lastName.size.toobig",
               "message": "Your last name needs to be less than 50 characters long"
-            }
-          ]
-        },
-        {
-          "type": "dependentpattern",
-          "rules": [
-            {
-              "value": "firstName",
-              "patterns": {
-                "frances": "(frances)",
-                "bob": "^[a-d]+$"
-              },
-              "id": "lastName.size.toobig",
-              "message": "Must match Frances"
             }
           ]
         },
@@ -198,6 +170,19 @@
               "message": "Sorry, your last name can only start and end with a letter"
             }
           ]
+        },
+        {
+          "type": "dependentrequired",
+          "rules": [
+            {
+              "value" : "firstName",
+              "when" : [
+                "Yoko"
+              ],
+              "id" : "lastName.pleaseProvide",
+              "message" : "Mmm...That's interesting, please tell us about your last name..."
+            }
+          ]
         }
       ],
       "help": {
@@ -211,34 +196,8 @@
     }
   },
   {
-    "name": "requiredfield",
-    "value": null,
-    "type": "text",
-    "properties": {
-      "validation": [
-        {
-          "type": "dependentrequired",
-          "rules": [
-            {
-              "value" : "username",
-              "when" : [
-                "fooUsername"
-              ],
-              "id" : "foo.dependent.required.username",
-              "message" : "Foo is required"
-            }
-          ]
-        }
-      ],
-      "label": {
-        "code": "requiredfield.label",
-        "message": "Dependent required"
-      }
-    }
-  },
-  {
     "name": "email",
-    "value": "your@email.com",
+    "value": "",
     "type": "email",
     "properties": {
       "validation": [
@@ -295,7 +254,7 @@
   },
   {
     "name": "confirmEmail",
-    "value": "your@email.com",
+    "value": "",
     "type": "email",
     "properties": {
       "validation": [
@@ -351,7 +310,7 @@
             {
               "value": 3,
               "id": "username.size.toosmall",
-              "message": "Your username can only have 3 - 32 characters"
+              "message": "Your username can only have 3 - 12 characters"
             }
           ]
         },
@@ -359,9 +318,9 @@
           "type": "maxlength",
           "rules": [
             {
-              "value": 32,
+              "value": 12,
               "id": "username.size.toobig",
-              "message": "Your username can only have 3 - 32 characters"
+              "message": "Your username can only have 3 - 12 characters"
             }
           ]
         },
@@ -408,7 +367,7 @@
       ],
       "help": {
         "code": "username.help",
-        "message": "Your username must have 3-32 characters and must only contain letters and numbers"
+        "message": "Your username must have 3-12 characters and must only contain letters and numbers"
       },
       "label": {
         "code": "username.label",
@@ -437,7 +396,7 @@
             {
               "value": 8,
               "id": "password.size.toosmall",
-              "message": "Your password can only have 8 - 32 characters"
+              "message": "Your password can only have 8 - 12 characters"
             }
           ]
         },
@@ -445,9 +404,9 @@
           "type": "maxlength",
           "rules": [
             {
-              "value": 32,
+              "value": 12,
               "id": "password.size.toobig",
-              "message": "Your password can only have 8 - 32 characters"
+              "message": "Your password can only have 8 - 12 characters"
             }
           ]
         },
@@ -489,7 +448,7 @@
       ],
       "help": {
         "code": "password.help",
-        "message": "Must have 8-32 characters and cannot contain your username or the word 'password'"
+        "message": "Must have 8-12 characters and cannot contain your username or the word 'password'"
       },
       "label": {
         "code": "password.label",
@@ -537,13 +496,13 @@
     "name": "captcha",
     "type": "captchaMario",
     "properties": {
-      "help": {
-        "code": "captcha.help",
-        "message": "Please complete the level"
-      },
       "label": {
         "code": "captcha.label",
-        "message": "Super mario captcha"
+        "message": "Are you a human?"
+      },
+      "help": {
+        "code": "captcha.help",
+        "message": "Please prove you're an actual human"
       },
       "validation": [
         {
@@ -552,7 +511,7 @@
             {
               "id": "captcha.levelComplete",
               "value": true,
-              "message": "You're NOT a human, STOP cheating please!"
+              "message": "You're not an human. Stop cheating please!"
             }
           ]
         }

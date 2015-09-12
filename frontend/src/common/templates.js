@@ -3,13 +3,13 @@ angular.module('templates-main', ['home.html', 'index.html', 'stats.html', 'than
 angular.module("home.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home.html",
     "<div class=\"home-view\">\n" +
-    "    <form nemo-form-handler home-form-handler class=\"container\" ng-submit=\"submit()\"\n" +
+    "    <form nemo-form-handler home-form-handler class=\"container clearfix\" ng-submit=\"submit()\"\n" +
     "          ng-show=\"fields\" novalidate>\n" +
     "        <div class=\"clearfix\" ng-repeat=\"field in fields\"\n" +
-    "             data-ng-class=\"getFieldStyleClasses(field.name)\">\n" +
+    "             data-ng-class=\"getFieldStyleClasses(field.name, field.type)\">\n" +
     "            <div class=\"column column_label\">\n" +
     "                <span ng-if=\"field.name == 'captchaId'\">Captcha Id</span>\n" +
-    "                {{field.properties.label.message}}: {{field.value}}\n" +
+    "                {{field.properties.label.message}}:\n" +
     "            </div>\n" +
     "            <div class=\"column column_field\">\n" +
     "                <div class=\"input-wrapper\">\n" +
@@ -21,11 +21,9 @@ angular.module("home.html", []).run(["$templateCache", function($templateCache) 
     "                    <data-nemo-help-messages field-name=\"{{field.name}}\" model=\"field.properties.help\" class=\"field-help-wrapper\"\n" +
     "                                             data-t-help data-ng-if=\"isHelpMessageVisible(field.name)\"></data-nemo-help-messages>\n" +
     "                </div>\n" +
-    "\n" +
     "            </div>\n" +
     "        </div>\n" +
-    "        Is form valid? {{isFormValid()}}\n" +
-    "        <input type=\"submit\" value=\"Submit!\"/>\n" +
+    "        <input type=\"submit\" class=\"button_submit\" value=\"Submit!\"/>\n" +
     "    </form>\n" +
     "</div>");
 }]);

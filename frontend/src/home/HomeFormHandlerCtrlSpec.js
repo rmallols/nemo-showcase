@@ -67,17 +67,17 @@ describe('HomeFormHandlerCtrl', function () {
 
         it('must return the proper style classes based on the touched & valid info provided by Nemo', function () {
 
-            var fieldStyleClasses, fieldName = 'foo';
+            var fieldStyleClasses, fieldName = 'foo', fieldType = 'bla';
 
             given:
                 nemoFormHandlerCtrl.isFieldTouched.withArgs(fieldName).returns(true);
                 nemoFormHandlerCtrl.isFieldValid.withArgs(fieldName).returns(true);
 
             when:
-                fieldStyleClasses = $scope.getFieldStyleClasses(fieldName);
+                fieldStyleClasses = $scope.getFieldStyleClasses(fieldName, fieldType);
 
             then:
-                expect(fieldStyleClasses).toEqual({'ng-touched': true, 'ng-invalid': false});
+                expect(fieldStyleClasses).toEqual({'row': true, 'row_bla': true,'ng-touched': true, 'ng-invalid': false});
         });
     });
 
