@@ -1,22 +1,24 @@
 app.provider('captchaMario', [function () {
     return {
         template:   '<div>' +
-                        '<captcha-mario on-dead="onDead()" on-level-complete="onLevelComplete()"></captcha-mario>' +
+                        '<captcha-mario ' +
+                            'on-dead="onDead()" ' +
+                            'on-level-complete="onLevelComplete()">' +
+                        '</captcha-mario>' +
                     '</div>',
-        linkFn: function (scope, element, attrs, nemoFormHandlerCtrl, fieldInterfaceFns) {
+        linkFn: function (scope, element, attrs, fieldInterfaceFns) {
 
-            function onEventReceived(eventKey) {
-                fieldInterfaceFns.setValue(eventKey === 'levelComplete');
+            function manageStateChange(value) {
+                fieldInterfaceFns.setValue(value);
                 fieldInterfaceFns.setFilthy();
-                scope.$apply();
             }
 
             scope.onDead = function () {
-                onEventReceived('dead');
+                manageStateChange(false);
             };
 
             scope.onLevelComplete = function () {
-                onEventReceived('levelComplete');
+                manageStateChange(true);
             };
         },
         $get: angular.noop

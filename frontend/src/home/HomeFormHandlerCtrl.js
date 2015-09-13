@@ -1,14 +1,18 @@
-app.controller('HomeFormHandlerCtrl', ['$scope', '$http', '$state', 'Home', 'Audio', 'Stats', 'Loading',
-function ($scope, $http, $state, Home, Audio, Stats, Loading) {
+app.controller('HomeFormHandlerCtrl', ['$scope', '$http', '$state', '$location', 'Home', 'Audio', 'Stats', 'Loading',
+function ($scope, $http, $state, $location, Home, Audio, Stats, Loading) {
 
-    var formHandlerCtrl;
-
-    var iconVisibilityStates = {}, messageTypes = { error: 'error', help: 'help' };
+    var formHandlerCtrl,
+        self = this,
+        iconVisibilityStates = {},
+        messageTypes = { error: 'error', help: 'help' };
 
     $scope.setup = function (nemoFormHandlerCtrl) {
         formHandlerCtrl = nemoFormHandlerCtrl;
         $scope.isFormValid = formHandlerCtrl.isFormValid;
         $scope.getFieldNgModelCtrl = formHandlerCtrl.getFieldNgModelCtrl;
+        if($location.search().autofill === 'true') {
+            self.autofill();
+        }
     };
 
     $scope.getFieldStyleClasses = function (fieldName, fieldType) {
@@ -62,6 +66,23 @@ function ($scope, $http, $state, Home, Audio, Stats, Loading) {
         } else {
             formHandlerCtrl.giveFirstInvalidFieldFocus();
         }
+    };
+
+    this.autofill = function () {
+        var unregisterFn = $scope.$watch('fields', function (fields) {
+            if(fields) {
+                formHandlerCtrl.setFieldValue('title', 'Mrs value');
+                formHandlerCtrl.setFieldValue('firstName', 'Yoko');
+                formHandlerCtrl.setFieldValue('lastName', 'Ono');
+                formHandlerCtrl.setFieldValue('email', 'foo@bar.com');
+                formHandlerCtrl.setFieldValue('confirmEmail', 'foo@bar.com');
+                formHandlerCtrl.setFieldValue('username', 'test');
+                formHandlerCtrl.setFieldValue('password', 'foofoofoo');
+                formHandlerCtrl.setFieldValue('confirmPassword', 'foofoofoo');
+                formHandlerCtrl.setFieldValue('terms', true);
+                unregisterFn();
+            }
+        });
     };
 
     function submitForm() {

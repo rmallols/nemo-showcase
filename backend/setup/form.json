@@ -36,7 +36,7 @@
         "value": "Other value"
       }
     ],
-    "value": "Rev value",
+    "value": "",
     "properties": {
       "validation": [
         {
@@ -498,11 +498,11 @@
     "properties": {
       "label": {
         "code": "captcha.label",
-        "message": "Are you a human?"
+        "message": "are you a human?"
       },
       "help": {
         "code": "captcha.help",
-        "message": "Please prove you're an actual human"
+        "message": "please prove you're an actual human"
       },
       "validation": [
         {
@@ -511,7 +511,7 @@
             {
               "id": "captcha.levelComplete",
               "value": true,
-              "message": "You're not an human. Stop cheating please!"
+              "message": "You're not a human, please stop cheating!"
             }
           ]
         }
@@ -521,7 +521,7 @@
   {
     "name": "terms",
     "type": "checkbox",
-    "value": true,
+    "value": false,
     "properties": {
       "validation": [
         {

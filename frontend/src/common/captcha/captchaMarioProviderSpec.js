@@ -26,7 +26,7 @@ describe('captchaMario', function () {
                 };
 
             when:
-                captchaMarioProvider.linkFn(scope, {}, {}, {}, fieldInterfaceFns);
+                captchaMarioProvider.linkFn(scope, {}, {}, fieldInterfaceFns);
 
             and:
                 scope[scenario.method]();

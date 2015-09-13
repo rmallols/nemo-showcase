@@ -1,6 +1,6 @@
 describe('HomeFormHandlerCtrl', function () {
 
-    var $scope = {}, nemoFormHandlerCtrl;
+    var $scope, nemoFormHandlerCtrl, homeFormHandlerCtrl;
 
     beforeEach(function () {
         module('app');
@@ -15,10 +15,13 @@ describe('HomeFormHandlerCtrl', function () {
             giveFirstInvalidFieldFocus: sinon.stub(),
             getFieldsValues: sinon.stub(),
             forceServerFieldInvalid: sinon.stub(),
-            getValidationTracking: sinon.stub()
+            getValidationTracking: sinon.stub(),
+            setFieldValue: sinon.stub()
         };
-        compileController('HomeFormHandlerCtrl', {$scope: $scope});
-        $scope.setup(nemoFormHandlerCtrl);
+        inject(function ($rootScope) {
+            $scope = $rootScope.$new();
+            homeFormHandlerCtrl = compileController('HomeFormHandlerCtrl', {$scope: $scope});
+        });
     });
 
     function setIconVisibility(isIconVisible, fieldName) {
@@ -29,37 +32,73 @@ describe('HomeFormHandlerCtrl', function () {
         }
     }
 
-    describe('isFormValid', function () {
+    describe('setup', function () {
 
-        it('must set into the $scope the isFormValid function from the Nemo', function () {
+        describe('isFormValid', function () {
 
-            var isFormValid;
+            it('must set into the $scope the isFormValid function from the Nemo', function () {
 
-            given:
-                nemoFormHandlerCtrl.isFormValid.returns(false);
+                var isFormValid;
 
-            when:
-                isFormValid = $scope.isFormValid();
+                given:
+                    $scope.setup(nemoFormHandlerCtrl);
+                    nemoFormHandlerCtrl.isFormValid.returns(false);
 
-            then:
-                expect(isFormValid).toBe(false);
+                when:
+                    isFormValid = $scope.isFormValid();
+
+                then:
+                    expect(isFormValid).toBe(false);
+            });
         });
-    });
 
-    describe('getFieldNgModelCtrl', function () {
+        describe('getFieldNgModelCtrl', function () {
 
-        it('must set into the $scope the getFieldNgModelCtrl function from the Nemo', function () {
+            it('must set into the $scope the getFieldNgModelCtrl function from the Nemo', function () {
 
-            var getFieldModelCtrl;
+                var getFieldModelCtrl;
 
-            given:
-                nemoFormHandlerCtrl.getFieldNgModelCtrl.returns('foo');
+                given:
+                    $scope.setup(nemoFormHandlerCtrl);
+                    nemoFormHandlerCtrl.getFieldNgModelCtrl.returns('foo');
 
-            when:
-                getFieldModelCtrl = $scope.getFieldNgModelCtrl();
+                when:
+                    getFieldModelCtrl = $scope.getFieldNgModelCtrl();
 
-            then:
-                expect(getFieldModelCtrl).toBe('foo');
+                then:
+                    expect(getFieldModelCtrl).toBe('foo');
+            });
+        });
+
+        describe('autofill', function () {
+
+            [
+                {
+                    it: 'autofill query param is set to true',
+                    queryParams: { autofill: 'true' }, autofillMethodCallCount: 1
+                }, {
+                    it: 'autofill query param is not set to true',
+                    queryParams: { autofill: 'false' }, autofillMethodCallCount: 0
+                }, {
+                    it: 'autofill query param is not present',
+                    queryParams: { }, autofillMethodCallCount: 0
+                }
+            ].forEach(function (scenario) {
+
+                it('must ' + (scenario.autofillMethodCallCount ? 'call': 'not call') +
+                ' the autofill method if ' + scenario.it, inject(function ($location) {
+
+                    given:
+                        sinon.stub($location, 'search').returns(scenario.queryParams);
+                        sinon.stub(homeFormHandlerCtrl, 'autofill');
+
+                    when:
+                        $scope.setup(nemoFormHandlerCtrl);
+
+                    then:
+                        expect(homeFormHandlerCtrl.autofill.callCount).toBe(scenario.autofillMethodCallCount);
+                }));
+            });
         });
     });
 
@@ -70,6 +109,7 @@ describe('HomeFormHandlerCtrl', function () {
             var fieldStyleClasses, fieldName = 'foo', fieldType = 'bla';
 
             given:
+                $scope.setup(nemoFormHandlerCtrl);
                 nemoFormHandlerCtrl.isFieldTouched.withArgs(fieldName).returns(true);
                 nemoFormHandlerCtrl.isFieldValid.withArgs(fieldName).returns(true);
 
@@ -103,6 +143,7 @@ describe('HomeFormHandlerCtrl', function () {
                 var messageType, fieldName = 'foo';
 
                 given:
+                    $scope.setup(nemoFormHandlerCtrl);
                     nemoFormHandlerCtrl.isFieldValid.withArgs(fieldName).returns(!scenario.isInvalid);
                     nemoFormHandlerCtrl.isFieldTouched.withArgs(fieldName).returns(scenario.isTouched);
                     nemoFormHandlerCtrl.hasHelp.withArgs(fieldName).returns(scenario.hasHelp);
@@ -157,9 +198,10 @@ describe('HomeFormHandlerCtrl', function () {
                     var messageVisible, fieldName = 'foo';
 
                     given:
+                        $scope.setup(nemoFormHandlerCtrl);
                         sinon.stub($scope, 'getMessageType').withArgs(fieldName).returns(scenario.messageType);
-                    nemoFormHandlerCtrl.isFieldActive.withArgs(fieldName).returns(scenario.isFieldActive);
-                    setIconVisibility(scenario.isIconVisible, fieldName);
+                        nemoFormHandlerCtrl.isFieldActive.withArgs(fieldName).returns(scenario.isFieldActive);
+                        setIconVisibility(scenario.isIconVisible, fieldName);
 
                     when:
                         messageVisible = $scope[scenarioGroup.method](fieldName);
@@ -188,8 +230,9 @@ describe('HomeFormHandlerCtrl', function () {
                 var isHoveredAndNotActive, fieldName = 'foo';
 
                 given:
+                    $scope.setup(nemoFormHandlerCtrl);
                     nemoFormHandlerCtrl.isFieldActive.withArgs(fieldName).returns(scenario.isFieldActive);
-                setIconVisibility(scenario.isIconVisible, fieldName);
+                    setIconVisibility(scenario.isIconVisible, fieldName);
 
                 when:
                     isHoveredAndNotActive = $scope.isHoveredAndNotActive(fieldName);
@@ -197,6 +240,49 @@ describe('HomeFormHandlerCtrl', function () {
                 then:
                     expect(isHoveredAndNotActive).toBe(scenario.expectedHoveredAndNotActive);
             });
+        });
+    });
+
+    describe('autofill', function () {
+
+        it('must not call the setFieldValue method of the nemo form handler ctrl ' +
+        'if fields are not available on the scope', function () {
+
+            given:
+                $scope.setup(nemoFormHandlerCtrl);
+                sinon.stub($scope, '$watch').withArgs('fields').yields();
+
+            when:
+                homeFormHandlerCtrl.autofill();
+
+            then:
+                expect(nemoFormHandlerCtrl.setFieldValue).not.toHaveBeenCalled();
+        });
+
+        it('must call the setFieldValue method of the nemo form handler ctrl ' +
+        'for each field and unregister the watcher if fields are available on the scope', function () {
+
+            var unregisterStubFn = sinon.stub();
+
+            given:
+                $scope.setup(nemoFormHandlerCtrl);
+                sinon.stub($scope, '$watch').withArgs('fields').returns(unregisterStubFn);
+
+            when:
+                homeFormHandlerCtrl.autofill();
+                $scope.$watch.yield({ foo: 'bar'});
+
+            then:
+                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('title', 'Mrs value');
+                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('firstName', 'Yoko');
+                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('lastName', 'Ono');
+                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('email', 'foo@bar.com');
+                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('confirmEmail', 'foo@bar.com');
+                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('username', 'test');
+                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('password', 'foofoofoo');
+                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('confirmPassword', 'foofoofoo');
+                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('terms', true);
+                expect(unregisterStubFn).toHaveBeenCalled();
         });
     });
 
@@ -213,6 +299,7 @@ describe('HomeFormHandlerCtrl', function () {
         ' neither setting any loading state', inject(function (Home, Loading) {
 
             given:
+                $scope.setup(nemoFormHandlerCtrl);
                 $scope.isFormValid.returns(false);
 
             when:
@@ -231,6 +318,7 @@ describe('HomeFormHandlerCtrl', function () {
         ' at any field', inject(function($q, Home, Loading) {
 
             given:
+                $scope.setup(nemoFormHandlerCtrl);
                 $scope.isFormValid.returns(true);
                 nemoFormHandlerCtrl.getFieldsValues.returns('foo');
                 Home.submitForm.returns($q.when({}));
@@ -252,6 +340,7 @@ describe('HomeFormHandlerCtrl', function () {
         ' whenever the form is valid', inject(function ($rootScope, $state, $q, Home, Loading, Audio, Stats) {
 
             given:
+                $scope.setup(nemoFormHandlerCtrl);
                 $scope.isFormValid.returns(true);
                 Home.submitForm.returns($q.when({}));
                 nemoFormHandlerCtrl.getValidationTracking.returns('foo');
@@ -275,6 +364,7 @@ describe('HomeFormHandlerCtrl', function () {
         ' from the backend perspective', inject(function ($rootScope, $q, Home, Loading, Stats) {
 
             given:
+                $scope.setup(nemoFormHandlerCtrl);
                 $scope.isFormValid.returns(true);
                 nemoFormHandlerCtrl.getValidationTracking.returns('bar');
                 Home.submitForm.returns($q.reject({
