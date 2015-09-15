@@ -3,6 +3,15 @@ angular.module('templates-main', ['home.html', 'index.html', 'stats.html', 'than
 angular.module("home.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home.html",
     "<div class=\"home-view\">\n" +
+    "    <header>\n" +
+    "        <div class=\"header-content clearfix\">\n" +
+    "            <h2 class=\"header-content-title\">Nemo showcase</h2>\n" +
+    "            <div class=\"header-content-logos\">\n" +
+    "                <img class=\"header-content-logos-logo\" src=\"../src/home/angularConnect.svg\" />\n" +
+    "                <img class=\"header-content-logos-logo\" src=\"../src/home/sky.svg\" />\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </header>\n" +
     "    <form nemo-form-handler home-form-handler class=\"container clearfix\" ng-submit=\"submit()\"\n" +
     "          ng-show=\"fields\" novalidate>\n" +
     "        <div class=\"clearfix\" ng-repeat=\"field in fields\"\n" +

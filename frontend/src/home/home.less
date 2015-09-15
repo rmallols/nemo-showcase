@@ -1,9 +1,35 @@
 .home-view {
+
+  header {
+    background-color: @blue-color;
+    color: @white-color;
+
+    .header-content {
+      .container;
+
+      .header-content-title {
+        margin: 10px auto;
+        float: left;
+        font-weight: normal;
+      }
+
+      .header-content-logos {
+        float: right;
+        padding-top: 11px;
+
+        .header-content-logos-logo {
+          height: 30px;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
   .field {
     border: 1px solid @blue-color;
     background-color: @white-color;
     padding: 10px;
-    font-size: 14px;
+    font-size: @font-size;
     -webkit-appearance:none;
     outline: none;
     border-radius: 0;
@@ -17,14 +43,23 @@
     }
   }
 
-  input, select {
+  input {
     .field;
+  }
+
+
+  select {
+    .field;
+    background-image: url('../src/common/assets/arrow.svg');
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: 40px 40px;
   }
 
   .container {
     width: 80%;
     min-width: @mobile-breakpoint;
-    margin: 30px auto;
+    margin: 0 auto;
     padding: 10px;
     box-sizing: border-box;
 
@@ -81,7 +116,7 @@
         margin-bottom: 0;
       }
       to {
-        opacity: 1;
+        opacity: .8;
         margin-bottom: 18px;
       }
     }
@@ -128,15 +163,16 @@
 
   ///
   .field-icon(@background-color) {
+    @icon-size: 28px;
     background-color: @background-color;
     border: 1px solid @white-color;
     position: absolute;
     top: 7px;
     right: 7px;
-    width: 24px;
-    height: 24px;
+    width: @icon-size;
+    height: @icon-size;
     color: white;
-    border-radius: 12px;
+    border-radius: @icon-size / 2;
     text-align: center;
     font-weight: bold;
     line-height: 1.50;
@@ -148,15 +184,6 @@
 
   .field-icon_help {
     .field-icon(@blue-color);
-  }
-
-  ////
-  .clearfix:after {
-      content: " "; /* Older browser do not support empty content */
-      visibility: hidden;
-      display: block;
-      height: 0;
-      clear: both;
   }
 
   ////
@@ -199,8 +226,10 @@
         width: 100%;
         height: 100%;
         text-align: center;
-        line-height: 2;
+        line-height: 1.8;
         cursor: pointer;
+        color: @white-color;
+        background-color: @blue-color;
       }
     }
 

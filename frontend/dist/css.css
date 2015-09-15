@@ -1,7 +1,19 @@
+html,
 body {
+  margin: 0;
+  padding: 0;
   background-color: #efefef;
+  font-size: 18px;
   font-family: Calibri, Helvetica;
   color: #00aaef;
+}
+.clearfix:after {
+  content: " ";
+  /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
 }
 .overlay {
   opacity: .8;
@@ -59,11 +71,41 @@ body {
     box-shadow: 0 -0.83em 0 -0.4em #00ff00, 0 -0.83em 0 -0.42em #00ff00, 0 -0.83em 0 -0.44em #00ff00, 0 -0.83em 0 -0.46em #00ff00, 0 -0.83em 0 -0.477em #00ff00;
   }
 }
+.home-view header {
+  background-color: #00aaef;
+  color: #ffffff;
+}
+.home-view header .header-content {
+  width: 80%;
+  min-width: 960px;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 960px) {
+  .home-view header .header-content {
+    width: 90%;
+    min-width: 550px;
+  }
+}
+.home-view header .header-content .header-content-title {
+  margin: 10px auto;
+  float: left;
+  font-weight: normal;
+}
+.home-view header .header-content .header-content-logos {
+  float: right;
+  padding-top: 11px;
+}
+.home-view header .header-content .header-content-logos .header-content-logos-logo {
+  height: 30px;
+  margin-left: 10px;
+}
 .home-view .field {
   border: 1px solid #00aaef;
   background-color: #ffffff;
   padding: 10px;
-  font-size: 14px;
+  font-size: 18px;
   -webkit-appearance: none;
   outline: none;
   border-radius: 0;
@@ -74,28 +116,44 @@ body {
 .home-view .field.ng-invalid.ng-touched {
   border-color: red;
 }
-.home-view input,
-.home-view select {
+.home-view input {
   border: 1px solid #00aaef;
   background-color: #ffffff;
   padding: 10px;
-  font-size: 14px;
+  font-size: 18px;
   -webkit-appearance: none;
   outline: none;
   border-radius: 0;
 }
-.home-view input.ng-valid.ng-touched,
+.home-view input.ng-valid.ng-touched {
+  border-color: green;
+}
+.home-view input.ng-invalid.ng-touched {
+  border-color: red;
+}
+.home-view select {
+  border: 1px solid #00aaef;
+  background-color: #ffffff;
+  padding: 10px;
+  font-size: 18px;
+  -webkit-appearance: none;
+  outline: none;
+  border-radius: 0;
+  background-image: url('../src/common/assets/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 40px 40px;
+}
 .home-view select.ng-valid.ng-touched {
   border-color: green;
 }
-.home-view input.ng-invalid.ng-touched,
 .home-view select.ng-invalid.ng-touched {
   border-color: red;
 }
 .home-view .container {
   width: 80%;
   min-width: 960px;
-  margin: 30px auto;
+  margin: 0 auto;
   padding: 10px;
   box-sizing: border-box;
 }
@@ -161,7 +219,7 @@ body {
     margin-bottom: 0;
   }
   to {
-    opacity: 1;
+    opacity: .8;
     margin-bottom: 18px;
   }
 }
@@ -200,7 +258,7 @@ body {
     margin-bottom: 0;
   }
   to {
-    opacity: 1;
+    opacity: .8;
     margin-bottom: 18px;
   }
 }
@@ -224,10 +282,10 @@ body {
   position: absolute;
   top: 7px;
   right: 7px;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   color: white;
-  border-radius: 12px;
+  border-radius: 14px;
   text-align: center;
   font-weight: bold;
   line-height: 1.50;
@@ -238,21 +296,13 @@ body {
   position: absolute;
   top: 7px;
   right: 7px;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   color: white;
-  border-radius: 12px;
+  border-radius: 14px;
   text-align: center;
   font-weight: bold;
   line-height: 1.50;
-}
-.home-view .clearfix:after {
-  content: " ";
-  /* Older browser do not support empty content */
-  visibility: hidden;
-  display: block;
-  height: 0;
-  clear: both;
 }
 .home-view .nemo-captcha-audio {
   display: none;
@@ -286,8 +336,10 @@ body {
   width: 100%;
   height: 100%;
   text-align: center;
-  line-height: 2;
+  line-height: 1.8;
   cursor: pointer;
+  color: #ffffff;
+  background-color: #00aaef;
 }
 .home-view .row_checkbox .field-icon {
   display: none;
@@ -300,7 +352,7 @@ body {
   border: 1px solid #00aaef;
   background-color: #ffffff;
   padding: 10px;
-  font-size: 14px;
+  font-size: 18px;
   -webkit-appearance: none;
   outline: none;
   border-radius: 0;

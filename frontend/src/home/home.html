@@ -1,4 +1,13 @@
 <div class="home-view">
+    <header>
+        <div class="header-content clearfix">
+            <h2 class="header-content-title">Nemo showcase</h2>
+            <div class="header-content-logos">
+                <img class="header-content-logos-logo" src="../src/home/angularConnect.svg" />
+                <img class="header-content-logos-logo" src="../src/home/sky.svg" />
+            </div>
+        </div>
+    </header>
     <form nemo-form-handler home-form-handler class="container clearfix" ng-submit="submit()"
           ng-show="fields" novalidate>
         <div class="clearfix" ng-repeat="field in fields"
