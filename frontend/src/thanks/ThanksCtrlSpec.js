@@ -5,7 +5,7 @@ describe('', function () {
     it('must redirect to the credits state after the specified delay' +
     'in order to let the robot to finish his dance', inject(function ($state, $timeout) {
 
-        var redirectTimeout = 16000;
+        var redirectTimeout = 17000;
 
         given:
             sinon.stub($state, 'go');
