@@ -497,12 +497,10 @@
     "type": "captchaMario",
     "properties": {
       "label": {
-        "code": "captcha.label",
-        "message": "are you a human?"
+        "message": "Are you a human?"
       },
       "help": {
-        "code": "captcha.help",
-        "message": "please prove you're an actual human"
+        "message": "Please prove you're an actual human"
       },
       "validation": [
         {
@@ -511,7 +509,7 @@
             {
               "id": "captcha.levelComplete",
               "value": true,
-              "message": "You're not a human, please stop cheating!"
+              "message": "Bastard!!! You're not a human, STOP cheating please!"
             }
           ]
         }

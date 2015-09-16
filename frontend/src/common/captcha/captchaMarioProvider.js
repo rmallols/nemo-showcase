@@ -6,9 +6,9 @@ app.provider('captchaMario', [function () {
                             'on-level-complete="onLevelComplete()">' +
                         '</captcha-mario>' +
                     '</div>',
-        linkFn: function (scope, element, attrs, fieldInterfaceFns) {
+        link: function (scope, element, attrs, fieldInterfaceFns) {
 
-            function manageStateChange(value) {
+            function manageStateChange (value) {
                 fieldInterfaceFns.setValue(value);
                 fieldInterfaceFns.setFilthy();
             }
