@@ -1,5 +1,5 @@
-app.controller('ThanksCtrl', ['$timeout', '$state', function ($timeout, $state) {
-    var redirectTimeout = 1600;
+app.controller('ThanksCtrl', ['$state', '$timeout', function ($state, $timeout) {
+    var redirectTimeout = 16000;
     $timeout(function () {
         $state.go('credits');
     }, redirectTimeout);
