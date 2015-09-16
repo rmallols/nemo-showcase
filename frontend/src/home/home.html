@@ -12,11 +12,11 @@
           ng-show="fields" novalidate>
         <div class="clearfix" ng-repeat="field in fields"
              data-ng-class="getFieldStyleClasses(field.name, field.type)">
-            <div class="column column_label">
+            <div class="col_label">
                 <span ng-if="field.name == 'captchaId'">Captcha Id</span>
                 {{field.properties.label.message}}:
             </div>
-            <div class="column column_field">
+            <div class="col_field">
                 <div class="input-wrapper">
                     <data-nemo-input model="field" has-focus="$index === 0"></data-nemo-input>
                     <data-nemo-icon type="{{getMessageType(field.name)}}" field-name="{{field.name}}"
@@ -28,6 +28,8 @@
                 </div>
             </div>
         </div>
-        <input type="submit" class="button_submit" value="Submit!"/>
+        <div class="col">
+            <input type="submit" class="button_submit" value="Submit!"/>
+        </div>
     </form>
 </div>

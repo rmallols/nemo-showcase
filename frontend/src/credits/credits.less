@@ -8,12 +8,19 @@
     text-align: center;
 
     .credits-text-block {
-      margin-top: 0;
+      margin: 0;
+    }
+
+    .credits-text-highlight {
+      .highlight-text;
+      display: block;
+      margin: 20px;
     }
   }
 
-  .highlight-text {
-    display: block;
-    margin: 20px;
+  .credits-image {
+    @media only screen and (max-width: @mobile-breakpoint) {
+      margin-top: 30px;
+    }
   }
 }

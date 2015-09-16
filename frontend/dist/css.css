@@ -98,13 +98,15 @@ h5 {
 }
 .col {
   float: left;
+  width: 100%;
   box-sizing: border-box;
-  padding: 0 5%;
+  padding: 10px 20px;
 }
 .col-1-2 {
   float: left;
+  width: 100%;
   box-sizing: border-box;
-  padding: 0 5%;
+  padding: 10px 20px;
   width: 50%;
 }
 @media only screen and (max-width: 960px) {
@@ -203,31 +205,35 @@ h5 {
     min-width: 550px;
   }
 }
-.home-view .column {
+.home-view .col_label {
   float: left;
+  width: 100%;
   box-sizing: border-box;
   padding: 10px 20px;
-}
-.home-view .column.column_label {
   width: 40%;
   text-align: right;
 }
 @media only screen and (max-width: 960px) {
-  .home-view .column.column_label {
-    text-align: left;
+  .home-view .col_label {
     width: 100%;
+    padding-bottom: 0;
+    text-align: left;
   }
 }
-.home-view .column.column_field {
+.home-view .col_field {
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 20px;
   width: 60%;
 }
 @media only screen and (max-width: 960px) {
-  .home-view .column.column_field {
+  .home-view .col_field {
     width: 100%;
   }
 }
 @media only screen and (max-width: 960px) {
-  .home-view .column {
+  .home-view {
     padding: 10px 10px 0px 10px;
   }
 }
@@ -410,7 +416,7 @@ h5 {
   background-color: #00aaef;
   color: #ffffff;
   padding: 12px;
-  margin: 5px 20px;
+  text-align: right;
 }
 .thanks-view {
   color: #ffffff;
@@ -437,9 +443,15 @@ h5 {
   text-align: center;
 }
 .credits-view .credits-text .credits-text-block {
-  margin-top: 0;
+  margin: 0;
 }
-.credits-view .highlight-text {
+.credits-view .credits-text .credits-text-highlight {
+  color: #00aaef;
   display: block;
   margin: 20px;
+}
+@media only screen and (max-width: 960px) {
+  .credits-view .credits-image {
+    margin-top: 30px;
+  }
 }
