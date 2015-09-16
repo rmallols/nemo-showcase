@@ -15,7 +15,7 @@ var server = http.createServer(app).listen(port, function () {
     console.log("listening on HTTP on port " + port);
 });
 
-app.get(['/', '/thanks', '/stats'], function (req, res) {
+app.get(['/', '/stats', '/thanks', '/credits'], function (req, res) {
     res.send(fs.readFileSync(__dirname + '/../frontend/src/index.html').toString());
 });
 
@@ -68,7 +68,11 @@ try {
         } else if(req.body.email === 'foo@bar.com') {
             status = 500;
             body = {
-                field: 'email',
+
+
+
+
+                eld: 'email',
                 code: 'taken',
                 message: 'Ey! that email has been already taken'
             };

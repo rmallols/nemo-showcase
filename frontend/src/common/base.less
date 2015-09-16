@@ -7,6 +7,31 @@ html, body {
   color: @blue-color;
 }
 
+img {
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+}
+
+.highlight-text {
+  color: @blue-color;
+}
+
+.centered {
+  position:absolute;
+  top:50%;
+  width: 100%;
+  text-align: center;
+  transform:translate3D(0%, -50%, 0);
+}
+
+.presentation {
+  color: @white-color;
+  background-color: @black-color;
+  height: 100%;
+}
 
 .clearfix:after {
   content: " "; /* Older browser do not support empty content */

@@ -1,4 +1,25 @@
-angular.module('templates-main', ['home.html', 'index.html', 'stats.html', 'thanks.html']);
+angular.module('templates-main', ['credits.html', 'home.html', 'index.html', 'stats.html', 'thanks.html']);
+
+angular.module("credits.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("credits.html",
+    "<div class=\"credits-view\">\n" +
+    "    <div class=\"col-1-2\">\n" +
+    "        <img src=\"src/credits/credits.jpg\" />\n" +
+    "    </div>\n" +
+    "    <div class=\"col-1-2 credits-text\">\n" +
+    "        <h1 class=\"credits-text-block\">\n" +
+    "            Nemo has been made possible thanks to\n" +
+    "            <label class=\"highlight-text\">The NOW TV Web Team</label>\n" +
+    "        </h1>\n" +
+    "        <br/>\n" +
+    "        <h2 class=\"credits-text-block\">\n" +
+    "            Special thanks to\n" +
+    "            <label class=\"highlight-text\">Kim Westley</label>\n" +
+    "            <label class=\"highlight-text\">Carlos Serrano</label>\n" +
+    "        </h2>\n" +
+    "    </div>\n" +
+    "</div>");
+}]);
 
 angular.module("home.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home.html",
@@ -71,7 +92,6 @@ angular.module("stats.html", []).run(["$templateCache", function($templateCache)
 angular.module("thanks.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("thanks.html",
     "<div class=\"thanks-view\">\n" +
-    "    <h1>Thanks!!! :)</h1>\n" +
-    "    <img src=\"src/thanks/thanks.jpg\"/>\n" +
+    "    <h1 class=\"thanks-view-text\">Thanks for watching! :)</h1>\n" +
     "</div>");
 }]);

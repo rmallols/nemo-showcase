@@ -31,6 +31,13 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
                 templateUrl: "stats.html",
                 controller: 'StatsCtrl',
                 pageTitle: 'Stats'
+            })
+
+            .state('credits', {
+                url: '/credits',
+                templateUrl: "credits.html",
+                controller: 'CreditsCtrl',
+                pageTitle: 'Credits'
             });
 
         $urlRouterProvider.otherwise("/");
