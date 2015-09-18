@@ -3,7 +3,7 @@ function ($scope, $http, $state, $location, Home, Audio, Stats, Loading) {
 
     var formHandlerCtrl,
         self = this,
-        iconVisibilityStates = {},
+        iconHoverStates = {},
         messageTypes = { valid: 'valid', error: 'error', help: 'help' };
 
     $scope.setup = function (nemoFormHandlerCtrl) {
@@ -39,11 +39,11 @@ function ($scope, $http, $state, $location, Home, Audio, Stats, Loading) {
     };
 
     $scope.onIconHover = function (fieldName) {
-        iconVisibilityStates[fieldName] = true;
+        iconHoverStates[fieldName] = true;
     };
 
     $scope.onIconBlur = function (fieldName) {
-        iconVisibilityStates[fieldName] = false;
+        iconHoverStates[fieldName] = false;
     };
 
     $scope.isErrorMessageVisible = function (fieldName) {
@@ -55,7 +55,7 @@ function ($scope, $http, $state, $location, Home, Audio, Stats, Loading) {
     };
 
     $scope.isHoveredAndNotActive = function (fieldName) {
-        return iconVisibilityStates[fieldName] && !formHandlerCtrl.isFieldActive(fieldName);
+        return iconHoverStates[fieldName] && !formHandlerCtrl.isFieldActive(fieldName);
     };
 
     $scope.submit = function () {
@@ -108,7 +108,8 @@ function ($scope, $http, $state, $location, Home, Audio, Stats, Loading) {
     function isMessageVisible(fieldName, messageType) {
         var currentMessageType = $scope.getMessageType(fieldName),
             isActive = formHandlerCtrl.isFieldActive(fieldName),
-            isIconHovered = iconVisibilityStates[fieldName];
-        return currentMessageType === messageType && (isActive || isIconHovered);
+            isActiveAndError = isActive && messageType === messageTypes.error,
+            isIconHovered = iconHoverStates[fieldName];
+        return currentMessageType === messageType && (isActiveAndError || isIconHovered);
     }
 }]);

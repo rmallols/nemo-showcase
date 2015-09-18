@@ -24,8 +24,8 @@ describe('HomeFormHandlerCtrl', function () {
         });
     });
 
-    function setIconVisibility(isIconVisible, fieldName) {
-        if(isIconVisible) {
+    function setIconHoverState(isIconHovered, fieldName) {
+        if(isIconHovered) {
             $scope.onIconHover(fieldName);
         } else {
             $scope.onIconBlur(fieldName);
@@ -135,7 +135,7 @@ describe('HomeFormHandlerCtrl', function () {
 
         ].forEach(function (scenario) {
 
-            fit('must return ' + scenario.expectedMessageType +
+            it('must return ' + scenario.expectedMessageType +
             ' when the field is ' + (scenario.isInvalid ? 'invalid' : 'valid') +
             ' and ' + (scenario.isTouched ? 'touched' : 'not touched') +
             ' and ' + (scenario.hasHelp ? 'has' : 'doesn\'t have') + ' help', function () {
@@ -163,26 +163,26 @@ describe('HomeFormHandlerCtrl', function () {
             {
                 method: 'isErrorMessageVisible',
                 scenarios: [
-                    {messageType: 'error',  isFieldActive: true,    isIconVisible: true,    expectedMessageVisible: true},
-                    {messageType: 'error',  isFieldActive: true,    isIconVisible: false,   expectedMessageVisible: true},
-                    {messageType: 'error',  isFieldActive: false,   isIconVisible: true,    expectedMessageVisible: true},
-                    {messageType: 'error',  isFieldActive: false,   isIconVisible: false,   expectedMessageVisible: false},
-                    {messageType: 'help',   isFieldActive: true,    isIconVisible: true,    expectedMessageVisible: false},
-                    {messageType: 'help',   isFieldActive: true,    isIconVisible: false,   expectedMessageVisible: false},
-                    {messageType: 'help',   isFieldActive: false,   isIconVisible: true,    expectedMessageVisible: false},
-                    {messageType: 'help',   isFieldActive: false,   isIconVisible: false,   expectedMessageVisible: false}
+                    {messageType: 'error',  isFieldActive: true,    isIconHovered: true,    expectedMessageVisible: true},
+                    {messageType: 'error',  isFieldActive: true,    isIconHovered: false,   expectedMessageVisible: true},
+                    {messageType: 'error',  isFieldActive: false,   isIconHovered: true,    expectedMessageVisible: true},
+                    {messageType: 'error',  isFieldActive: false,   isIconHovered: false,   expectedMessageVisible: false},
+                    {messageType: 'help',   isFieldActive: true,    isIconHovered: true,    expectedMessageVisible: false},
+                    {messageType: 'help',   isFieldActive: true,    isIconHovered: false,   expectedMessageVisible: false},
+                    {messageType: 'help',   isFieldActive: false,   isIconHovered: true,    expectedMessageVisible: false},
+                    {messageType: 'help',   isFieldActive: false,   isIconHovered: false,   expectedMessageVisible: false}
                 ]
             }, {
             method: 'isHelpMessageVisible',
             scenarios: [
-                {messageType: 'error',  isFieldActive: true,    isIconVisible: true,    expectedMessageVisible: false},
-                {messageType: 'error',  isFieldActive: true,    isIconVisible: false,   expectedMessageVisible: false},
-                {messageType: 'error',  isFieldActive: false,   isIconVisible: true,    expectedMessageVisible: false},
-                {messageType: 'error',  isFieldActive: false,   isIconVisible: false,   expectedMessageVisible: false},
-                {messageType: 'help',   isFieldActive: true,    isIconVisible: true,    expectedMessageVisible: true},
-                {messageType: 'help',   isFieldActive: true,    isIconVisible: false,   expectedMessageVisible: true},
-                {messageType: 'help',   isFieldActive: false,   isIconVisible: true,    expectedMessageVisible: true},
-                {messageType: 'help',   isFieldActive: false,   isIconVisible: false,   expectedMessageVisible: false}
+                {messageType: 'error',  isFieldActive: true,    isIconHovered: true,    expectedMessageVisible: false},
+                {messageType: 'error',  isFieldActive: true,    isIconHovered: false,   expectedMessageVisible: false},
+                {messageType: 'error',  isFieldActive: false,   isIconHovered: true,    expectedMessageVisible: false},
+                {messageType: 'error',  isFieldActive: false,   isIconHovered: false,   expectedMessageVisible: false},
+                {messageType: 'help',   isFieldActive: true,    isIconHovered: true,    expectedMessageVisible: true},
+                {messageType: 'help',   isFieldActive: true,    isIconHovered: false,   expectedMessageVisible: false},
+                {messageType: 'help',   isFieldActive: false,   isIconHovered: true,    expectedMessageVisible: true},
+                {messageType: 'help',   isFieldActive: false,   isIconHovered: false,   expectedMessageVisible: false}
             ]
         }
         ].forEach(function (scenarioGroup) {
@@ -193,7 +193,7 @@ describe('HomeFormHandlerCtrl', function () {
                 (scenario.expectedMessageVisible ? 'is' : 'isn\'t') + ' visible' +
                 ' when the message type is ' + scenario.messageType + ' and the field ' +
                 (scenario.isFieldActive ? 'is' : 'isn\'t') + ' active' +
-                ' and the icon ' + (scenario.isIconVisible ? 'is' : 'isn\'t') + ' visible', function () {
+                ' and the icon ' + (scenario.isIconHovered ? 'is' : 'isn\'t') + ' visible', function () {
 
                     var messageVisible, fieldName = 'foo';
 
@@ -201,7 +201,7 @@ describe('HomeFormHandlerCtrl', function () {
                         $scope.setup(nemoFormHandlerCtrl);
                         sinon.stub($scope, 'getMessageType').withArgs(fieldName).returns(scenario.messageType);
                         nemoFormHandlerCtrl.isFieldActive.withArgs(fieldName).returns(scenario.isFieldActive);
-                        setIconVisibility(scenario.isIconVisible, fieldName);
+                        setIconHoverState(scenario.isIconHovered, fieldName);
 
                     when:
                         messageVisible = $scope[scenarioGroup.method](fieldName);
@@ -216,15 +216,15 @@ describe('HomeFormHandlerCtrl', function () {
     describe('isHoveredAndNotActive', function () {
 
         [
-            {isIconVisible: true,   isFieldActive: true,    expectedHoveredAndNotActive: false},
-            {isIconVisible: true,   isFieldActive: false,   expectedHoveredAndNotActive: true},
-            {isIconVisible: false,  isFieldActive: true,    expectedHoveredAndNotActive: false},
-            {isIconVisible: false,  isFieldActive: false,   expectedHoveredAndNotActive: false}
+            {isIconHovered: true,   isFieldActive: true,    expectedHoveredAndNotActive: false},
+            {isIconHovered: true,   isFieldActive: false,   expectedHoveredAndNotActive: true},
+            {isIconHovered: false,  isFieldActive: true,    expectedHoveredAndNotActive: false},
+            {isIconHovered: false,  isFieldActive: false,   expectedHoveredAndNotActive: false}
 
         ].forEach(function (scenario) {
 
             it('must return ' + scenario.expectedHoveredAndNotActive + ' if the icon ' +
-            (scenario.isIconVisible ? 'is' : 'isn\'t') + ' visible and the field ' +
+            (scenario.isIconHovered ? 'is' : 'isn\'t') + ' visible and the field ' +
             (scenario.isFieldActive ? 'is' : 'isn\'t') + ' active', function () {
 
                 var isHoveredAndNotActive, fieldName = 'foo';
@@ -232,7 +232,7 @@ describe('HomeFormHandlerCtrl', function () {
                 given:
                     $scope.setup(nemoFormHandlerCtrl);
                     nemoFormHandlerCtrl.isFieldActive.withArgs(fieldName).returns(scenario.isFieldActive);
-                    setIconVisibility(scenario.isIconVisible, fieldName);
+                    setIconHoverState(scenario.isIconHovered, fieldName);
 
                 when:
                     isHoveredAndNotActive = $scope.isHoveredAndNotActive(fieldName);
