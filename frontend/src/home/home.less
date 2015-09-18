@@ -160,23 +160,53 @@
   }
 
   ///
+  .setIconBoxModel(@icon-size, @top-pos, @right-pos, @line-height) {
+    top: @top-pos;
+    right: @right-pos;
+    width: @icon-size;
+    height: @icon-size;
+    border-radius: @icon-size / 2;
+    line-height: @line-height;
+  }
+
   .field-icon(@background-color) {
-    @icon-size: 28px;
+    .setIconBoxModel(28px, 7px, 7px, 1.5);
     background-color: @background-color;
     border: 1px solid @white-color;
     position: absolute;
-    top: 7px;
-    right: 7px;
-    width: @icon-size;
-    height: @icon-size;
     color: white;
-    border-radius: @icon-size / 2;
     text-align: center;
     font-weight: bold;
-    line-height: 1.50;
+  }
+
+  .animate(@name) {
+    @keyframes @name {
+      0% {
+        .setIconBoxModel(28px, 7px, 7px, 1.5);
+      }
+      50% {
+        .setIconBoxModel(56px, -7px, 0px, 3.0);
+      }
+      100% {
+        .setIconBoxModel(28px, 7px, 7px, 1.5);
+      }
+    }
+
+    -webkit-animation-name: @name;
+    animation-name: @name;
+    animation-duration: .3s;
+    -webkit-animation-duration: .3s;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+  }
+
+  .field-icon_valid {
+    .animate(valid);
+    .field-icon(@green-color);
   }
 
   .field-icon_error {
+    .animate(error);
     .field-icon(@red-color);
   }
 
