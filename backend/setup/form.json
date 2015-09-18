@@ -497,9 +497,11 @@
     "type": "captchaMario",
     "properties": {
       "label": {
+        "code": "captcha.label",
         "message": "Are you a human?"
       },
       "help": {
+        "code": "captcha.help",
         "message": "Please prove you're an actual human"
       },
       "validation": [
