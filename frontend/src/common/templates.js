@@ -38,7 +38,7 @@ angular.module("credits.html", []).run(["$templateCache", function($templateCach
 angular.module("home.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home.html",
     "<div class=\"home-view\">\n" +
-    "    <form nemo-form-handler home-form-handler class=\"container clearfix\" ng-submit=\"submit()\"\n" +
+    "    <form nemo-form-handler home-form-handler class=\"clearfix\" ng-submit=\"submit()\"\n" +
     "          ng-show=\"fields\" novalidate>\n" +
     "        <div class=\"clearfix\" ng-repeat=\"field in fields\"\n" +
     "             data-ng-class=\"getFieldStyleClasses(field.name, field.type)\">\n" +
@@ -77,7 +77,7 @@ angular.module("index.html", []).run(["$templateCache", function($templateCache)
     "    </head>\n" +
     "    <body>\n" +
     "        <header></header>\n" +
-    "        <div ui-view></div>\n" +
+    "        <div id=\"view\" ui-view class=\"container\"></div>\n" +
     "        <loading></loading>\n" +
     "    </body>\n" +
     "</html>\n" +
@@ -91,7 +91,7 @@ angular.module("stats.html", []).run(["$templateCache", function($templateCache)
   $templateCache.put("stats.html",
     "<div class=\"stats-view\">\n" +
     "    <h1>Error stats</h1>\n" +
-    "    <linechart data=\"data\" options=\"options\" mode=\"\" width=\"900\" height=\"500\"></linechart>\n" +
+    "    <linechart data=\"data\" options=\"options\" mode=\"\" width=\"{{documentWidth}}\" height=\"600\"></linechart>\n" +
     "    <br/><br/>\n" +
     "    <a ui-sref=\"home\">Go back to the form</a>\n" +
     "</div>");

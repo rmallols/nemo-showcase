@@ -7,6 +7,9 @@ body {
   font-family: Calibri, Helvetica;
   color: #00aaef;
 }
+a {
+  color: #ffffff;
+}
 img {
   max-width: 100%;
 }
@@ -16,21 +19,6 @@ h3,
 h4,
 h5 {
   font-weight: normal;
-}
-.highlight-text {
-  color: #00aaef;
-}
-.centered {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  text-align: center;
-  transform: translate3D(0%, -50%, 0);
-}
-.presentation {
-  color: #ffffff;
-  background-color: #000000;
-  height: 100%;
 }
 .container {
   width: 80%;
@@ -44,6 +32,21 @@ h5 {
     width: 90%;
     min-width: 550px;
   }
+}
+.highlight-text {
+  color: #00aaef;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transform: translate3D(0%, -50%, 0);
+}
+.presentation {
+  color: #ffffff;
+  background-color: #000000;
 }
 .clearfix:after {
   content: " ";
@@ -493,14 +496,24 @@ h5 {
   padding: 12px;
   text-align: right;
 }
+svg path.domain {
+  stroke: #ffffff !important;
+}
+svg text {
+  fill: #ffffff !important;
+  font-size: 15px !important;
+}
+svg .x.axis text {
+  margin-top: 10px !important;
+}
 .thanks-view {
   color: #ffffff;
   background-color: #000000;
-  height: 100%;
 }
 .thanks-view-text {
   position: absolute;
   top: 50%;
+  left: 0;
   width: 100%;
   text-align: center;
   transform: translate3D(0%, -50%, 0);
@@ -509,7 +522,6 @@ h5 {
 .credits-view {
   color: #ffffff;
   background-color: #000000;
-  height: 100%;
   box-sizing: border-box;
   padding-top: 5%;
   font-size: 120%;

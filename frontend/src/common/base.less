@@ -7,30 +7,16 @@ html, body {
   color: @blue-color;
 }
 
+a {
+  color: @white-color;
+}
+
 img {
   max-width: 100%;
 }
 
 h1, h2, h3, h4, h5 {
   font-weight: normal;
-}
-
-.highlight-text {
-  color: @blue-color;
-}
-
-.centered {
-  position:absolute;
-  top:50%;
-  width: 100%;
-  text-align: center;
-  transform:translate3D(0%, -50%, 0);
-}
-
-.presentation {
-  color: @white-color;
-  background-color: @black-color;
-  height: 100%;
 }
 
 .container {
@@ -44,6 +30,24 @@ h1, h2, h3, h4, h5 {
     width: 90%;
     min-width: 550px;
   }
+}
+
+.highlight-text {
+  color: @blue-color;
+}
+
+.centered {
+  position:absolute;
+  top:50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transform:translate3D(0%, -50%, 0);
+}
+
+.presentation {
+  color: @white-color;
+  background-color: @black-color;
 }
 
 .clearfix:after {

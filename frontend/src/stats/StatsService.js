@@ -29,7 +29,7 @@ app.service('Stats', ['$http', function ($http) {
             margin: this.getMarginOptions(),
             tooltip: this.getTooltipOptions(),
             lineMode: "cardinal",
-            columnsHGap: 5,
+            columnsHGap: 20,
             series: normalisedSeries
         }
     };
@@ -55,10 +55,10 @@ app.service('Stats', ['$http', function ($http) {
 
     this.getMarginOptions = function () {
         return {
-            top: 25,
+            top: 30,
             right: 0,
-            bottom: 125,
-            left: 30
+            bottom: 170,
+            left: 35
         };
     };
 
