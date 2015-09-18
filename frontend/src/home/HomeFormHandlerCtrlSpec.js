@@ -126,8 +126,8 @@ describe('HomeFormHandlerCtrl', function () {
         [
             {isInvalid: false,  isTouched: false,   hasHelp: false, expectedMessageType: undefined},
             {isInvalid: false,  isTouched: false,   hasHelp: true,  expectedMessageType: 'help'},
-            {isInvalid: false,  isTouched: true,    hasHelp: false, expectedMessageType: undefined},
-            {isInvalid: false,  isTouched: true,    hasHelp: true,  expectedMessageType: 'help'},
+            {isInvalid: false,  isTouched: true,    hasHelp: false, expectedMessageType: 'valid'},
+            {isInvalid: false,  isTouched: true,    hasHelp: true,  expectedMessageType: 'valid'},
             {isInvalid: true,   isTouched: false,   hasHelp: false, expectedMessageType: undefined},
             {isInvalid: true,   isTouched: false,   hasHelp: true,  expectedMessageType: 'help'},
             {isInvalid: true,   isTouched: true,    hasHelp: false, expectedMessageType: 'error'},
@@ -135,7 +135,7 @@ describe('HomeFormHandlerCtrl', function () {
 
         ].forEach(function (scenario) {
 
-            it('must return ' + scenario.expectedMessageType +
+            fit('must return ' + scenario.expectedMessageType +
             ' when the field is ' + (scenario.isInvalid ? 'invalid' : 'valid') +
             ' and ' + (scenario.isTouched ? 'touched' : 'not touched') +
             ' and ' + (scenario.hasHelp ? 'has' : 'doesn\'t have') + ' help', function () {

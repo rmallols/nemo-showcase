@@ -4,7 +4,7 @@ function ($scope, $http, $state, $location, Home, Audio, Stats, Loading) {
     var formHandlerCtrl,
         self = this,
         iconVisibilityStates = {},
-        messageTypes = { error: 'error', help: 'help' };
+        messageTypes = { valid: 'valid', error: 'error', help: 'help' };
 
     $scope.setup = function (nemoFormHandlerCtrl) {
         formHandlerCtrl = nemoFormHandlerCtrl;
@@ -27,11 +27,11 @@ function ($scope, $http, $state, $location, Home, Audio, Stats, Loading) {
 
     $scope.getMessageType = function (fieldName) {
         var messageType,
-            isInvalid = !formHandlerCtrl.isFieldValid(fieldName),
+            isValid = formHandlerCtrl.isFieldValid(fieldName),
             isTouched = formHandlerCtrl.isFieldTouched(fieldName),
             hasHelp = formHandlerCtrl.hasHelp(fieldName);
-        if(isInvalid && isTouched) {
-            messageType = messageTypes.error;
+        if(isTouched) {
+            messageType = isValid ? messageTypes.valid : messageTypes.error;
         } else if(hasHelp) {
             messageType = messageTypes.help;
         }
