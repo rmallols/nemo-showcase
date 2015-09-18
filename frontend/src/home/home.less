@@ -6,6 +6,7 @@
     padding: 10px;
     font-size: @font-size;
     -webkit-appearance:none;
+    -moz-appearance: none;
     outline: none;
     border-radius: 0;
 
@@ -87,12 +88,9 @@
     margin-left: -@padding;
     box-sizing: content-box;
 
-    -webkit-animation-name: show;
     animation-name: show;
     animation-duration: .3s;
-    -webkit-animation-duration: .3s;
     animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
 
     &:after {
       top: 100%;
@@ -151,12 +149,9 @@
       }
     }
 
-    -webkit-animation-name: @name;
     animation-name: @name;
     animation-duration: .3s;
-    -webkit-animation-duration: .3s;
     animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
   }
 
   .field-icon_valid {
