@@ -1,29 +1,5 @@
 .home-view {
 
-  header {
-    background-color: @blue-color;
-    color: @white-color;
-
-    .header-content {
-      .container;
-
-      .header-content-title {
-        margin: 10px auto;
-        float: left;
-      }
-
-      .header-content-logos {
-        float: right;
-        padding-top: 11px;
-
-        .header-content-logos-logo {
-          height: 30px;
-          margin-left: 10px;
-        }
-      }
-    }
-  }
-
   .field {
     border: 1px solid @blue-color;
     background-color: @white-color;
@@ -55,19 +31,6 @@
     background-size: 40px 40px;
   }
 
-  .container {
-    width: 80%;
-    min-width: @mobile-breakpoint;
-    margin: 0 auto;
-    padding: 10px;
-    box-sizing: border-box;
-
-    @media only screen and (max-width: @mobile-breakpoint) {
-      width: 90%;
-      min-width: 550px;
-    }
-  }
-
   .col_label {
     .col;
     width: 40%;
@@ -89,10 +52,6 @@
     @media only screen and (max-width: @mobile-breakpoint) {
       width: 100%;
     }
-  }
-
-  @media only screen and (max-width: @mobile-breakpoint) {
-    padding: 10px 10px 0px 10px;
   }
 
   ///

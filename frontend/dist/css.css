@@ -32,6 +32,19 @@ h5 {
   background-color: #000000;
   height: 100%;
 }
+.container {
+  width: 80%;
+  min-width: 900px;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 900px) {
+  .container {
+    width: 90%;
+    min-width: 550px;
+  }
+}
 .clearfix:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -109,37 +122,37 @@ h5 {
   padding: 10px 20px;
   width: 50%;
 }
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 900px) {
   .col-1-2 {
     width: 100%;
   }
 }
-.home-view header {
+.header {
   background-color: #00aaef;
   color: #ffffff;
 }
-.home-view header .header-content {
+.header .header-content {
   width: 80%;
-  min-width: 960px;
+  min-width: 900px;
   margin: 0 auto;
   padding: 10px;
   box-sizing: border-box;
 }
-@media only screen and (max-width: 960px) {
-  .home-view header .header-content {
+@media only screen and (max-width: 900px) {
+  .header .header-content {
     width: 90%;
     min-width: 550px;
   }
 }
-.home-view header .header-content .header-content-title {
+.header .header-content .header-content-title {
   margin: 10px auto;
   float: left;
 }
-.home-view header .header-content .header-content-logos {
+.header .header-content .header-content-logos {
   float: right;
   padding-top: 11px;
 }
-.home-view header .header-content .header-content-logos .header-content-logos-logo {
+.header .header-content .header-content-logos .header-content-logos-logo {
   height: 30px;
   margin-left: 10px;
 }
@@ -192,19 +205,6 @@ h5 {
 .home-view select.ng-invalid.ng-touched {
   border-color: red;
 }
-.home-view .container {
-  width: 80%;
-  min-width: 960px;
-  margin: 0 auto;
-  padding: 10px;
-  box-sizing: border-box;
-}
-@media only screen and (max-width: 960px) {
-  .home-view .container {
-    width: 90%;
-    min-width: 550px;
-  }
-}
 .home-view .col_label {
   float: left;
   width: 100%;
@@ -214,7 +214,7 @@ h5 {
   padding-top: 20px;
   text-align: right;
 }
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 900px) {
   .home-view .col_label {
     width: 100%;
     padding-top: 10px;
@@ -229,14 +229,9 @@ h5 {
   padding: 10px 20px;
   width: 60%;
 }
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 900px) {
   .home-view .col_field {
     width: 100%;
-  }
-}
-@media only screen and (max-width: 960px) {
-  .home-view {
-    padding: 10px 10px 0px 10px;
   }
 }
 .home-view .input-wrapper {
@@ -530,7 +525,7 @@ h5 {
   display: block;
   margin: 20px;
 }
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 900px) {
   .credits-view .credits-image {
     margin-top: 30px;
   }

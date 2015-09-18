@@ -1,4 +1,17 @@
-angular.module('templates-main', ['credits.html', 'home.html', 'index.html', 'stats.html', 'thanks.html']);
+angular.module('templates-main', ['header.html', 'credits.html', 'home.html', 'index.html', 'stats.html', 'thanks.html']);
+
+angular.module("header.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("header.html",
+    "<div class=\"header\">\n" +
+    "    <div class=\"header-content clearfix\">\n" +
+    "        <h2 class=\"header-content-title\">Nemo showcase</h2>\n" +
+    "        <div class=\"header-content-logos\">\n" +
+    "            <img class=\"header-content-logos-logo\" src=\"../src/home/angularConnect.svg\" />\n" +
+    "            <img class=\"header-content-logos-logo\" src=\"../src/home/sky.svg\" />\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>");
+}]);
 
 angular.module("credits.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("credits.html",
@@ -25,15 +38,6 @@ angular.module("credits.html", []).run(["$templateCache", function($templateCach
 angular.module("home.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home.html",
     "<div class=\"home-view\">\n" +
-    "    <header>\n" +
-    "        <div class=\"header-content clearfix\">\n" +
-    "            <h2 class=\"header-content-title\">Nemo showcase</h2>\n" +
-    "            <div class=\"header-content-logos\">\n" +
-    "                <img class=\"header-content-logos-logo\" src=\"../src/home/angularConnect.svg\" />\n" +
-    "                <img class=\"header-content-logos-logo\" src=\"../src/home/sky.svg\" />\n" +
-    "            </div>\n" +
-    "        </div>\n" +
-    "    </header>\n" +
     "    <form nemo-form-handler home-form-handler class=\"container clearfix\" ng-submit=\"submit()\"\n" +
     "          ng-show=\"fields\" novalidate>\n" +
     "        <div class=\"clearfix\" ng-repeat=\"field in fields\"\n" +
@@ -72,6 +76,7 @@ angular.module("index.html", []).run(["$templateCache", function($templateCache)
     "        <script src=\"dist/js.min.js\" type=\"text/javascript\"></script>\n" +
     "    </head>\n" +
     "    <body>\n" +
+    "        <header></header>\n" +
     "        <div ui-view></div>\n" +
     "        <loading></loading>\n" +
     "    </body>\n" +
