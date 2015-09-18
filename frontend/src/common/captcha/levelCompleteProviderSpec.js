@@ -26,7 +26,7 @@ describe('levelComplete', function () {
                 };
 
             when:
-                isValid = levelCompleteProvider.validateFn(fieldValue, validationRule);
+                isValid = levelCompleteProvider.validate(fieldValue, validationRule);
 
             then:
                 expect(isValid).toBe(scenario.expectedValidity);
