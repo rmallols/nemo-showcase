@@ -44,7 +44,7 @@ angular.module("home.html", []).run(["$templateCache", function($templateCache) 
     "            </div>\n" +
     "            <div class=\"col_field\">\n" +
     "                <div class=\"input-wrapper\">\n" +
-    "                    <data-nemo-input model=\"field\" has-focus=\"$index === 0\"></data-nemo-input>\n" +
+    "                    <data-nemo-input model=\"field\"></data-nemo-input>\n" +
     "                    <data-nemo-icon type=\"{{getMessageType(field.name)}}\" field-name=\"{{field.name}}\"\n" +
     "                                    on-hover=\"onIconHover(fieldName)\" on-blur=\"onIconBlur(fieldName)\"></data-nemo-icon>\n" +
     "                    <data-nemo-validation-messages model=\"getFieldNgModelCtrl(field.name)\" class=\"field-error-wrapper\"\n" +
