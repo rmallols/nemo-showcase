@@ -15,25 +15,25 @@ describe('captchaMario', function () {
         it('must set the value of the field to levelComplete: ' + scenario.expectedLevelComplete + ',' +
         ' marking it as $dirty and $touched when the ' + scenario.method + ' is invoked', inject(function ($rootScope) {
 
-            var scope, fieldInterfaceFns;
+            var scope, fieldInterfaceCtrl;
 
             given:
                 scope = $rootScope.$new();
                 sinon.stub(scope, '$apply');
-                fieldInterfaceFns = {
+                fieldInterfaceCtrl = {
                     setValue: sinon.stub(),
                     setFilthy: sinon.stub()
                 };
 
             when:
-                captchaMarioProvider.link(scope, {}, {}, fieldInterfaceFns);
+                captchaMarioProvider.link(scope, {}, {}, fieldInterfaceCtrl);
 
             and:
                 scope[scenario.method]();
 
             then:
-                expect(fieldInterfaceFns.setValue).toHaveBeenCalledWith(scenario.expectedLevelComplete);
-                expect(fieldInterfaceFns.setFilthy).toHaveBeenCalled();
+                expect(fieldInterfaceCtrl.setValue).toHaveBeenCalledWith(scenario.expectedLevelComplete);
+                expect(fieldInterfaceCtrl.setFilthy).toHaveBeenCalled();
         }));
     });
 });

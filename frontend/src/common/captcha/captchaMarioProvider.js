@@ -6,11 +6,11 @@ app.provider('captchaMario', [function () {
                             'on-level-complete="onLevelComplete()">' +
                         '</captcha-mario>' +
                     '</div>',
-        link: function (scope, element, attrs, fieldInterfaceFns) {
+        link: function (scope, element, attrs, fieldInterfaceCtrl) {
 
             function manageStateChange (value) {
-                fieldInterfaceFns.setValue(value);
-                fieldInterfaceFns.setFilthy();
+                fieldInterfaceCtrl.setValue(value);
+                fieldInterfaceCtrl.setFilthy();
             }
 
             scope.onDead = function () {
