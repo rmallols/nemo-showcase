@@ -121,10 +121,6 @@
           ]
         }
       ],
-      "help": {
-        "code": "firstName.help",
-        "message": "Please enter your first name"
-      },
       "label": {
         "code": "firstName.label",
         "message": "First name"
@@ -185,10 +181,6 @@
           ]
         }
       ],
-      "help": {
-        "code": "lastName.help",
-        "message": "Please enter your last name"
-      },
       "label": {
         "code": "lastName.label",
         "message": "Last name"
@@ -242,10 +234,6 @@
           ]
         }
       ],
-      "help": {
-        "code": "email.help",
-        "message": "Tell us your email address"
-      },
       "label": {
         "code": "email.label",
         "message": "Email address"
@@ -446,10 +434,6 @@
           ]
         }
       ],
-      "help": {
-        "code": "password.help",
-        "message": "Must have 8-12 characters and cannot contain your username or the word 'password'"
-      },
       "label": {
         "code": "password.label",
         "message": "Password"
@@ -511,7 +495,7 @@
             {
               "id": "captcha.levelComplete",
               "value": true,
-              "message": "Bastard!!! You're not a human, STOP cheating please!"
+              "message": "Bastard! You're not a human, STOP cheating please"
             }
           ]
         }
