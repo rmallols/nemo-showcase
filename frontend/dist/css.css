@@ -155,7 +155,7 @@ h5 {
   margin-left: 10px;
 }
 .home-view .field {
-  border: 1px solid #00aaef;
+  border: none;
   background-color: #ffffff;
   padding: 10px;
   font-size: 18px;
@@ -165,13 +165,46 @@ h5 {
   border-radius: 0;
 }
 .home-view .field.ng-valid.ng-touched {
-  border-color: green;
+  outline-color: #00cc66;
+  outline-style: solid;
+  animation-name: border-valid;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes border-valid {
+  0% {
+    outline-width: 1px;
+  }
+  50% {
+    outline-width: 8px;
+  }
+  100% {
+    outline-width: 3px;
+  }
 }
 .home-view .field.ng-invalid.ng-touched {
-  border-color: red;
+  outline-color: #ff0000;
+  outline-style: solid;
+  animation-name: border-error;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes border-error {
+  0% {
+    outline-width: 1px;
+  }
+  50% {
+    outline-width: 8px;
+  }
+  100% {
+    outline-width: 3px;
+  }
+}
+.home-view .field:focus {
+  outline-offset: 0;
 }
 .home-view input {
-  border: 1px solid #00aaef;
+  border: none;
   background-color: #ffffff;
   padding: 10px;
   font-size: 18px;
@@ -181,13 +214,46 @@ h5 {
   border-radius: 0;
 }
 .home-view input.ng-valid.ng-touched {
-  border-color: green;
+  outline-color: #00cc66;
+  outline-style: solid;
+  animation-name: border-valid;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes border-valid {
+  0% {
+    outline-width: 1px;
+  }
+  50% {
+    outline-width: 8px;
+  }
+  100% {
+    outline-width: 3px;
+  }
 }
 .home-view input.ng-invalid.ng-touched {
-  border-color: red;
+  outline-color: #ff0000;
+  outline-style: solid;
+  animation-name: border-error;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes border-error {
+  0% {
+    outline-width: 1px;
+  }
+  50% {
+    outline-width: 8px;
+  }
+  100% {
+    outline-width: 3px;
+  }
+}
+.home-view input:focus {
+  outline-offset: 0;
 }
 .home-view select {
-  border: 1px solid #00aaef;
+  border: none;
   background-color: #ffffff;
   padding: 10px;
   font-size: 18px;
@@ -201,10 +267,43 @@ h5 {
   background-size: 40px 40px;
 }
 .home-view select.ng-valid.ng-touched {
-  border-color: green;
+  outline-color: #00cc66;
+  outline-style: solid;
+  animation-name: border-valid;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes border-valid {
+  0% {
+    outline-width: 1px;
+  }
+  50% {
+    outline-width: 8px;
+  }
+  100% {
+    outline-width: 3px;
+  }
 }
 .home-view select.ng-invalid.ng-touched {
-  border-color: red;
+  outline-color: #ff0000;
+  outline-style: solid;
+  animation-name: border-error;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes border-error {
+  0% {
+    outline-width: 1px;
+  }
+  50% {
+    outline-width: 8px;
+  }
+  100% {
+    outline-width: 3px;
+  }
+}
+.home-view select:focus {
+  outline-offset: 0;
 }
 .home-view .col_label {
   float: left;
@@ -250,11 +349,11 @@ h5 {
   padding: 10px;
   margin-left: -10px;
   box-sizing: content-box;
-  animation-name: show;
-  animation-duration: .3s;
+  animation-name: show-icon;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
-@keyframes show {
+@keyframes show-icon {
   from {
     opacity: 0;
     margin-bottom: 0;
@@ -286,11 +385,11 @@ h5 {
   padding: 10px;
   margin-left: -10px;
   box-sizing: content-box;
-  animation-name: show;
-  animation-duration: .3s;
+  animation-name: show-icon;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
-@keyframes show {
+@keyframes show-icon {
   from {
     opacity: 0;
     margin-bottom: 0;
@@ -315,30 +414,31 @@ h5 {
   margin-left: -15px;
 }
 .home-view .field-icon_valid {
-  animation-name: valid;
-  animation-duration: .3s;
+  animation-name: icon-valid;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
   top: 7px;
   right: 7px;
   width: 28px;
   height: 28px;
   border-radius: 14px;
-  line-height: 1.5;
+  font-size: 18px;
   background-color: #00cc66;
   border: 1px solid #ffffff;
   position: absolute;
   color: white;
   text-align: center;
   font-weight: bold;
+  line-height: 1.5;
 }
-@keyframes valid {
+@keyframes icon-valid {
   0% {
     top: 7px;
     right: 7px;
     width: 28px;
     height: 28px;
     border-radius: 14px;
-    line-height: 1.5;
+    font-size: 18px;
   }
   50% {
     top: -7px;
@@ -346,7 +446,7 @@ h5 {
     width: 56px;
     height: 56px;
     border-radius: 28px;
-    line-height: 3;
+    font-size: 36px;
   }
   100% {
     top: 7px;
@@ -354,34 +454,35 @@ h5 {
     width: 28px;
     height: 28px;
     border-radius: 14px;
-    line-height: 1.5;
+    font-size: 18px;
   }
 }
 .home-view .field-icon_error {
-  animation-name: error;
-  animation-duration: .3s;
+  animation-name: icon-error;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
   top: 7px;
   right: 7px;
   width: 28px;
   height: 28px;
   border-radius: 14px;
-  line-height: 1.5;
+  font-size: 18px;
   background-color: #ff0000;
   border: 1px solid #ffffff;
   position: absolute;
   color: white;
   text-align: center;
   font-weight: bold;
+  line-height: 1.5;
 }
-@keyframes error {
+@keyframes icon-error {
   0% {
     top: 7px;
     right: 7px;
     width: 28px;
     height: 28px;
     border-radius: 14px;
-    line-height: 1.5;
+    font-size: 18px;
   }
   50% {
     top: -7px;
@@ -389,7 +490,7 @@ h5 {
     width: 56px;
     height: 56px;
     border-radius: 28px;
-    line-height: 3;
+    font-size: 36px;
   }
   100% {
     top: 7px;
@@ -397,7 +498,7 @@ h5 {
     width: 28px;
     height: 28px;
     border-radius: 14px;
-    line-height: 1.5;
+    font-size: 18px;
   }
 }
 .home-view .field-icon_help {
@@ -406,13 +507,14 @@ h5 {
   width: 28px;
   height: 28px;
   border-radius: 14px;
-  line-height: 1.5;
+  font-size: 18px;
   background-color: #00aaef;
   border: 1px solid #ffffff;
   position: absolute;
   color: white;
   text-align: center;
   font-weight: bold;
+  line-height: 1.5;
 }
 .home-view .nemo-captcha-audio {
   display: none;
@@ -434,12 +536,45 @@ h5 {
 .home-view .row_checkbox [input-checkbox] {
   width: 30px;
   height: 30px;
-  border: 1px solid #00aaef;
+  border: none;
   background-color: #ffffff;
   cursor: pointer;
 }
+.home-view .row_checkbox [input-checkbox].ng-valid.ng-touched {
+  outline-color: #00cc66;
+  outline-style: solid;
+  animation-name: border-valid;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes border-valid {
+  0% {
+    outline-width: 1px;
+  }
+  50% {
+    outline-width: 8px;
+  }
+  100% {
+    outline-width: 3px;
+  }
+}
 .home-view .row_checkbox [input-checkbox].ng-invalid.ng-touched {
-  border-color: #ff0000;
+  outline-color: #ff0000;
+  outline-style: solid;
+  animation-name: border-error;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes border-error {
+  0% {
+    outline-width: 1px;
+  }
+  50% {
+    outline-width: 8px;
+  }
+  100% {
+    outline-width: 3px;
+  }
 }
 .home-view .row_checkbox [input-checkbox] label {
   display: block;
@@ -459,7 +594,7 @@ h5 {
   left: 25px;
 }
 .home-view [input-captcha-mario] {
-  border: 1px solid #00aaef;
+  border: none;
   background-color: #ffffff;
   padding: 10px;
   font-size: 18px;
@@ -471,10 +606,43 @@ h5 {
   height: 460px;
 }
 .home-view [input-captcha-mario].ng-valid.ng-touched {
-  border-color: green;
+  outline-color: #00cc66;
+  outline-style: solid;
+  animation-name: border-valid;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes border-valid {
+  0% {
+    outline-width: 1px;
+  }
+  50% {
+    outline-width: 8px;
+  }
+  100% {
+    outline-width: 3px;
+  }
 }
 .home-view [input-captcha-mario].ng-invalid.ng-touched {
-  border-color: red;
+  outline-color: #ff0000;
+  outline-style: solid;
+  animation-name: border-error;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes border-error {
+  0% {
+    outline-width: 1px;
+  }
+  50% {
+    outline-width: 8px;
+  }
+  100% {
+    outline-width: 3px;
+  }
+}
+.home-view [input-captcha-mario]:focus {
+  outline-offset: 0;
 }
 .home-view .button_submit {
   float: right;

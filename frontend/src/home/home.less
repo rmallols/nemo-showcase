@@ -1,7 +1,47 @@
 .home-view {
 
+  @animation-duration: .3s;
+
+  .animate-outline(@name, @color) {
+    @keyframes @name {
+      0% {
+        outline-width: 1px;
+      }
+      50% {
+        outline-width: 8px;
+      }
+      100% {
+        outline-width: 3px;
+      }
+    }
+
+    outline-color: @color;
+    outline-style: solid;
+    animation-name: @name;
+    animation-duration: @animation-duration;
+    animation-fill-mode: forwards;
+  }
+
+  .animate-icon(@name) {
+    @keyframes @name {
+      0% {
+        .setIconBoxModel(28px, 18px, 7px, 7px);
+      }
+      50% {
+        .setIconBoxModel(56px, 36px, -7px, 0px);
+      }
+      100% {
+        .setIconBoxModel(28px, 18px, 7px, 7px);
+      }
+    }
+
+    animation-name: @name;
+    animation-duration: @animation-duration;
+    animation-fill-mode: forwards;
+  }
+
   .field {
-    border: 1px solid @blue-color;
+    border: none;
     background-color: @white-color;
     padding: 10px;
     font-size: @font-size;
@@ -11,18 +51,21 @@
     border-radius: 0;
 
     &.ng-valid.ng-touched {
-      border-color: green;
+      .animate-outline(border-valid, @green-color);
     }
 
     &.ng-invalid.ng-touched {
-      border-color: red;
+      .animate-outline(border-error, @red-color);
+    }
+
+    &:focus {
+      outline-offset: 0;
     }
   }
 
   input {
     .field;
   }
-
 
   select {
     .field;
@@ -68,7 +111,7 @@
   ////
   .field-message-wrapper(@background-color) {
 
-    @keyframes show {
+    @keyframes show-icon {
       from {
         opacity: 0;
         margin-bottom: 0;
@@ -88,8 +131,8 @@
     margin-left: -@padding;
     box-sizing: content-box;
 
-    animation-name: show;
-    animation-duration: .3s;
+    animation-name: show-icon;
+    animation-duration: @animation-duration;
     animation-fill-mode: forwards;
 
     &:after {
@@ -117,50 +160,33 @@
   }
 
   ///
-  .setIconBoxModel(@icon-size, @top-pos, @right-pos, @line-height) {
+  .setIconBoxModel(@icon-size, @font-size, @top-pos, @right-pos) {
     top: @top-pos;
     right: @right-pos;
     width: @icon-size;
     height: @icon-size;
     border-radius: @icon-size / 2;
-    line-height: @line-height;
+    font-size: @font-size;
   }
 
   .field-icon(@background-color) {
-    .setIconBoxModel(28px, 7px, 7px, 1.5);
+    .setIconBoxModel(28px, 18px, 7px, 7px);
     background-color: @background-color;
     border: 1px solid @white-color;
     position: absolute;
     color: white;
     text-align: center;
     font-weight: bold;
-  }
-
-  .animate(@name) {
-    @keyframes @name {
-      0% {
-        .setIconBoxModel(28px, 7px, 7px, 1.5);
-      }
-      50% {
-        .setIconBoxModel(56px, -7px, 0px, 3.0);
-      }
-      100% {
-        .setIconBoxModel(28px, 7px, 7px, 1.5);
-      }
-    }
-
-    animation-name: @name;
-    animation-duration: .3s;
-    animation-fill-mode: forwards;
+    line-height: 1.5;
   }
 
   .field-icon_valid {
-    .animate(valid);
+    .animate-icon(icon-valid);
     .field-icon(@green-color);
   }
 
   .field-icon_error {
-    .animate(error);
+    .animate-icon(icon-error);
     .field-icon(@red-color);
   }
 
@@ -195,12 +221,16 @@
     [input-checkbox] {
       width: 30px;
       height: 30px;
-      border: 1px solid @blue-color;
+      border: none;
       background-color: @white-color;
       cursor: pointer;
 
+      &.ng-valid.ng-touched {
+        .animate-outline(border-valid, @green-color);
+      }
+
       &.ng-invalid.ng-touched {
-        border-color: @red-color;
+        .animate-outline(border-error, @red-color);
       }
 
       label {
