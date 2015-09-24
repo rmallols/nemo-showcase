@@ -29,7 +29,7 @@ app.service('Stats', ['$http', function ($http) {
             margin: this.getMarginOptions(),
             tooltip: this.getTooltipOptions(),
             lineMode: "cardinal",
-            columnsHGap: 20,
+            columnsHGap: 30,
             series: normalisedSeries
         }
     };
@@ -142,7 +142,7 @@ app.service('Stats', ['$http', function ($http) {
     };
 
     this.getColor = function (index) {
-        var colorPalette = ['ff66cc', '66ccff', 'dddd00', '33cc33', 'ff9900', 'cc66ff', 'ff0000'];
+        var colorPalette = ['2ecc71', '3498db', 'dddd00', '9b59b6', '95a5a6', 'e67e22', 'e74c3c', '966842', 'ff9999'];
         return (index < colorPalette.length) ? '#' + colorPalette[index] : this.getRandomColor();
     };
 
