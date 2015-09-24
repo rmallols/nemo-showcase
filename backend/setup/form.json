@@ -91,6 +91,16 @@
           ]
         },
         {
+          "type": "minlength",
+          "rules": [
+            {
+              "value": 3,
+              "id": "firstName.size.toosmall",
+              "message": "Your first name needs to be at least 3 characters long"
+            }
+          ]
+        },
+        {
           "type": "maxlength",
           "rules": [
             {
@@ -241,129 +251,6 @@
     }
   },
   {
-    "name": "confirmEmail",
-    "value": "",
-    "type": "email",
-    "properties": {
-      "validation": [
-        {
-          "type": "required",
-          "rules": [
-            {
-              "value": true,
-              "id": "confirmEmail.blank",
-              "message": "Please type your email address again"
-            }
-          ]
-        },
-        {
-          "type": "mustmatchcaseinsensitive",
-          "rules": [
-            {
-              "value": "email",
-              "id": "confirmEmail.must.match.email",
-              "message": "Sorry, your email addresses do not match. Please try again"
-            }
-          ]
-        }
-      ],
-      "help": {
-        "code": "confirmEmail.help",
-        "message": "Please type your email address again"
-      },
-      "label": {
-        "code": "confirmEmail.label",
-        "message": "Confirm email address"
-      }
-    }
-  },
-  {
-    "name": "username",
-    "type": "text",
-    "properties": {
-      "validation": [
-        {
-          "type": "required",
-          "rules": [
-            {
-              "value": true,
-              "id": "username.blank",
-              "message": "Please choose a username"
-            }
-          ]
-        },
-        {
-          "type": "minlength",
-          "rules": [
-            {
-              "value": 3,
-              "id": "username.size.toosmall",
-              "message": "Your username can only have 3 - 12 characters"
-            }
-          ]
-        },
-        {
-          "type": "maxlength",
-          "rules": [
-            {
-              "value": 12,
-              "id": "username.size.toobig",
-              "message": "Your username can only have 3 - 12 characters"
-            }
-          ]
-        },
-        {
-          "type": "pattern",
-          "rules": [
-            {
-              "value": "^[a-zA-Z]+",
-              "id": "username.must.start.with.letter",
-              "message": "Your username can only start with a letter"
-            },
-            {
-              "value": "^[a-zA-Z0-9\\-\\._]+[a-zA-Z0-9]$",
-              "id": "username.invalid.characters",
-              "message": "Your username can only contain letters and numbers"
-            }
-          ]
-        },
-        {
-          "type": "notpattern",
-          "rules": [
-            {
-              "value": "[\\-\\.\\_][\\-\\.\\_]",
-              "id": "username.invalid.characters",
-              "message": "Your username can only contain letters and numbers"
-            }
-          ]
-        },
-        {
-          "type": "usernameserver",
-          "rules": [
-            {
-              "value": null,
-              "id": "username.taken",
-              "message": "Sorry, someone already has that username"
-            },
-            {
-              "value": null,
-              "id": "username.contains.profanity",
-              "message": "This is not a valid username"
-            }
-          ]
-        }
-      ],
-      "help": {
-        "code": "username.help",
-        "message": "Your username must have 3-12 characters and must only contain letters and numbers"
-      },
-      "label": {
-        "code": "username.label",
-        "message": "Username"
-      }
-    }
-  },
-  {
     "name": "password",
     "type": "password",
     "properties": {
@@ -402,7 +289,7 @@
           "type": "mustnotcontain",
           "rules": [
             {
-              "value": "username",
+              "value": "firstName",
               "id": "password.contains.username",
               "message": "Please enter a valid password, it can't contain your username or the word 'password'"
             }
@@ -474,32 +361,6 @@
         "code": "confirmPassword.label",
         "message": "Confirm password"
       }
-    }
-  },
-  {
-    "name": "captcha",
-    "type": "captchaMario",
-    "properties": {
-      "label": {
-        "code": "captcha.label",
-        "message": "Are you a human?"
-      },
-      "help": {
-        "code": "captcha.help",
-        "message": "Please prove you're an actual human"
-      },
-      "validation": [
-        {
-          "type": "levelComplete",
-          "rules": [
-            {
-              "id": "captcha.levelComplete",
-              "value": true,
-              "message": "Bastard! You're not a human, STOP cheating please"
-            }
-          ]
-        }
-      ]
     }
   },
   {

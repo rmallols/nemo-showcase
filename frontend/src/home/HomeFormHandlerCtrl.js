@@ -75,8 +75,6 @@ function ($scope, $http, $state, $location, Home, Audio, Stats, Loading) {
                 formHandlerCtrl.setFieldValue('firstName', 'Yoko');
                 formHandlerCtrl.setFieldValue('lastName', 'Ono');
                 formHandlerCtrl.setFieldValue('email', 'foo@bar.com');
-                formHandlerCtrl.setFieldValue('confirmEmail', 'foo@bar.com');
-                formHandlerCtrl.setFieldValue('username', 'test');
                 formHandlerCtrl.setFieldValue('password', 'foofoofoo');
                 formHandlerCtrl.setFieldValue('confirmPassword', 'foofoofoo');
                 formHandlerCtrl.setFieldValue('terms', true);
