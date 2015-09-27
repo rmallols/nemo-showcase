@@ -354,6 +354,32 @@
     }
   },
   {
+    "name": "captcha",
+    "type": "captchaMario",
+    "properties": {
+      "label": {
+        "code": "captcha.label",
+        "message": "Are you a human?"
+      },
+      "help": {
+        "code": "captcha.help",
+        "message": "Please prove you're an actual human"
+      },
+      "validation": [
+        {
+          "type": "levelComplete",
+          "rules": [
+            {
+              "id": "captcha.levelComplete",
+              "value": true,
+              "message": "Bastard! You're not an actual human, STOP cheating please!"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "name": "terms",
     "type": "checkbox",
     "value": false,
