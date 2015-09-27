@@ -50,7 +50,7 @@
           ]
         },
         {
-          "type": "inlist",
+          "type": "inList",
           "rules": [
             {
               "value": [
@@ -79,6 +79,10 @@
     "name": "firstName",
     "type": "text",
     "properties": {
+      "businessRules": [
+        "noAutocomplete",
+        "noPaste"
+      ],
       "validation": [
         {
           "type": "required",
@@ -91,7 +95,7 @@
           ]
         },
         {
-          "type": "minlength",
+          "type": "minLength",
           "rules": [
             {
               "value": 3,
@@ -101,7 +105,7 @@
           ]
         },
         {
-          "type": "maxlength",
+          "type": "maxLength",
           "rules": [
             {
               "value": 10,
@@ -134,11 +138,7 @@
       "label": {
         "code": "firstName.label",
         "message": "First name"
-      },
-      "businessrules": [
-        "noAutocomplete",
-        "noPaste"
-      ]
+      }
     }
   },
   {
@@ -148,7 +148,7 @@
     "properties": {
       "validation": [
         {
-          "type": "maxlength",
+          "type": "maxLength",
           "rules": [
             {
               "value": 10,
@@ -178,7 +178,7 @@
           ]
         },
         {
-          "type": "dependentrequired",
+          "type": "dependentRequired",
           "rules": [
             {
               "value" : "firstName",
@@ -224,22 +224,12 @@
           ]
         },
         {
-          "type": "notpattern",
+          "type": "notPattern",
           "rules": [
             {
               "value": "(\\@sky\\.co\\.uk)|(\\@sky\\.com)",
               "id": "email.is.skycom",
               "message": "You cannot choose a Sky email address"
-            }
-          ]
-        },
-        {
-          "type": "emailserver",
-          "rules": [
-            {
-              "value": null,
-              "id": "email.taken",
-              "message": "You've already created a Sky iD with this email address"
             }
           ]
         }
@@ -266,7 +256,7 @@
           ]
         },
         {
-          "type": "minlength",
+          "type": "minLength",
           "rules": [
             {
               "value": 8,
@@ -276,7 +266,7 @@
           ]
         },
         {
-          "type": "maxlength",
+          "type": "maxLength",
           "rules": [
             {
               "value": 12,
@@ -286,7 +276,7 @@
           ]
         },
         {
-          "type": "mustnotcontain",
+          "type": "mustNotContain",
           "rules": [
             {
               "value": "firstName",
@@ -311,7 +301,7 @@
           ]
         },
         {
-          "type": "notpattern",
+          "type": "notPattern",
           "rules": [
             {
               "value": "(password)",
@@ -343,7 +333,7 @@
           ]
         },
         {
-          "type": "mustmatch",
+          "type": "mustMatch",
           "rules": [
             {
               "value": "password",
@@ -370,7 +360,7 @@
     "properties": {
       "validation": [
         {
-          "type": "mustbeequal",
+          "type": "mustBeEqual",
           "rules": [
             {
               "value": true,

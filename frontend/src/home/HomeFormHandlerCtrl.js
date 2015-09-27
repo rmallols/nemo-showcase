@@ -83,6 +83,10 @@ function ($scope, $http, $state, $location, Home, Audio, Stats, Loading) {
         });
     };
 
+    function capitalise(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     function submitForm() {
         Loading.startLoading();
         Home.submitForm(formHandlerCtrl.getFieldsValues())
@@ -98,7 +102,7 @@ function ($scope, $http, $state, $location, Home, Audio, Stats, Loading) {
 
     function onSubmitFormError(error) {
         Loading.stopLoading();
-        formHandlerCtrl.forceServerFieldInvalid(error.data.field, error.data.message, '.' + error.data.code);
+        formHandlerCtrl.forceServerFieldInvalid(error.data.field, error.data.message, capitalise(error.data.code));
         formHandlerCtrl.giveFirstInvalidFieldFocus();
         Stats.submitValidationTracking(formHandlerCtrl.getValidationTracking());
     }

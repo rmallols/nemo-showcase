@@ -380,7 +380,7 @@ describe('HomeFormHandlerCtrl', function () {
 
             then:
                 expect(Loading.stopLoading).toHaveBeenCalled();
-                expect(nemoFormHandlerCtrl.forceServerFieldInvalid).toHaveBeenCalledWith('fooField', 'bla message', '.testCode');
+                expect(nemoFormHandlerCtrl.forceServerFieldInvalid).toHaveBeenCalledWith('fooField', 'bla message', 'TestCode');
                 expect(nemoFormHandlerCtrl.giveFirstInvalidFieldFocus).toHaveBeenCalled();
                 expect(Stats.submitValidationTracking).toHaveBeenCalledWith('bar');
         }));
