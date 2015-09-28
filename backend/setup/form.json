@@ -314,6 +314,10 @@
       "label": {
         "code": "password.label",
         "message": "Password"
+      },
+      "placeholder": {
+        "code": "password.placeholder",
+        "message": "Please do not type 'superman' here :)"
       }
     }
   },
