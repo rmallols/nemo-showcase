@@ -13,7 +13,7 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoIn
         $stateProvider
 
             .state('home', {
-                url: '/',
+                url: '/?autofill',
                 templateUrl: "home.html",
                 controller: 'HomeCtrl',
                 pageTitle: 'Home'

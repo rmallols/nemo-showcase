@@ -93,7 +93,7 @@ angular.module("stats.html", []).run(["$templateCache", function($templateCache)
     "    <h1>Error stats</h1>\n" +
     "    <linechart data=\"data\" options=\"options\" mode=\"\" width=\"{{documentWidth}}\" height=\"600\"></linechart>\n" +
     "    <br/><br/>\n" +
-    "    <a ui-sref=\"home\">Go back to the form</a>\n" +
+    "    <a ui-sref=\"home({autofill:true})\">Go back to the form</a>\n" +
     "</div>");
 }]);
 
