@@ -692,8 +692,38 @@ svg .x.axis text {
   display: block;
   margin: 20px;
 }
+.credits-view .credits-image {
+  position: relative;
+}
 @media only screen and (max-width: 900px) {
-  .credits-view .credits-image {
+  .credits-view .credits-image .credits-image-img {
     margin-top: 30px;
   }
+}
+.credits-view .credits-image .credits-image-hiring-bubble {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  margin-top: -50px;
+  margin-left: -50px;
+  border-radius: 150px;
+  font-size: 30px;
+  color: #ffffff;
+  background-color: #00aaef;
+  text-align: center;
+  line-height: 1.5;
+  box-sizing: border-box;
+  padding-top: 30px;
+  transform: rotate(-30deg);
+}
+.credits-view .credits-image .credits-image-hiring-contact {
+  display: block;
+  margin-left: 100px;
+  padding: 20px;
+}
+.credits-view .credits-image .credits-image-hiring-contact .credits-image-hiring-contact-link {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #00aaef;
 }

@@ -19,8 +19,44 @@
   }
 
   .credits-image {
-    @media only screen and (max-width: @mobile-breakpoint) {
-      margin-top: 30px;
+    @credits-image-hiring-width: 150px;
+    @credits-image-hiring-offset: (@credits-image-hiring-width / 3);
+    position: relative;
+
+    .credits-image-img {
+      @media only screen and (max-width: @mobile-breakpoint) {
+        margin-top: 30px;
+      }
+    }
+
+    .credits-image-hiring-bubble {
+      position: absolute;
+      width: @credits-image-hiring-width;
+      height: @credits-image-hiring-width;
+      margin-top: -@credits-image-hiring-offset;
+      margin-left: -@credits-image-hiring-offset;
+      border-radius: @credits-image-hiring-width;
+      font-size: 30px;
+      color: @white-color;
+      background-color: @blue-color;
+      text-align: center;
+      line-height: 1.5;
+      box-sizing: border-box;
+      padding-top: 30px;
+      transform: rotate(-30deg);
+    }
+
+    .credits-image-hiring-contact {
+      display: block;
+      margin-left: @credits-image-hiring-width - @credits-image-hiring-offset;
+      padding: 20px;
+
+      .credits-image-hiring-contact-link {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 24px;
+        color: @blue-color;
+      }
     }
   }
 }
