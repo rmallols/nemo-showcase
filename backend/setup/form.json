@@ -251,7 +251,7 @@
             {
               "value": true,
               "id": "password.blank",
-              "message": "Please enter a valid password, it can't contain your username or the word 'password'"
+              "message": "Please enter a valid password, it can't contain your first name or the word 'password'"
             }
           ]
         },
@@ -281,7 +281,7 @@
             {
               "value": "firstName",
               "id": "password.contains.username",
-              "message": "Please enter a valid password, it can't contain your username or the word 'password'"
+              "message": "Please enter a valid password, it can't contain your first name or the word 'password'"
             }
           ]
         },
@@ -306,7 +306,7 @@
             {
               "value": "(password)",
               "id": "password.invalid",
-              "message": "Please enter a valid password, it can't contain your username or the word 'password'"
+              "message": "Please enter a valid password, it can't contain your first name or the word 'password'"
             }
           ]
         }
