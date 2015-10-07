@@ -263,9 +263,9 @@
           "type": "minLength",
           "rules": [
             {
-              "value": 8,
+              "value": 6,
               "id": "password.size.toosmall",
-              "message": "Your password can only have 8 - 12 characters"
+              "message": "Your password can only have 6 - 12 characters"
             }
           ]
         },
@@ -275,7 +275,7 @@
             {
               "value": 12,
               "id": "password.size.toobig",
-              "message": "Your password can only have 8 - 12 characters"
+              "message": "Your password can only have 6 - 12 characters"
             }
           ]
         },
