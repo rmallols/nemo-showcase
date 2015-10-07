@@ -276,9 +276,8 @@ describe('HomeFormHandlerCtrl', function () {
                 expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('title', 'Mrs value');
                 expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('firstName', 'Yoko');
                 expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('lastName', 'Ono');
-                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('email', 'foo@bar.com');
+                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('email', 'marty@mcfly.com');
                 expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('password', 'foofoofoo');
-                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('confirmPassword', 'foofoofoo');
                 expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('terms', true);
                 expect(unregisterStubFn).toHaveBeenCalled();
         });

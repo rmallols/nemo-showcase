@@ -183,7 +183,7 @@
             {
               "value" : "firstName",
               "when" : [
-                "Yoko"
+                "Marty"
               ],
               "id" : "lastName.pleaseProvide",
               "message" : "Mmm...That's interesting, please tell us about your last name..."
@@ -237,6 +237,10 @@
       "label": {
         "code": "email.label",
         "message": "Email address"
+      },
+      "help": {
+        "code": "email.help",
+        "message": "Any valid email address wil be fine, as far as no one else registered it before"
       }
     }
   },
@@ -318,42 +322,6 @@
       "placeholder": {
         "code": "password.placeholder",
         "message": "Please do not type 'superman' here :)"
-      }
-    }
-  },
-  {
-    "name": "confirmPassword",
-    "type": "password",
-    "properties": {
-      "validation": [
-        {
-          "type": "required",
-          "rules": [
-            {
-              "value": true,
-              "id": "confirmPassword.blank",
-              "message": "Please type your password again"
-            }
-          ]
-        },
-        {
-          "type": "mustMatch",
-          "rules": [
-            {
-              "value": "password",
-              "id": "confirmPassword.must.match.password",
-              "message": "The passwords you entered didn't match. Please try again"
-            }
-          ]
-        }
-      ],
-      "help": {
-        "code": "confirmPassword.help",
-        "message": "Please type your password again"
-      },
-      "label": {
-        "code": "confirmPassword.label",
-        "message": "Confirm password"
       }
     }
   },

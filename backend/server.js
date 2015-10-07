@@ -51,7 +51,7 @@ app.post('/rest/validation/track', function (req, res) {
 app.post('/rest/submitForm', function (req, res) {
     if(req.body.username === 'test') {
         manageFieldErrorResponse(res, 'username', 'taken', 'Ey! that username has been already taken');
-    } else if(req.body.email === 'foo@bar.com') {
+    } else if(req.body.email === 'marty@mcfly.com') {
         manageFieldErrorResponse(res, 'email', 'taken', 'Ey! that email has been already taken');
     } else {
         manageSuccessErrorResponse(res);
