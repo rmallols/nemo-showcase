@@ -284,7 +284,7 @@
           "rules": [
             {
               "value": "firstName",
-              "id": "password.contains.username",
+              "id": "password.contains.firstName",
               "message": "Please enter a valid password, it can't contain your first name or the word 'password'"
             }
           ]
@@ -371,7 +371,7 @@
       "help": {},
       "label": {
         "code": "terms.label",
-        "message": "I have read and agree to the t&c"
+        "message": "I agree to the t&c"
       }
     }
   }
