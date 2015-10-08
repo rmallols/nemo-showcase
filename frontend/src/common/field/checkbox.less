@@ -1,0 +1,39 @@
+.row_checkbox {
+
+  [input-checkbox] {
+    width: 30px;
+    height: 30px;
+    margin-top: 6px;
+    border: none;
+    background-color: @white-color;
+    cursor: pointer;
+
+    &.ng-valid.ng-touched {
+      .animate-outline(border-valid, @green-color);
+    }
+
+    &.ng-invalid.ng-touched {
+      .animate-outline(border-error, @red-color);
+    }
+
+    label {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 1.8;
+      cursor: pointer;
+      color: @white-color;
+      background-color: @blue-color;
+    }
+  }
+
+  .field-icon {
+    display: none;
+  }
+
+  .field-error-wrapper:after,
+  .field-help-wrapper:after {
+    left:25px;
+  }
+}

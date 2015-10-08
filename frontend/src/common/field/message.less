@@ -1,0 +1,49 @@
+.field-message-wrapper(@background-color) {
+
+  @keyframes show-icon {
+    from {
+      opacity: 0;
+      margin-bottom: 0;
+    }
+    to {
+      opacity: .9;
+      margin-bottom: 18px;
+    }
+  }
+
+  @padding: 10px;
+  background-color: @background-color;
+  color: white;
+  position: absolute;
+  bottom: 100%;
+  padding: @padding;
+  margin-left: -@padding;
+  box-sizing: content-box;
+
+  animation-name: show-icon;
+  animation-duration: @animation-duration;
+  animation-fill-mode: forwards;
+
+  &:after {
+    top: 100%;
+    right: 15px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: transparent;
+    border-top-color: @background-color;
+    border-width: 15px;
+    margin-left: -15px;
+  }
+}
+
+.field-error-wrapper {
+  .field-message-wrapper(@red-color);
+}
+
+.field-help-wrapper {
+  .field-message-wrapper (@blue-color);
+}

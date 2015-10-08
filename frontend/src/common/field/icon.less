@@ -1,0 +1,51 @@
+.setIconBoxModel(@icon-size, @font-size, @top-pos, @right-pos) {
+  top: @top-pos;
+  right: @right-pos;
+  width: @icon-size;
+  height: @icon-size;
+  border-radius: @icon-size / 2;
+  font-size: @font-size;
+}
+
+.animate-icon(@name) {
+  @keyframes @name {
+    0% {
+      .setIconBoxModel(28px, 18px, 7px, 7px);
+    }
+    50% {
+      .setIconBoxModel(56px, 36px, -7px, 0px);
+    }
+    100% {
+      .setIconBoxModel(28px, 18px, 7px, 7px);
+    }
+  }
+
+  animation-name: @name;
+  animation-duration: @animation-duration;
+  animation-fill-mode: forwards;
+}
+
+.field-icon(@background-color) {
+  .setIconBoxModel(28px, 18px, 7px, 7px);
+  background-color: @background-color;
+  border: 1px solid @white-color;
+  position: absolute;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.field-icon_valid {
+  .animate-icon(icon-valid);
+  .field-icon(@green-color);
+}
+
+.field-icon_error {
+  .animate-icon(icon-error);
+  .field-icon(@red-color);
+}
+
+.field-icon_help {
+  .field-icon(@blue-color);
+}

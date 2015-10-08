@@ -110,3 +110,23 @@ h1, h2, h3, h4, h5 {
     }
   }
 }
+
+.animate-outline(@name, @color) {
+  @keyframes @name {
+    0% {
+      outline-width: 1px;
+    }
+    50% {
+      outline-width: 8px;
+    }
+    100% {
+      outline-width: 3px;
+    }
+  }
+
+  outline-color: @color;
+  outline-style: solid;
+  animation-name: @name;
+  animation-duration: @animation-duration;
+  animation-fill-mode: forwards;
+}

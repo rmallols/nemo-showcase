@@ -154,7 +154,26 @@ h5 {
   height: 30px;
   margin-left: 10px;
 }
-.home-view .field {
+.input-wrapper {
+  text-align: left;
+  position: relative;
+}
+.input-wrapper * {
+  width: 100%;
+}
+.col_field {
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  width: 60%;
+}
+@media only screen and (max-width: 900px) {
+  .col_field {
+    width: 100%;
+  }
+}
+.field {
   border: none;
   background-color: #ffffff;
   padding: 10px;
@@ -164,7 +183,7 @@ h5 {
   outline: none;
   border-radius: 0;
 }
-.home-view .field.ng-valid.ng-touched {
+.field.ng-valid.ng-touched {
   outline-color: #00cc66;
   outline-style: solid;
   animation-name: border-valid;
@@ -182,7 +201,7 @@ h5 {
     outline-width: 3px;
   }
 }
-.home-view .field.ng-invalid.ng-touched {
+.field.ng-invalid.ng-touched {
   outline-color: #ff0000;
   outline-style: solid;
   animation-name: border-error;
@@ -200,10 +219,10 @@ h5 {
     outline-width: 3px;
   }
 }
-.home-view .field:focus {
+.field:focus {
   outline-offset: 0;
 }
-.home-view input {
+input {
   border: none;
   background-color: #ffffff;
   padding: 10px;
@@ -213,7 +232,7 @@ h5 {
   outline: none;
   border-radius: 0;
 }
-.home-view input.ng-valid.ng-touched {
+input.ng-valid.ng-touched {
   outline-color: #00cc66;
   outline-style: solid;
   animation-name: border-valid;
@@ -231,7 +250,7 @@ h5 {
     outline-width: 3px;
   }
 }
-.home-view input.ng-invalid.ng-touched {
+input.ng-invalid.ng-touched {
   outline-color: #ff0000;
   outline-style: solid;
   animation-name: border-error;
@@ -249,10 +268,10 @@ h5 {
     outline-width: 3px;
   }
 }
-.home-view input:focus {
+input:focus {
   outline-offset: 0;
 }
-.home-view select {
+select {
   border: none;
   background-color: #ffffff;
   padding: 10px;
@@ -266,7 +285,7 @@ h5 {
   background-position: center right;
   background-size: 40px 40px;
 }
-.home-view select.ng-valid.ng-touched {
+select.ng-valid.ng-touched {
   outline-color: #00cc66;
   outline-style: solid;
   animation-name: border-valid;
@@ -284,7 +303,7 @@ h5 {
     outline-width: 3px;
   }
 }
-.home-view select.ng-invalid.ng-touched {
+select.ng-invalid.ng-touched {
   outline-color: #ff0000;
   outline-style: solid;
   animation-name: border-error;
@@ -302,10 +321,10 @@ h5 {
     outline-width: 3px;
   }
 }
-.home-view select:focus {
+select:focus {
   outline-offset: 0;
 }
-.home-view .col_label {
+.col_label {
   float: left;
   width: 100%;
   box-sizing: border-box;
@@ -315,33 +334,14 @@ h5 {
   text-align: right;
 }
 @media only screen and (max-width: 900px) {
-  .home-view .col_label {
+  .col_label {
     width: 100%;
     padding-top: 10px;
     padding-bottom: 0;
     text-align: left;
   }
 }
-.home-view .col_field {
-  float: left;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px 20px;
-  width: 60%;
-}
-@media only screen and (max-width: 900px) {
-  .home-view .col_field {
-    width: 100%;
-  }
-}
-.home-view .input-wrapper {
-  text-align: left;
-  position: relative;
-}
-.home-view .input-wrapper * {
-  width: 100%;
-}
-.home-view .field-error-wrapper {
+.field-error-wrapper {
   background-color: #ff0000;
   color: white;
   position: absolute;
@@ -363,7 +363,7 @@ h5 {
     margin-bottom: 18px;
   }
 }
-.home-view .field-error-wrapper:after {
+.field-error-wrapper:after {
   top: 100%;
   right: 15px;
   border: solid transparent;
@@ -377,7 +377,7 @@ h5 {
   border-width: 15px;
   margin-left: -15px;
 }
-.home-view .field-help-wrapper {
+.field-help-wrapper {
   background-color: #00aaef;
   color: white;
   position: absolute;
@@ -399,7 +399,7 @@ h5 {
     margin-bottom: 18px;
   }
 }
-.home-view .field-help-wrapper:after {
+.field-help-wrapper:after {
   top: 100%;
   right: 15px;
   border: solid transparent;
@@ -413,7 +413,7 @@ h5 {
   border-width: 15px;
   margin-left: -15px;
 }
-.home-view .field-icon_valid {
+.field-icon_valid {
   animation-name: icon-valid;
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
@@ -457,7 +457,7 @@ h5 {
     font-size: 18px;
   }
 }
-.home-view .field-icon_error {
+.field-icon_error {
   animation-name: icon-error;
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
@@ -501,7 +501,7 @@ h5 {
     font-size: 18px;
   }
 }
-.home-view .field-icon_help {
+.field-icon_help {
   top: 7px;
   right: 7px;
   width: 28px;
@@ -516,31 +516,15 @@ h5 {
   font-weight: bold;
   line-height: 1.5;
 }
-.home-view .nemo-captcha-audio {
-  display: none;
-}
-.home-view .nemo-captcha-play {
-  background: transparent url('/app/sample/grey-audio-Icon.png') no-repeat 0 0;
-  width: 21px;
-  height: 20px;
-  display: inline-block;
-  cursor: pointer;
-}
-.home-view .nemo-captcha-refresh {
-  cursor: pointer;
-  text-decoration: underline;
-}
-.home-view .nemo-captcha-img {
-  display: inline-block;
-}
-.home-view .row_checkbox [input-checkbox] {
+.row_checkbox [input-checkbox] {
   width: 30px;
   height: 30px;
+  margin-top: 6px;
   border: none;
   background-color: #ffffff;
   cursor: pointer;
 }
-.home-view .row_checkbox [input-checkbox].ng-valid.ng-touched {
+.row_checkbox [input-checkbox].ng-valid.ng-touched {
   outline-color: #00cc66;
   outline-style: solid;
   animation-name: border-valid;
@@ -558,7 +542,7 @@ h5 {
     outline-width: 3px;
   }
 }
-.home-view .row_checkbox [input-checkbox].ng-invalid.ng-touched {
+.row_checkbox [input-checkbox].ng-invalid.ng-touched {
   outline-color: #ff0000;
   outline-style: solid;
   animation-name: border-error;
@@ -576,7 +560,7 @@ h5 {
     outline-width: 3px;
   }
 }
-.home-view .row_checkbox [input-checkbox] label {
+.row_checkbox [input-checkbox] label {
   display: block;
   width: 100%;
   height: 100%;
@@ -586,14 +570,38 @@ h5 {
   color: #ffffff;
   background-color: #00aaef;
 }
-.home-view .row_checkbox .field-icon {
+.row_checkbox .field-icon {
   display: none;
 }
-.home-view .row_checkbox .field-error-wrapper:after,
-.home-view .row_checkbox .field-help-wrapper:after {
+.row_checkbox .field-error-wrapper:after,
+.row_checkbox .field-help-wrapper:after {
   left: 25px;
 }
-.home-view [input-captcha-mario] {
+.button_submit {
+  float: right;
+  background-color: #00aaef;
+  color: #ffffff;
+  padding: 12px;
+  text-align: right;
+}
+.nemo-captcha-audio {
+  display: none;
+}
+.nemo-captcha-play {
+  background: transparent url('/app/sample/grey-audio-Icon.png') no-repeat 0 0;
+  width: 21px;
+  height: 20px;
+  display: inline-block;
+  cursor: pointer;
+}
+.nemo-captcha-refresh {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.nemo-captcha-img {
+  display: inline-block;
+}
+[input-captcha-mario] {
   border: none;
   background-color: #ffffff;
   padding: 10px;
@@ -605,7 +613,7 @@ h5 {
   padding: 0;
   height: 460px;
 }
-.home-view [input-captcha-mario].ng-valid.ng-touched {
+[input-captcha-mario].ng-valid.ng-touched {
   outline-color: #00cc66;
   outline-style: solid;
   animation-name: border-valid;
@@ -623,7 +631,7 @@ h5 {
     outline-width: 3px;
   }
 }
-.home-view [input-captcha-mario].ng-invalid.ng-touched {
+[input-captcha-mario].ng-invalid.ng-touched {
   outline-color: #ff0000;
   outline-style: solid;
   animation-name: border-error;
@@ -641,15 +649,8 @@ h5 {
     outline-width: 3px;
   }
 }
-.home-view [input-captcha-mario]:focus {
+[input-captcha-mario]:focus {
   outline-offset: 0;
-}
-.home-view .button_submit {
-  float: right;
-  background-color: #00aaef;
-  color: #ffffff;
-  padding: 12px;
-  text-align: right;
 }
 svg path.domain {
   stroke: #ffffff !important;

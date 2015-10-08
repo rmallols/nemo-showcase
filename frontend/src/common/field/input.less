@@ -1,0 +1,52 @@
+.input-wrapper {
+  text-align: left;
+  position: relative;
+}
+
+.input-wrapper * {
+  width: 100%;
+}
+
+.col_field {
+  .col;
+  width: 60%;
+
+  @media only screen and (max-width: @mobile-breakpoint) {
+    width: 100%;
+  }
+}
+
+.field {
+  border: none;
+  background-color: @white-color;
+  padding: 10px;
+  font-size: @font-size;
+  -webkit-appearance:none;
+  -moz-appearance: none;
+  outline: none;
+  border-radius: 0;
+
+  &.ng-valid.ng-touched {
+    .animate-outline(border-valid, @green-color);
+  }
+
+  &.ng-invalid.ng-touched {
+    .animate-outline(border-error, @red-color);
+  }
+
+  &:focus {
+    outline-offset: 0;
+  }
+}
+
+input {
+  .field;
+}
+
+select {
+  .field;
+  background-image: url('../src/common/assets/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 40px 40px;
+}
