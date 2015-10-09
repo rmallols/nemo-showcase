@@ -273,9 +273,9 @@ describe('HomeFormHandlerCtrl', function () {
                 $scope.$watch.yield({ foo: 'bar'});
 
             then:
-                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('title', 'Mrs value');
-                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('firstName', 'Yoko');
-                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('lastName', 'Ono');
+                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('title', 'Mr value');
+                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('firstName', 'Marty');
+                expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('lastName', 'McFly');
                 expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('email', 'marty@mcfly.com');
                 expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('password', 'foofoofoo');
                 expect(nemoFormHandlerCtrl.setFieldValue).toHaveBeenCalledWith('terms', true);

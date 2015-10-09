@@ -71,9 +71,9 @@ function ($scope, $http, $state, $location, Home, Audio, Stats, Loading) {
     this.autofill = function () {
         var unregisterFn = $scope.$watch('fields', function (fields) {
             if(fields) {
-                formHandlerCtrl.setFieldValue('title', 'Mrs value');
-                formHandlerCtrl.setFieldValue('firstName', 'Yoko');
-                formHandlerCtrl.setFieldValue('lastName', 'Ono');
+                formHandlerCtrl.setFieldValue('title', 'Mr value');
+                formHandlerCtrl.setFieldValue('firstName', 'Marty');
+                formHandlerCtrl.setFieldValue('lastName', 'McFly');
                 formHandlerCtrl.setFieldValue('email', 'marty@mcfly.com');
                 formHandlerCtrl.setFieldValue('password', 'foofoofoo');
                 formHandlerCtrl.setFieldValue('terms', true);
