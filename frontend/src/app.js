@@ -1,4 +1,4 @@
-var app = angular.module('app', ['nemo', 'ui.router', 'templates-main', 'n3-line-chart', 'captcha-mario']);
+var app = angular.module('app', ['nemo', 'ui.router', 'templates-main', 'n3-line-chart', 'captcha-mario']); // jshint ignore:line
 
 app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 'nemoInputDirectiveCreatorProvider',
     'nemoValidationDirectiveCreatorProvider', 'captchaMarioProvider', 'levelCompleteProvider',

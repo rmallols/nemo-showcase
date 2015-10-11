@@ -20,5 +20,5 @@ app.directive('loading', ['Loading', function (Loading) {
                 stopLoading: stopLoading
             });
         }
-    }
+    };
 }]);

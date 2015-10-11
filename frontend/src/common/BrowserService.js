@@ -1,5 +1,3 @@
-'use strict';
-
 app.factory('Browser', ['$window', function ($window) {
 
     var ua,

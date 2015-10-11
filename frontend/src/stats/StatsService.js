@@ -31,7 +31,7 @@ app.service('Stats', ['$http', function ($http) {
             lineMode: "cardinal",
             columnsHGap: 30,
             series: normalisedSeries
-        }
+        };
     };
 
     this.getAxesOptions = function (normalisedData) {
@@ -50,7 +50,7 @@ app.service('Stats', ['$http', function ($http) {
         return [{
             axis: "y",
             series: normalisedStackSeries
-        }]
+        }];
     };
 
     this.getMarginOptions = function () {
@@ -147,6 +147,6 @@ app.service('Stats', ['$http', function ($http) {
     };
 
     this.getRandomColor = function () {
-        return '#' + Math.floor(Math.random() * 16777215).toString(16)
+        return '#' + Math.floor(Math.random() * 16777215).toString(16);
     };
 }]);

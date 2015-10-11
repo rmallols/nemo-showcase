@@ -5,5 +5,5 @@ app.directive('title', ['$rootScope', function ($rootScope) {
                 scope.pageTitle = toState.pageTitle + ' | Nemo shocase';
             });
         }
-    }
+    };
 }]);

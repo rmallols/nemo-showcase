@@ -1,5 +1,3 @@
-'use strict';
-
 app.service('Audio', [function () {
 
     var mp3Path = '/Sounds/Themes/mp3/';
@@ -7,5 +5,5 @@ app.service('Audio', [function () {
     this.playSuccessSong = function () {
         var audio = new Audio(mp3Path + 'BennyHillTheme.mp3');
         audio.play();
-    }
+    };
 }]);
