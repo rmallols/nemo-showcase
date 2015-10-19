@@ -728,3 +728,12 @@ svg .x.axis text {
   font-size: 24px;
   color: #00aaef;
 }
+.credits-view .credits-image .credits-image-github {
+  margin-top: 20px;
+}
+.credits-view .credits-image .credits-image-github .credits-image-github-link {
+  background: transparent center left url('../src/credits/github.svg') no-repeat;
+  background-size: 48px;
+  padding: 16px 0 16px 64px;
+  color: #00aaef;
+}

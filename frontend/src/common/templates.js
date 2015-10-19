@@ -28,6 +28,7 @@ angular.module("credits.html", []).run(["$templateCache", function($templateCach
     "            Special thanks to\n" +
     "            <label class=\"credits-text-highlight\">Kim Westley</label>\n" +
     "            <label class=\"credits-text-highlight\">Carlos Serrano</label>\n" +
+    "            <label class=\"credits-text-highlight\">Jos&eacute; Lladr&oacute;</label>\n" +
     "        </h2>\n" +
     "    </div>\n" +
     "    <div class=\"col-1-2 credits-image\">\n" +
@@ -48,6 +49,13 @@ angular.module("credits.html", []).run(["$templateCache", function($templateCach
     "                    RicardoMallols.com\n" +
     "                </a>\n" +
     "            </label>\n" +
+    "        </div>\n" +
+    "        <div class=\"credits-image-github\">\n" +
+    "            <a href=\"https://github.com/sky-uk/nemo\"\n" +
+    "                target=\"_blank\"\n" +
+    "                class=\"credits-image-github-link\">\n" +
+    "                https://github.com/sky-uk/nemo\n" +
+    "            </a>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</div>\n" +
