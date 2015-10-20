@@ -2,7 +2,7 @@
   .presentation;
   box-sizing: border-box;
   padding-top: 5%;
-  font-size: 120%;
+  font-size: 100%;
 
   .credits-text {
     text-align: center;
@@ -14,12 +14,12 @@
     .credits-text-highlight {
       .highlight-text;
       display: block;
-      margin: 20px;
+      margin: 10px;
     }
   }
 
   .credits-image {
-    @credits-image-hiring-width: 150px;
+    @credits-image-hiring-width: 100px;
     @credits-image-hiring-offset: (@credits-image-hiring-width / 3);
     position: relative;
 
@@ -36,38 +36,42 @@
       margin-top: -@credits-image-hiring-offset;
       margin-left: -@credits-image-hiring-offset;
       border-radius: @credits-image-hiring-width;
-      font-size: 30px;
+      font-size: 20px;
       color: @white-color;
       background-color: @blue-color;
       text-align: center;
       line-height: 1.5;
       box-sizing: border-box;
-      padding-top: 30px;
+      padding-top: 20px;
       transform: rotate(-30deg);
     }
 
     .credits-image-hiring-contact {
       display: block;
       margin-left: @credits-image-hiring-width - @credits-image-hiring-offset;
-      padding: 20px;
+      padding: 10px 20px;
 
       .credits-image-hiring-contact-link {
         display: block;
-        margin-bottom: 10px;
-        font-size: 24px;
+        margin-bottom: 5px;
+        font-size: 20px;
         color: @blue-color;
       }
     }
+  }
 
-    .credits-image-github {
-      margin-top: 20px;
+  .credits-github {
+    margin: 20px 0px 0 100px;
+    padding-bottom: 30px;
+    text-align: center;
 
-      .credits-image-github-link {
-        background: transparent center left url('../src/credits/github.svg') no-repeat;
-        background-size: 48px;
-        padding: 16px 0 16px 64px;
-        color: @blue-color;
-      }
+    .credits-github-link {
+      background: transparent center left url('../src/credits/github.svg') no-repeat;
+      background-size: 48px;
+      padding: 16px 0 16px 64px;
+      color: @blue-color;
+      font-size: 30px;
+      letter-spacing: 4px;
     }
   }
 }

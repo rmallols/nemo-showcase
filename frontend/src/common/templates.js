@@ -50,13 +50,13 @@ angular.module("credits.html", []).run(["$templateCache", function($templateCach
     "                </a>\n" +
     "            </label>\n" +
     "        </div>\n" +
-    "        <div class=\"credits-image-github\">\n" +
-    "            <a href=\"https://github.com/sky-uk/nemo\"\n" +
-    "                target=\"_blank\"\n" +
-    "                class=\"credits-image-github-link\">\n" +
-    "                https://github.com/sky-uk/nemo\n" +
-    "            </a>\n" +
-    "        </div>\n" +
+    "    </div>\n" +
+    "    <div class=\"credits-github\">\n" +
+    "        <a href=\"https://github.com/sky-uk/nemo\"\n" +
+    "           target=\"_blank\"\n" +
+    "           class=\"credits-github-link\">\n" +
+    "            https://github.com/sky-uk/nemo\n" +
+    "        </a>\n" +
     "    </div>\n" +
     "</div>\n" +
     "");
