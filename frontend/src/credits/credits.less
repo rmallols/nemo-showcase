@@ -1,11 +1,9 @@
 .credits-view {
   .presentation;
   box-sizing: border-box;
-  padding-top: 5%;
-  font-size: 100%;
+  font-size: 90%;
 
   .credits-text {
-    text-align: center;
 
     .credits-text-block {
       margin: 0;
@@ -14,14 +12,25 @@
     .credits-text-highlight {
       .highlight-text;
       display: block;
-      margin: 10px;
+      margin: 10px 0;
+    }
+
+    .credits-text-block_github {
+
+      .credits-text-github-link {
+        display: block;
+        background: transparent center left url('../src/credits/github.svg') no-repeat;
+        background-size: 32px;
+        font-size: 75%;
+        padding: 16px 0 16px 42px;
+        letter-spacing: 3px;
+      }
     }
   }
 
   .credits-image {
-    @credits-image-hiring-width: 100px;
-    @credits-image-hiring-offset: (@credits-image-hiring-width / 3);
     position: relative;
+    margin-top: 10px;
 
     .credits-image-img {
       @media only screen and (max-width: @mobile-breakpoint) {
@@ -29,49 +38,17 @@
       }
     }
 
-    .credits-image-hiring-bubble {
-      position: absolute;
-      width: @credits-image-hiring-width;
-      height: @credits-image-hiring-width;
-      margin-top: -@credits-image-hiring-offset;
-      margin-left: -@credits-image-hiring-offset;
-      border-radius: @credits-image-hiring-width;
-      font-size: 20px;
-      color: @white-color;
-      background-color: @blue-color;
-      text-align: center;
-      line-height: 1.5;
-      box-sizing: border-box;
-      padding-top: 20px;
-      transform: rotate(-30deg);
-    }
-
-    .credits-image-hiring-contact {
+    .credits-image-contact {
       display: block;
-      margin-left: @credits-image-hiring-width - @credits-image-hiring-offset;
-      padding: 10px 20px;
+      padding: 10px 0;
+      text-align: right;
 
-      .credits-image-hiring-contact-link {
-        display: block;
+      .credits-image-contact-link {
+        display: inline-block;
         margin-bottom: 5px;
         font-size: 20px;
-        color: @blue-color;
+        letter-spacing: 1px;
       }
-    }
-  }
-
-  .credits-github {
-    margin: 20px 0px 0 100px;
-    padding-bottom: 30px;
-    text-align: center;
-
-    .credits-github-link {
-      background: transparent center left url('../src/credits/github.svg') no-repeat;
-      background-size: 48px;
-      padding: 16px 0 16px 64px;
-      color: @blue-color;
-      font-size: 30px;
-      letter-spacing: 4px;
     }
   }
 }

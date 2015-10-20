@@ -17,46 +17,45 @@ angular.module("credits.html", []).run(["$templateCache", function($templateCach
   $templateCache.put("credits.html",
     "<div class=\"credits-view\">\n" +
     "    <div class=\"col-1-2 credits-text\">\n" +
-    "        <h1 class=\"credits-text-block\">\n" +
+    "        <h2 class=\"credits-text-block credits-text-block_github\">\n" +
+    "            Finding Nemo\n" +
+    "            <a href=\"https://github.com/sky-uk/nemo\"\n" +
+    "               target=\"_blank\"\n" +
+    "               class=\"credits-text-github-link\">\n" +
+    "                https://github.com/sky-uk/nemo\n" +
+    "            </a>\n" +
+    "        </h2>\n" +
+    "        <br/>\n" +
+    "        <h2 class=\"credits-text-block\">\n" +
     "            Nemo has been made possible thanks to\n" +
     "            <label class=\"credits-text-highlight\">\n" +
     "                The NOW TV Web Team\n" +
     "            </label>\n" +
-    "        </h1>\n" +
+    "        </h2>\n" +
     "        <br/>\n" +
-    "        <h2 class=\"credits-text-block\">\n" +
+    "        <h3 class=\"credits-text-block\">\n" +
     "            Special thanks to\n" +
     "            <label class=\"credits-text-highlight\">Kim Westley</label>\n" +
+    "            <label class=\"credits-text-highlight\">Barry Bricknell</label>\n" +
     "            <label class=\"credits-text-highlight\">Carlos Serrano</label>\n" +
     "            <label class=\"credits-text-highlight\">Jos&eacute; Lladr&oacute;</label>\n" +
-    "        </h2>\n" +
+    "        </h3>\n" +
     "    </div>\n" +
     "    <div class=\"col-1-2 credits-image\">\n" +
     "        <img class=\"credits-image-img\" src=\"src/credits/credits.jpg\" />\n" +
-    "        <div class=\"credits-image-hiring\">\n" +
-    "            <label class=\"credits-image-hiring-bubble\">\n" +
-    "                We are hiring!\n" +
-    "            </label>\n" +
-    "            <label class=\"credits-image-hiring-contact\">\n" +
-    "                <a href=\"https://twitter.com/ricardomallols\"\n" +
-    "                   target=\"_blank\"\n" +
-    "                   class=\"credits-image-hiring-contact-link\">\n" +
-    "                    @RicardoMallols\n" +
-    "                </a>\n" +
-    "                <a href=\"http://www.ricardomallols.com\"\n" +
-    "                   target=\"_blank\"\n" +
-    "                   class=\"credits-image-hiring-contact-link\">\n" +
-    "                    RicardoMallols.com\n" +
-    "                </a>\n" +
-    "            </label>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "    <div class=\"credits-github\">\n" +
-    "        <a href=\"https://github.com/sky-uk/nemo\"\n" +
-    "           target=\"_blank\"\n" +
-    "           class=\"credits-github-link\">\n" +
-    "            https://github.com/sky-uk/nemo\n" +
-    "        </a>\n" +
+    "        <label class=\"credits-image-contact\">\n" +
+    "            <a href=\"https://twitter.com/ricardomallols\"\n" +
+    "               target=\"_blank\"\n" +
+    "               class=\"credits-image-contact-link\">\n" +
+    "                @RicardoMallols\n" +
+    "            </a>\n" +
+    "            &nbsp;&nbsp;/&nbsp;&nbsp;\n" +
+    "            <a href=\"http://www.ricardomallols.com\"\n" +
+    "               target=\"_blank\"\n" +
+    "               class=\"credits-image-contact-link\">\n" +
+    "                RicardoMallols.com\n" +
+    "            </a>\n" +
+    "        </label>\n" +
     "    </div>\n" +
     "</div>\n" +
     "");

@@ -5,7 +5,7 @@ body {
   background-color: #000000;
   font-size: 18px;
   font-family: Calibri, Helvetica;
-  color: #00aaef;
+  color: #ffffff;
 }
 a {
   color: #ffffff;
@@ -19,6 +19,7 @@ h3,
 h4,
 h5 {
   font-weight: normal;
+  color: #00aaef;
 }
 .container {
   width: 80%;
@@ -34,7 +35,7 @@ h5 {
   }
 }
 .highlight-text {
-  color: #00aaef;
+  color: #ffffff;
 }
 .centered {
   position: absolute;
@@ -679,65 +680,41 @@ svg .x.axis text {
   color: #ffffff;
   background-color: #000000;
   box-sizing: border-box;
-  padding-top: 5%;
-  font-size: 100%;
-}
-.credits-view .credits-text {
-  text-align: center;
+  font-size: 90%;
 }
 .credits-view .credits-text .credits-text-block {
   margin: 0;
 }
 .credits-view .credits-text .credits-text-highlight {
-  color: #00aaef;
+  color: #ffffff;
   display: block;
-  margin: 10px;
+  margin: 10px 0;
+}
+.credits-view .credits-text .credits-text-block_github .credits-text-github-link {
+  display: block;
+  background: transparent center left url('../src/credits/github.svg') no-repeat;
+  background-size: 32px;
+  font-size: 75%;
+  padding: 16px 0 16px 42px;
+  letter-spacing: 3px;
 }
 .credits-view .credits-image {
   position: relative;
+  margin-top: 10px;
 }
 @media only screen and (max-width: 900px) {
   .credits-view .credits-image .credits-image-img {
     margin-top: 30px;
   }
 }
-.credits-view .credits-image .credits-image-hiring-bubble {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  margin-top: -33.33333333px;
-  margin-left: -33.33333333px;
-  border-radius: 100px;
-  font-size: 20px;
-  color: #ffffff;
-  background-color: #00aaef;
-  text-align: center;
-  line-height: 1.5;
-  box-sizing: border-box;
-  padding-top: 20px;
-  transform: rotate(-30deg);
-}
-.credits-view .credits-image .credits-image-hiring-contact {
+.credits-view .credits-image .credits-image-contact {
   display: block;
-  margin-left: 66.66666667px;
-  padding: 10px 20px;
+  padding: 10px 0;
+  text-align: right;
 }
-.credits-view .credits-image .credits-image-hiring-contact .credits-image-hiring-contact-link {
-  display: block;
+.credits-view .credits-image .credits-image-contact .credits-image-contact-link {
+  display: inline-block;
   margin-bottom: 5px;
   font-size: 20px;
-  color: #00aaef;
-}
-.credits-view .credits-github {
-  margin: 20px 0px 0 100px;
-  padding-bottom: 30px;
-  text-align: center;
-}
-.credits-view .credits-github .credits-github-link {
-  background: transparent center left url('../src/credits/github.svg') no-repeat;
-  background-size: 48px;
-  padding: 16px 0 16px 64px;
-  color: #00aaef;
-  font-size: 30px;
-  letter-spacing: 4px;
+  letter-spacing: 1px;
 }
